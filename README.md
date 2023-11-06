@@ -29,4 +29,4 @@ If you wish to contribute to DevGarden, follow these steps:
 - [jav9i](https://github.com/jav9i)
 
 ## License
-This project is under the [Apache License v2](https://www.apache.org/licenses/LICENSE-2.0).See the `LICENSE` file for more details.
+This project is under the [Apache License v2](https://www.apache.org/licenses/LICENSE-2.0). See the `LICENSE` file for more details.
