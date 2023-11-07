@@ -9,7 +9,7 @@ DevGarden is an Android application developed in Kotlin that offers a collection
 - Each game focuses on specific skills such as colors, shapes, numbers, and more.
 - Tracks children's progress and achievements.
 
-## Collaboration
+## Collaboration 
 DevGarden is a collaborative project with the UPV (University of the Basque Country), aimed at creating an engaging learning platform for children.
 
 ## Contribution
