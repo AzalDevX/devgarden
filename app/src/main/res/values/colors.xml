@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#ece4d4</color>
+    <color name="black">#222222</color>
+
+    <color name="green_50">#eeffee</color>
+    <color name="green_100">#d6ffda</color>
+    <color name="green_200">#b0ffb8</color>
+    <color name="green_300">#73ff82</color>
+    <color name="green_400">#2ff943</color>
+    <color name="green_500">#04e31b</color>
+    <color name="green_600">#00bd11</color>
+    <color name="green_700">#019411</color>
+    <color name="green_800">#087315</color>
+    <color name="green_900">#095e14</color>
+    <color name="green_950">#003507</color>
+
+    <color name="red_50">#ffeeee</color>
+    <color name="red_100">#ffd6d6</color>
+    <color name="red_200">#ffb0b0</color>
+    <color name="red_300">#ff7373</color>
+    <color name="red_400">#ff2f2f</color>
+    <color name="red_500">#e30404</color>
+    <color name="red_600">#bd0000</color>
+    <color name="red_700">#940101</color>
+    <color name="red_800">#730808</color>
+    <color name="red_900">#5e0909</color>
+    <color name="red_950">#350303</color>
+
+    <color name="blue_50">#eeeeff</color>
+    <color name="blue_100">#d6d6ff</color>
+    <color name="blue_200">#b0b0ff</color>
+    <color name="blue_300">#7373ff</color>
+    <color name="blue_400">#2f2fff</color>
+    <color name="blue_500">#0404e3</color>
+    <color name="blue_600">#0000bd</color>
+    <color name="blue_700">#010194</color>
+    <color name="blue_800">#080873</color>
+    <color name="blue_900">#09095e</color>
+    <color name="blue_950">#030335</color>
+
+    <color name="wood_50">#f5f5dc</color>
+    <color name="wood_100">#f5deb3</color>
+    <color name="wood_200">#deb887</color>
+    <color name="wood_300">#d2b48c</color>
+    <color name="wood_400">#bc8f8f</color>
+    <color name="wood_500">#a0522d</color>
+    <color name="wood_600">#8b4513</color>
+    <color name="wood_700">#654321</color>
+    <color name="wood_800">#3b240b</color>
+    <color name="wood_900">#2d1908</color>
+    <color name="wood_950">#1a0d04</color>
 </resources>
