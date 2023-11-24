@@ -39,6 +39,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("io.socket:socket.io-client:2.1.0")
 
     /**
      * Room implementation
@@ -47,11 +48,10 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")            // To use Kotlin annotation processing tool (kapt)
-//    ksp("androidx.room:room-compiler:$room_version")           // To use Kotlin Symbol Processing (KSP)
     implementation("androidx.room:room-ktx:$room_version")       // optional - Kotlin Extensions and Coroutines support for Room
-//    implementation("androidx.room:room-rxjava2:$room_version") // optional - RxJava2 support for Room
-//    implementation("androidx.room:room-rxjava3:$room_version") // optional - RxJava3 support for Room
-//    implementation("androidx.room:room-guava:$room_version")   // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation("androidx.room:room-rxjava2:$room_version") // optional - RxJava2 support for Room
+    implementation("androidx.room:room-rxjava3:$room_version") // optional - RxJava3 support for Room
+    implementation("androidx.room:room-guava:$room_version")   // optional - Guava support for Room, including Optional and ListenableFuture
 //    testImplementation("androidx.room:room-testing:$room_version")// optional - Test helpers
     implementation("androidx.room:room-paging:$room_version")     // optional - Paging 3 Integration
 
