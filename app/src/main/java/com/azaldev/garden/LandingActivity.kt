@@ -1,7 +1,9 @@
 package com.azaldev.garden
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import com.azaldev.garden.classes.database.AppDatabase
 
 class LandingActivity : AppCompatActivity() {
@@ -15,8 +17,11 @@ class LandingActivity : AppCompatActivity() {
 
         //Save on room database
         db = AppDatabase.getInstance(this)
-        db.GlobalSettingsDao().insertGlobalSettings()
+//        db.GlobalSettingsDao().insertGlobalSettings()
 
+        findViewById<ImageButton>(R.id.settings_button).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
 
     }
 }
