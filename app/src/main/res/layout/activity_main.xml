@@ -9,37 +9,5 @@
         tools:context=".MainActivity">
 
 
-    <com.google.android.material.carousel.MaskableFrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/carousel_item_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:foreground="?attr/selectableItemBackground"
-        app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
-        <ImageView
-            android:id="@+id/carousel_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/upv"
-            android:scaleType="centerCrop"/>
-        <ImageView
-            android:id="@+id/carousel_image_view2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/logo"
-            android:scaleType="centerCrop"/>
-    </com.google.android.material.carousel.MaskableFrameLayout>
-
-    <!-- Linear progress indicator -->
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:trackCornerRadius="@dimen/corner_radius"
-        android:background="@color/green_300"
-        android:indeterminate="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

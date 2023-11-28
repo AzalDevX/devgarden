@@ -1,5 +1,6 @@
 package com.azaldev.garden
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +32,9 @@ class MainActivity : AppCompatActivity() {
                 Utilities.showToast(this, "No internet connection")
             }
         }
+
+        val intent = Intent(this, LandingActivity::class.java)
+        startActivity(intent)
 
         Log.d("devl|main", "Finished initializing classes.")
 
