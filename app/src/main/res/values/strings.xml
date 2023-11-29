@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Devgarden</string>
+    <string name="back_button">Go Back</string>
+
+    <string name="theme">THEME</string>
+
+    <string name="lang">LANGUAGE</string>
+    <string name="es">Español</string>
+    <string name="en">English</string>
+    <string name="eu">Euskera</string>
 </resources>

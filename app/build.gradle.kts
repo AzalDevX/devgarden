@@ -41,6 +41,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("io.socket:socket.io-client:2.1.0")
 
+
     /**
      * Room implementation
      */
