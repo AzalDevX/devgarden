@@ -34,12 +34,10 @@ android {
 }
 
 dependencies {
-    implementation("io.socket:socket.io-client:1.0.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("io.socket:socket.io-client:2.1.0")
 
     /**
      * Room implementation
@@ -61,6 +59,12 @@ dependencies {
     val material3_version = "1.1.2"
     implementation("androidx.compose.material3:material3:$material3_version")
     implementation("androidx.compose.material3:material3-window-size-class:$material3_version")
+
+
+    /**
+     * Socket.io integration
+     */
+    implementation("io.socket:socket.io-client:2.1.0")
 
     implementation("com.journeyapps:zxing-android-embedded:4.2.0")
     implementation("com.google.zxing:core:3.4.0")

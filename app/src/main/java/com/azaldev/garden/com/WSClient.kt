@@ -1,45 +1,48 @@
 package com.azaldev.garden.com
 
+import android.util.Log
 import io.socket.client.IO
 import io.socket.client.Socket
-import okhttp3.Headers
-import okhttp3.OkHttpClient
+import java.net.URISyntaxException
+
 
 class WSClient(private val serverUrl: String) {
-    private val socket: Socket
+    private lateinit var socket: Socket
 
     init {
-        // Create a custom OkHttpClient to add headers
-        val client = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val originalRequest = chain.request()
-                val headers = Headers.Builder()
-                    .add("devgarden.azaldev.com", "true") // Add your custom header here
-                    .build()
-                val newRequest = originalRequest.newBuilder().headers(headers).build()
-                chain.proceed(newRequest)
-            }
-            .build()
-
-        // Set up the socket with the custom OkHttpClient
-        val options = IO.Options()
-        options.callFactory = client
-        options.webSocketFactory = client
-
-        socket = IO.socket(serverUrl, options)
-
-        // Add your event listeners here
-        socket.on(Socket.EVENT_CONNECT) {
-            println("Connected to the server")
+        try {
+            Log.d("devl|ws", "Initializing WSClient...")
+            socket = IO.socket(serverUrl ?: "http://localhost:8080");
+            connect();
+        } catch (e: Exception) {
+            Log.e("devl|ws", e.toString())
         }
     }
 
     fun connect() {
+        Log.d("devl|ws", "Connecting to the server...")
         socket.connect()
+
+        socket.on(Socket.EVENT_CONNECT) {
+            Log.i("devl|ws", "Connected to the server")
+        }
+
+        socket.on(Socket.EVENT_DISCONNECT) {
+            Log.d("devl|ws", "Disconnected from the server")
+        }
+
+        socket.on(Socket.EVENT_CONNECT_ERROR) {
+            Log.e("devl|ws", "Connection error: $it")
+        }
     }
 
     fun disconnect() {
+        Log.d("devl|ws", "Disconnecting from the server...")
         socket.disconnect()
+    }
+
+    fun emit(event: String, data: String) {
+        socket.emit(event, data)
     }
 
     fun emit(event: String, data: Map<String, Any>) {

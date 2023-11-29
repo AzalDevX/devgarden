@@ -33,26 +33,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val intent = Intent(this, LandingActivity::class.java)
-        startActivity(intent)
-
         Log.d("devl|main", "Finished initializing classes.")
 
-        val serverUrl = "https://localhost:8080" // Replace with your actual server URL
-        val webSocketClient = WSClient(serverUrl)
+        val webSocketClient = WSClient("https://socko.azaldev.com")
 
-        // Connect to the WebSocket server
-        webSocketClient.connect()
+        webSocketClient.emit("verify", mapOf("username" to "JohnDoe"))
 
-        // Example: Emit a 'register' event with user data
-        webSocketClient.emit("register", mapOf("username" to "JohnDoe"))
+//        webSocketClient.disconnect()
 
-        // Example: Listen for 'registrationSuccess' event
-        webSocketClient.on("registrationSuccess") { data ->
-            println("Registration success: ${data[0]}")
-        }
-
-        // Disconnect when done
-        webSocketClient.disconnect()
+//        val intent = Intent(this, LandingActivity::class.java)
+//        startActivity(intent)
     }
 }
