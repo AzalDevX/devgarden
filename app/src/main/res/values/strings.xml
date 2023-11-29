@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">Devgarden</string>
+    <string name="app_name">DEVGARDEN</string>
+    <string name="back_button">Go Back</string>
+
+    <string name="theme">THEME</string>
+    <string name="scan">SCAN QR FOR ENTER TO THE CLASS</string>
+
+
+    <string name="abus_title">ABOUT US</string>
+    <string name="abus_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+
+
+    <string name="game_1_title">Pasabidea</string>
+    <string name="game_2_title">Errota</string>
+    <string name="game_3_title">Alde Historikoa</string>
+    <string name="game_4_title">Magdalena Eliza</string>
+    <string name="game_5_title">Santiago Arkua</string>
+    <string name="game_6_title">Ontziola</string>
+    <string name="game_7_title">Portua/Hondartza</string>
+
+    <string name="lang">LANGUAGE</string>
+    <string name="es">Español</string>
+    <string name="en">English</string>
+    <string name="eu">Euskera</string>
 </resources>
