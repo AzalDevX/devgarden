@@ -12,7 +12,12 @@ class WSClient(private val serverUrl: String) {
     init {
         try {
             Log.d("devl|ws", "Initializing WSClient...")
-            socket = IO.socket(serverUrl ?: "http://localhost:8080");
+            var options = IO.Options();
+            options.reconnectionAttempts = Integer.MAX_VALUE;
+            options.timeout = 10000;
+            options.query = "token=" + "devgarden.azaldev.com";
+
+            socket = IO.socket(serverUrl, options);
             connect();
         } catch (e: Exception) {
             Log.e("devl|ws", e.toString())
@@ -32,7 +37,11 @@ class WSClient(private val serverUrl: String) {
         }
 
         socket.on(Socket.EVENT_CONNECT_ERROR) {
-            Log.e("devl|ws", "Connection error: $it")
+            Log.e("devl|ws", "Connection error: ${it.toString()}")
+        }
+
+        socket.on("error") {
+            Log.e("devl|ws", "Server error: $it")
         }
     }
 
