@@ -50,4 +50,6 @@
     <color name="wood_800">#3b240b</color>
     <color name="wood_900">#2d1908</color>
     <color name="wood_950">#1a0d04</color>
+
+    <color name="gray_transparent">#F0000000</color>
 </resources>

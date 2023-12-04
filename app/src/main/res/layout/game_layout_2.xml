@@ -15,6 +15,11 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/errota"
                 android:scaleType="centerCrop" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="#B3000000"/>
 
 
         <RelativeLayout

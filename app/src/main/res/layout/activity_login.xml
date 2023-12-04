@@ -90,6 +90,7 @@
 
             android:hint="@string/password"
             app:endIconMode="password_toggle"
+            app:passwordToggleEnabled="true"
             app:layout_constraintTop_toBottomOf="@id/emailFieldL"
             tools:layout_editor_absoluteX="-16dp">
 

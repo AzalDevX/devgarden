@@ -14,6 +14,7 @@ class WSClient(private val serverUrl: String) {
     init {
         try {
             Log.d("devl|ws", "Initializing WSClient...")
+
             var options = IO.Options();
             options.reconnectionAttempts = Integer.MAX_VALUE;
             options.timeout = 10000;
@@ -69,7 +70,8 @@ class WSClient(private val serverUrl: String) {
 
     fun sha256(input: String): String {
         val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
-        return bytes.joinToString("") { "%02x".format(it) }
+        val result = bytes.joinToString("") { "%02x".format(it) }
+        return result
     }
 
     fun parseMessage(jsonString: String): String? {
