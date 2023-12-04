@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/loginLayoutCtx"
         tools:context=".LoginActivity">
 
 
@@ -55,8 +56,9 @@
     />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailField"
-        style="?attr/textInputFilledStyle"
+            android:id="@+id/emailFieldL"
+
+            style="?attr/textInputFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
@@ -68,23 +70,34 @@
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/baseline_alternate_email_24"
         app:layout_constraintTop_toBottomOf="@id/loginLogo">
-
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordField"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+            android:id="@+id/passwordFieldL"
 
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
 
-        android:hint="@string/password"
-        app:endIconMode="password_toggle"
-        app:layout_constraintTop_toBottomOf="@id/emailField"
-        tools:layout_editor_absoluteX="-16dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@id/emailFieldL"
+            tools:layout_editor_absoluteX="-16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.995" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordField" app:layout_constraintVertical_bias="0.028"
+        app:layout_constraintTop_toBottomOf="@id/passwordFieldL" app:layout_constraintVertical_bias="0.028"
         app:singleSelection="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

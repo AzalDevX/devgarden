@@ -23,25 +23,21 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("devl|main", "MainActivity has started!")
 
+
         Log.d("devl|main", "Initializing classes...")
 
+        val globals = Globals()
+
         Utilities.hasInternetConnection(this) { isConnected ->
+            globals.has_connection = isConnected
             if (isConnected) {
-                Utilities.showToast(this, "Internet is available")
-            } else {
-                Utilities.showToast(this, "No internet connection")
+                globals.webSocketClient = WSClient("https://socko.azaldev.com")
             }
         }
 
         Log.d("devl|main", "Finished initializing classes.")
 
-        val webSocketClient = WSClient("https://socko.azaldev.com")
-
-        webSocketClient.emit("verify", mapOf("username" to "JohnDoe"))
-
-//        webSocketClient.disconnect()
-
-//        val intent = Intent(this, LandingActivity::class.java)
-//        startActivity(intent)
+        val intent = Intent(this, LandingActivity::class.java)
+        startActivity(intent)
     }
 }

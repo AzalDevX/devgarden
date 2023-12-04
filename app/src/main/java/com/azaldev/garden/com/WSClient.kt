@@ -3,7 +3,9 @@ package com.azaldev.garden.com
 import android.util.Log
 import io.socket.client.IO
 import io.socket.client.Socket
-import java.net.URISyntaxException
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 
 class WSClient(private val serverUrl: String) {
@@ -65,8 +67,53 @@ class WSClient(private val serverUrl: String) {
         }
     }
 
+    fun sha256(input: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
+    fun parseMessage(jsonString: String): String? {
+        val cleanedJsonString = jsonString.trim()
+        if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
+            val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
+                .split(",")
+                .map { it.trim() }
+            val messagePair = keyValuePairs.find { it.startsWith("\"message\":") }
+            return messagePair?.substringAfter("\":\"")?.substringBefore("\"")
+        } else {
+            throw IllegalArgumentException("Invalid JSON format: $jsonString")
+        }
+    }
+
     private fun mapToJson(data: Map<String, Any>): String {
         // Convert the Map to a JSON string (you can use a JSON library for better handling)
         return "{${data.entries.joinToString(",") { "\"${it.key}\":\"${it.value}\"" }}}"
+    }
+
+    private fun jsonToMap(jsonString: String): Map<String, Any> {
+        val cleanedJsonString = jsonString.trim()
+        if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
+            val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
+                .split(",")
+                .map { it.trim() }
+            return keyValuePairs.associate { pair ->
+                val (key, value) = pair.split(":").map { it.trim() }
+                key to toJavaType(value)
+            }
+        } else {
+            throw IllegalArgumentException("Invalid JSON format: $jsonString")
+        }
+    }
+
+    private fun toJavaType(value: String): Any {
+        return when {
+            value.startsWith("\"") && value.endsWith("\"") -> value.substring(1, value.length - 1)
+            value.toBooleanStrictOrNull() != null -> value.toBoolean()
+            value.toDoubleOrNull() != null -> value.toDouble()
+            value.toFloatOrNull() != null -> value.toFloat()
+            value.toLongOrNull() != null -> value.toLong()
+            value.toIntOrNull() != null -> value.toInt()
+            else -> throw IllegalArgumentException("Unsupported JSON value: $value")
+        }
     }
 }
