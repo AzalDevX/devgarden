@@ -23,11 +23,12 @@
             app:layout_constraintVertical_bias="0.944"/>
 
     <ScrollView
-            android:layout_width="410dp"
+            android:layout_width="match_parent"
             android:layout_height="650dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="60dp" android:id="@+id/scrollView2">
+            android:paddingStart="100dp"
+            android:id="@+id/scrollView2">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical"
                       android:paddingTop="200dp"

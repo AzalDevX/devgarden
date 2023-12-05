@@ -1,5 +1,6 @@
 package com.azaldev.garden
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,8 +15,6 @@ class LandingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
-        //Generate random name
-
         //Save on room database
         val database = AppDatabase.getInstance(applicationContext)
         val authDao = database.AuthDao();
@@ -23,7 +22,15 @@ class LandingActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.settings_button).setOnClickListener {
             Utilities.startActivity(this, SettingsActivity::class.java);
+//            startActivity(Intent(this, SettingsActivity::class.java))
         }
+    }
 
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        /**
+         * Block going back to the MainActivity
+         */
     }
 }
