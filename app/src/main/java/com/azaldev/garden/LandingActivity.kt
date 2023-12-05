@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import com.azaldev.garden.classes.database.AppDatabase
+import com.azaldev.garden.globals.Utilities
 
 class LandingActivity : AppCompatActivity() {
 
@@ -16,11 +17,12 @@ class LandingActivity : AppCompatActivity() {
         //Generate random name
 
         //Save on room database
-        db = AppDatabase.getInstance(this)
-//        db.GlobalSettingsDao().insertGlobalSettings()
+        val database = AppDatabase.getInstance(applicationContext)
+        val authDao = database.AuthDao();
+        //        db.GlobalSettingsDao().insertGlobalSettings()
 
         findViewById<ImageButton>(R.id.settings_button).setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            Utilities.startActivity(this, SettingsActivity::class.java);
         }
 
     }

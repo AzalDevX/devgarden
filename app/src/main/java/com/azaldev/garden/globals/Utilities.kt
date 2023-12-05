@@ -1,10 +1,13 @@
 package com.azaldev.garden.globals
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
@@ -16,6 +19,7 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import kotlinx.coroutines.Dispatchers
+import java.security.MessageDigest
 
 object Utilities {
 
@@ -40,6 +44,28 @@ object Utilities {
 
     fun showToast(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun sha256(input: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
+        val result = bytes.joinToString("") { "%02x".format(it) }
+        return result
+    }
+
+    private var shouldStartActivity = true
+    fun startActivity(context: Context, targetActivity: Class<out AppCompatActivity>) {
+        if (shouldStartActivity) {
+            shouldStartActivity = false
+
+            // Start the target activity
+            val intent = Intent(context, targetActivity)
+            context.startActivity(intent)
+
+            // Use a Handler to delay re-enabling the button
+            Handler().postDelayed({
+                shouldStartActivity = true
+            }, 1000)
+        }
     }
 
     fun scanQRCode(activity: AppCompatActivity, prompt: String) {

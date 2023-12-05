@@ -2,16 +2,15 @@ package com.azaldev.garden.classes.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity
-data class GlobalSettings(
+data class Auth (
     @PrimaryKey
     val id: Int = 1,
 
-    val lang: String,
-    val theme: String,
-    val lastUser: String,
-    val isLogged: Boolean,
     val email: String,
-    val passwd: String
+    val password: String,
+    val code: String?,
+    val server_synced: Boolean
 )

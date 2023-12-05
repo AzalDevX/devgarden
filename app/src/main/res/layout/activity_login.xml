@@ -72,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@id/loginLogo">
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailField"
+                android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
         />
@@ -90,12 +91,13 @@
 
             android:hint="@string/password"
             app:endIconMode="password_toggle"
-            app:passwordToggleEnabled="true"
+            app:passwordToggleEnabled="false"
             app:layout_constraintTop_toBottomOf="@id/emailFieldL"
             tools:layout_editor_absoluteX="-16dp">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordField"
+                android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
         />

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.com.WSClient
 import com.azaldev.garden.globals.*
 import java.util.*
@@ -37,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("devl|main", "Finished initializing classes.")
 
-        val intent = Intent(this, LandingActivity::class.java)
-        startActivity(intent)
+        Utilities.startActivity(this, LandingActivity::class.java)
     }
 }

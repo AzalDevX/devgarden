@@ -70,6 +70,15 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.2.0")
     implementation("com.google.zxing:core:3.4.0")
 
+    /**
+     * Debug utility resources
+     * use debugImplementation
+     */
+//    implementation("com.facebook.stetho:stetho:1.6.0")
+//    implementation("com.facebook.stetho:stetho-okhttp3:1.6.0")
+//    implementation("com.amitshekhar.android:debug-db:1.0.6")
+
+
     testImplementation("junit:junit:4.13.2")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

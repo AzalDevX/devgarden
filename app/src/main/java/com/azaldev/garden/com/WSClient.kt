@@ -74,8 +74,8 @@ class WSClient(private val serverUrl: String) {
         return result
     }
 
-    fun parseMessage(jsonString: String): String? {
-        val cleanedJsonString = jsonString.trim()
+    fun parseMessage(jsonObject: String): String? {
+        val cleanedJsonString = jsonObject.trim()
         if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
             val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
                 .split(",")
@@ -83,7 +83,61 @@ class WSClient(private val serverUrl: String) {
             val messagePair = keyValuePairs.find { it.startsWith("\"message\":") }
             return messagePair?.substringAfter("\":\"")?.substringBefore("\"")
         } else {
-            throw IllegalArgumentException("Invalid JSON format: $jsonString")
+            throw IllegalArgumentException("Invalid JSON format: $jsonObject")
+        }
+    }
+
+    fun parseCustom(jsonObject: String, jsonKey: String): String? {
+        val cleanedJsonString = jsonObject.trim()
+        if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
+            val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
+                .split(",")
+                .map { it.trim() }
+            val messagePair = keyValuePairs.find { it.startsWith("\"$jsonKey\":") }
+            return messagePair?.substringAfter("\":\"")?.substringBefore("\"")
+        } else {
+            throw IllegalArgumentException("Invalid JSON format: $jsonObject")
+        }
+    }
+
+    fun parseCustomBoolean(jsonObject: String, jsonKey: String): Boolean {
+        val cleanedJsonString = jsonObject.trim()
+        if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
+            val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
+                .split(",")
+                .map { it.trim() }
+            val valuePair = keyValuePairs.find { it.startsWith("\"$jsonKey\":") }
+            return valuePair?.substringAfter("\":")?.toBoolean() ?: false
+        } else {
+            throw IllegalArgumentException("Invalid JSON format: $jsonObject")
+            false
+        }
+    }
+
+    fun parseCustomInt(jsonObject: String, jsonKey: String): Int? {
+        val cleanedJsonString = jsonObject.trim()
+        if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
+            val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
+                .split(",")
+                .map { it.trim() }
+            val valuePair = keyValuePairs.find { it.startsWith("\"$jsonKey\":") }
+            return valuePair?.substringAfter("\":")?.toIntOrNull()
+        } else {
+            throw IllegalArgumentException("Invalid JSON format: $jsonObject")
+        }
+    }
+
+
+    fun parseBool(jsonObject: String, jsonKey: String): String? {
+        val cleanedJsonString = jsonObject.trim()
+        if (cleanedJsonString.startsWith("{") && cleanedJsonString.endsWith("}")) {
+            val keyValuePairs = cleanedJsonString.substring(1, cleanedJsonString.length - 1)
+                .split(",")
+                .map { it.trim() }
+            val messagePair = keyValuePairs.find { it.startsWith("\"$jsonKey\":") }
+            return messagePair?.substringAfter("\":")?.substringBefore("")
+        } else {
+            throw IllegalArgumentException("Invalid JSON format: $jsonObject")
         }
     }
 

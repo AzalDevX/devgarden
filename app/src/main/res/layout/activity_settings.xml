@@ -8,19 +8,19 @@
         tools:context=".SettingsActivity">
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            app:singleSelection="true"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:backgroundTint="@color/blue_200"
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="@string/back_button"
 
-            android:layout_gravity="bottom|end"
-            android:text="@string/back_button"
-            app:icon="@drawable/ic_back_20"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.023"/>
+        app:backgroundTint="@color/blue_200"
+        app:icon="@drawable/ic_back_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" app:singleSelection="true"/>
     <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
@@ -155,6 +155,16 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.572" app:layout_constraintHorizontal_bias="0.044"
     />
+    <TextView
+        android:id="@+id/qrTextView"
+        android:layout_width="316dp"
+        android:textColor="@color/gray_500"
+        android:visibility="invisible"
+        android:layout_height="54dp" android:text="@string/blocked_scan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.573"/>
     <ImageView
             android:layout_width="114dp"
             android:layout_height="100dp" app:srcCompat="@drawable/upv" android:id="@+id/imageView2"
@@ -163,10 +173,39 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.835"
             app:layout_constraintVertical_bias="0.974"/>
     <ImageView
-            android:layout_width="114dp"
-            android:layout_height="100dp" app:srcCompat="@drawable/txurdi" android:id="@+id/imageView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.168"
-            app:layout_constraintVertical_bias="0.974"/>
+        android:id="@+id/imageView"
+        android:layout_width="102dp" android:layout_height="92dp" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.974"
+        app:srcCompat="@drawable/txurdi"/>
+    <TextView
+        android:id="@+id/userUserTv"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp"
+        android:text="Logged User" app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/login_button" app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_button" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.369"/>
+    <TextView
+        android:id="@+id/userEmailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp" android:text=""
+        android:textStyle="italic" app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/login_button" app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_button"
+        app:layout_constraintTop_toBottomOf="@+id/userUserTv" app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+        android:id="@+id/userCodeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp" android:text=""
+        android:textStyle="normal" app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/login_button" app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_button"
+        app:layout_constraintTop_toBottomOf="@+id/userEmailTv" app:layout_constraintVertical_bias="0.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
