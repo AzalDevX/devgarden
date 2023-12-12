@@ -93,10 +93,11 @@ class SettingsActivity : AppCompatActivity() {
                         }
                     }
                 }
+                val new_device_lang = Locale.getDefault().language
 
-                Log.d("devl|settings", "Language changed to ${Locale.getDefault().language}.")
+                Log.d("devl|settings", "Language changed to ${new_device_lang}.")
 
-                if (Locale.getDefault().language != device_lang)
+                if (new_device_lang != device_lang)
                     recreate() // Restart activity to apply the new locale
             } else {
                 button.backgroundTintList = ColorStateList.valueOf(defaultColor)
