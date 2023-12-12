@@ -3,6 +3,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -20,8 +21,21 @@ import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import kotlinx.coroutines.Dispatchers
 import java.security.MessageDigest
+import java.util.*
 
 object Utilities {
+
+    fun setLocale(context: Context, language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val resources = context.resources
+        val configuration = Configuration(resources.configuration)
+        configuration.setLocale(locale)
+
+        context.createConfigurationContext(configuration)
+        context.resources.updateConfiguration(configuration, resources.displayMetrics)
+    }
 
     fun hasInternetConnection(context: Context, callback: (Boolean) -> Unit) {
             val connectivityManager =

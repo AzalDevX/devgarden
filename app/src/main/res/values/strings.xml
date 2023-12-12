@@ -9,7 +9,10 @@
     <string name="offline_account">Offline Account</string>
 
     <string name="abus_title">ABOUT US</string>
-    <string name="abus_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="abus_desc">Collaborating with UPV designers,
+        we seamlessly merge their creativity with our technical expertise to craft a distinctive app.
+        Transforming their designs, we create a perfect fusion of design and development,
+        delivering a cutting-edge digital experience for the future.</string>
 
     <string name="game_1_title">Pasabidea</string>
     <string name="game_2_title">Errota</string>

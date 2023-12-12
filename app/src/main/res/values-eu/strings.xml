@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Devgarden</string>
+    <string name="back_button">Atzera</string>
+
+    <string name="theme">GAIA</string>
+    <string name="scan">QR ESKANATU GELARA SARTZEKO</string>
+    <string name="blocked_scan">Funtzio hau erabilgarria da, internet bidez saioa hasi baduzu, zure kasuan ez dagoelako. Mesedez, saioa hasi berriro errealitate-zerbitzu bultruz hornitu ahal izateko.</string>
+
+    <string name="offline_account">Lineako Kontua</string>
+
+    <string name="abus_title">GURI BURUZ</string>
+    <string name="abus_desc">UPVko diseinatzaileekin lankidetzan, beren sorkuntza eta gure trebetasun teknikoa uztartuz,
+        aplikazio berezia sortzen dugu. Haien diseinuak era digital bateratu eta garatu bezain estua bihurtzen ditugu,
+         diseinua eta garapena perfektu elkarren artean, etorkizunerako aplikazio berritzaile bat sortuz.</string>
+
+    <string name="game_1_title">Pasabidea</string>
+    <string name="game_2_title">Errota</string>
+    <string name="game_3_title">Alde Historikoa</string>
+    <string name="game_4_title">Magdalena Eliza</string>
+    <string name="game_5_title">Santiago Arkua</string>
+    <string name="game_6_title">Ontziola</string>
+    <string name="game_7_title">Portua/Hondartza</string>
+
+    <string name="lang">HIZKUNTZA</string>
+    <string name="es">Español</string>
+    <string name="en">English</string>
+    <string name="eu">Euskera</string>
+
+    <string name="login">Irakasle Saioa</string>
+    <string name="email">Posta elektronikoa</string>
+    <string name="password">Pasahitza</string>
+    <string name="register_or_login">Erregistratu edo saioa hasi</string>
+</resources>
