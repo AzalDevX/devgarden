@@ -1,7 +1,7 @@
 package com.azaldev.garden.classes.dao
 
 import androidx.room.*
-import com.azaldev.garden.classes.entity.Auth
+import com.azaldev.garden.classes.entity.Games
 
 @Dao
 interface GamesDao {

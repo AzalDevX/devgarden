@@ -27,6 +27,10 @@ class LandingActivity : AppCompatActivity() {
             Utilities.startActivity(this, SettingsActivity::class.java);
 //            startActivity(Intent(this, SettingsActivity::class.java))
         }
+        findViewById<ImageButton>(R.id.maps_button).setOnClickListener {
+            Utilities.startActivity(this, MapsActivity::class.java);
+//            startActivity(Intent(this, SettingsActivity::class.java))
+        }
     }
 
     @SuppressLint("MissingSuperCall")
