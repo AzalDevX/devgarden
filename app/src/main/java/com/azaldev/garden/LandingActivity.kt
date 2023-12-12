@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import com.azaldev.garden.classes.database.AppDatabase
+import com.azaldev.garden.globals.LocationServiceManager.startLocationService
 import com.azaldev.garden.globals.Utilities
 
 class LandingActivity : AppCompatActivity() {
@@ -14,6 +15,8 @@ class LandingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
+
+        startLocationService(this, this);
 
         //Save on room database
         val database = AppDatabase.getInstance(applicationContext)

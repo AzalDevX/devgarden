@@ -5,9 +5,12 @@
     <uses-feature
             android:name="android.hardware.camera"
             android:required="false"/>
+    <!-- Services permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <!-- Location permissions -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <!-- To check internet access -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -28,6 +31,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Devgarden"
             tools:targetApi="31">
+        <service
+            android:name=".services.LocationService"
+            android:enabled="true"
+            android:exported="false" />
         <activity
                 android:name=".LoginActivity"
                 android:exported="false"/>
