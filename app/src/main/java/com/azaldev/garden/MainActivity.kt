@@ -45,6 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("devl|main", "Initializing classes...")
 
+
+        if (device_lang != null) {
+            Utilities.setLocale(this@MainActivity, device_lang)
+            Log.i("devl|main", "App language has been restored from memory. current language \"${device_lang}\"")
+        }
+
         val globals = Globals()
 
         Utilities.hasInternetConnection(this) { isConnected ->

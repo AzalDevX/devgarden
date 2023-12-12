@@ -1,9 +1,13 @@
 package com.azaldev.garden
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -18,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -27,6 +32,77 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        val device_lang = Locale.getDefault().language
+        val toggleButton: MaterialButtonToggleGroup = findViewById(R.id.toggleButton)
+
+        val button_es: Button = findViewById(R.id.button_es)
+        val button_en: Button = findViewById(R.id.button_en)
+        val button_eu: Button = findViewById(R.id.button_eu)
+
+        val defaultColor = Color.argb(0, 0, 255, 0)
+        val colorSelected = ContextCompat.getColor(this, R.color.blue_200)
+        val textColorSelected = Color.BLACK
+
+        button_es.backgroundTintList = ColorStateList.valueOf(defaultColor)
+        button_en.backgroundTintList = ColorStateList.valueOf(defaultColor)
+        button_eu.backgroundTintList = ColorStateList.valueOf(defaultColor)
+
+        with(device_lang) {
+            when (this) {
+                "es" -> {
+                    button_es.backgroundTintList = ColorStateList.valueOf(colorSelected)
+                    button_es.setTextColor(textColorSelected)
+                    button_es.isSelected = true
+                    button_es.isActivated = true
+                }
+                "en" -> {
+                    button_en.backgroundTintList = ColorStateList.valueOf(colorSelected)
+                    button_en.setTextColor(textColorSelected)
+                    button_en.isSelected = true
+                    button_en.isActivated = true
+                }
+                "eu" -> {
+                    button_eu.backgroundTintList = ColorStateList.valueOf(colorSelected)
+                    button_eu.setTextColor(textColorSelected)
+                    button_eu.isSelected = true
+                    button_eu.isActivated = true
+                }
+            }
+        }
+
+        toggleButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            val button = findViewById<MaterialButton>(checkedId)
+            Log.d("devl|settings", "Checked button: ${button.text}")
+
+
+            if (isChecked) {
+                button.backgroundTintList = ColorStateList.valueOf(colorSelected)
+                button.setTextColor(textColorSelected)
+
+                with(button) {
+                    when (this) {
+                        button_es -> {
+                            Utilities.setLocale(this@SettingsActivity, "es")
+                        }
+                        button_en -> {
+                            Utilities.setLocale(this@SettingsActivity, "en")
+                        }
+                        button_eu -> {
+                            Utilities.setLocale(this@SettingsActivity, "eu")
+                        }
+                    }
+                }
+
+                Log.d("devl|settings", "Language changed to ${Locale.getDefault().language}.")
+
+                if (Locale.getDefault().language != device_lang)
+                    recreate() // Restart activity to apply the new locale
+            } else {
+                button.backgroundTintList = ColorStateList.valueOf(defaultColor)
+                button.setTextColor(Color.WHITE)
+            }
+        }
 
         val database = AppDatabase.getInstance(applicationContext);
         authDao = database.AuthDao()
