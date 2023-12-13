@@ -4,11 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Games (
+data class Game (
     @PrimaryKey
     val id: Int = 1,
-    val x: Float,
-    val y: Float,
+    val coords: Map<String, Float>,
     val name: String,
     val image: Int,
     val isLocked: Boolean,

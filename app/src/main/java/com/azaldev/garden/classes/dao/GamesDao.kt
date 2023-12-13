@@ -1,12 +1,19 @@
 package com.azaldev.garden.classes.dao
 
 import androidx.room.*
-import com.azaldev.garden.classes.entity.Games
+import com.azaldev.garden.classes.entity.Game
 
 @Dao
-interface GamesDao {
+interface GameDao {
+    @Query("SELECT * FROM Game")
+    fun getGames(): List<Game>
 
-    @Query("SELECT * FROM Games ")
-    fun getGames(): Games?
+    @Query("SELECT * FROM Game WHERE id = :id")
+    fun getGame(id: Int): Game
 
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    fun insert(newGame: Game)
+
+    @Query("SELECT COUNT(*) FROM Game WHERE id = :id")
+    fun exists(id: Int): Int
 }

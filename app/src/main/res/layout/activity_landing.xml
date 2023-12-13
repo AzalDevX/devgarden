@@ -5,29 +5,17 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/blurbackgroundgardendcha"
+        android:background="@drawable/background"
         android:scaleType="centerCrop"
         tools:context=".LandingActivity">
 
-    <ImageView
-            android:id="@+id/left_tree"
-            android:layout_width="705dp"
-            android:layout_height="1073dp"
-            android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/lefttree" app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintVertical_bias="0.944"/>
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="650dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingStart="25dp"
+            android:paddingStart="80dp"
             android:id="@+id/scrollView2">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical"
@@ -35,74 +23,80 @@
 
                       android:layout_gravity="center_horizontal">
             <include
-                    layout="@layout/game_layout_1"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_1"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
             />
             <include
-                    layout="@layout/game_layout_2"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_2"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
 
             />
             <include
-                    layout="@layout/game_layout_3"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_3"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
 
             />
             <include
-                    layout="@layout/game_layout_4"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_4"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
 
             />
             <include
-                    layout="@layout/game_layout_5"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_5"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
 
             />
             <include
-                    layout="@layout/game_layout_6"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_6"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
 
             />
             <include
-                    layout="@layout/game_layout_7"
-                    android:layout_width="350dp"
-                    android:layout_height="175dp"
-                    android:layout_marginVertical="10dp"
+                    layout="@layout/card_layout_7"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
+                    android:layout_marginVertical="15dp"
             />
         </LinearLayout>
     </ScrollView>
 
     <ImageView
-            android:id="@+id/right_tree"
-            android:layout_width="828dp"
-            android:layout_height="1348dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="245dp"
+            android:layout_height="161dp" app:srcCompat="@drawable/birdright" android:id="@+id/bird_right"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/righttree" app:layout_constraintHorizontal_bias="0.947"
-            app:layout_constraintVertical_bias="0.743"/>
+            android:layout_marginBottom="516dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="172dp"/>
 
-
+    <ImageView
+            android:layout_width="637dp"
+            android:layout_height="886dp" app:srcCompat="@drawable/tree" android:id="@+id/tree"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="84dp"/>
+    <ImageView
+            android:layout_width="347dp"
+            android:layout_height="290dp" app:srcCompat="@drawable/birdleft" android:id="@+id/bird_left"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="528dp" android:layout_marginStart="116dp"/>
     <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp" app:srcCompat="@drawable/iconbg" android:id="@+id/icon_maps"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.051" app:layout_constraintVertical_bias="0.019"/>
+
 
     <ImageButton
             android:layout_width="50dp"

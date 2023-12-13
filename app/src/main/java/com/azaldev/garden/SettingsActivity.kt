@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -41,7 +41,7 @@ class SettingsActivity : AppCompatActivity() {
         val button_eu: Button = findViewById(R.id.button_eu)
 
         val defaultColor = Color.argb(0, 0, 255, 0)
-        val colorSelected = ContextCompat.getColor(this, R.color.blue_200)
+        val colorSelected = ContextCompat.getColor(this, R.color.wood_300)
         val textColorSelected = Color.BLACK
 
         button_es.backgroundTintList = ColorStateList.valueOf(defaultColor)
@@ -75,7 +75,6 @@ class SettingsActivity : AppCompatActivity() {
             val button = findViewById<MaterialButton>(checkedId)
             Log.d("devl|settings", "Checked button: ${button.text}")
 
-
             if (isChecked) {
                 button.backgroundTintList = ColorStateList.valueOf(colorSelected)
                 button.setTextColor(textColorSelected)
@@ -93,10 +92,11 @@ class SettingsActivity : AppCompatActivity() {
                         }
                     }
                 }
+                val new_device_lang = Locale.getDefault().language
 
-                Log.d("devl|settings", "Language changed to ${Locale.getDefault().language}.")
+                Log.d("devl|settings", "Language changed to ${new_device_lang}.")
 
-                if (Locale.getDefault().language != device_lang)
+                if (new_device_lang != device_lang)
                     recreate() // Restart activity to apply the new locale
             } else {
                 button.backgroundTintList = ColorStateList.valueOf(defaultColor)
@@ -147,11 +147,11 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<MaterialButton>(R.id.back_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.games_button).setOnClickListener {
             finish()
         }
 
-        findViewById<FloatingActionButton>(R.id.login_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.login_button).setOnClickListener {
             Utilities.startActivity(this, LoginActivity::class.java)
         }
     }
