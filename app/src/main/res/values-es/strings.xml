@@ -27,7 +27,7 @@
     <string name="en">English</string>
     <string name="eu">Euskera</string>
 
-    <string name="login">Inicio de sesión (profesor)</string>
+    <string name="login">Sesión del profesor</string>
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
     <string name="register_or_login">Registrarse o iniciar sesión</string>
