@@ -36,15 +36,15 @@ class LandingActivity : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.location_1).setOnClickListener {
-            openGoogleMaps(this)
+            openGoogleMapsWithDirections(this)
         }
     }
 
-    private fun openGoogleMaps(context: Context) {
-        val lat = 43.40257
-        val lon = -2.94652
-
-        val gmmIntentUri = Uri.parse("geo:$lat,$lon?q=$lat,$lon")
+    private fun openGoogleMapsWithDirections(context: Context) {
+        val destinationLat = 43.40257
+        val destinationLon = -2.94652
+        
+        val gmmIntentUri = Uri.parse("google.navigation:q=$destinationLat,$destinationLon&mode=w")
 
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
@@ -53,6 +53,7 @@ class LandingActivity : AppCompatActivity() {
             context.startActivity(mapIntent)
         }
     }
+
 }
 
 
