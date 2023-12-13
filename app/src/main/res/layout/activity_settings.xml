@@ -19,8 +19,7 @@
             android:layout_height="wrap_content" app:srcCompat="@drawable/plants" android:id="@+id/imageView3"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="508dp"/>
-
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="528dp"/>
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
