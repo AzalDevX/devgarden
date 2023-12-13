@@ -63,6 +63,8 @@
     <color name="gray_900">#212121</color>
     <color name="gray_950">#0f0f0f</color>
 
+    <color name="water">#6FA8DC</color>
+
     <color name="gray_transparent">#F0000000</color>
 
 </resources>

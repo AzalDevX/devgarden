@@ -26,7 +26,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Devgarden"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MiniGame"
+            android:exported="false" />
+        <activity
+            android:name=".jolasak.CustomView"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
