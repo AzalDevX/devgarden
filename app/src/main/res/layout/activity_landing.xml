@@ -5,22 +5,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/blurbackgroundgardendcha"
+        android:background="@drawable/minigamesbg"
         android:scaleType="centerCrop"
         tools:context=".LandingActivity">
-
-    <ImageView
-            android:id="@+id/left_tree"
-            android:layout_width="705dp"
-            android:layout_height="1073dp"
-            android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/lefttree" app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintVertical_bias="0.944"/>
 
     <ScrollView
             android:layout_width="match_parent"
@@ -83,18 +70,6 @@
             />
         </LinearLayout>
     </ScrollView>
-
-    <ImageView
-            android:id="@+id/right_tree"
-            android:layout_width="828dp"
-            android:layout_height="1348dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/righttree" app:layout_constraintHorizontal_bias="0.947"
-            app:layout_constraintVertical_bias="0.743"/>
 
 
     <ImageView
