@@ -1,5 +1,4 @@
 package com.azaldev.garden.globals
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -14,12 +13,12 @@ import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.azaldev.garden.R
+import com.azaldev.garden.SettingsActivity
 import com.google.zxing.ResultPoint
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
-import kotlinx.coroutines.Dispatchers
 import java.security.MessageDigest
 import java.util.*
 
