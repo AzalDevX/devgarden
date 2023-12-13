@@ -20,7 +20,7 @@
             android:layout_gravity="bottom|end"
             android:text="@string/back_button"
 
-            app:backgroundTint="@color/green_200"
+            app:backgroundTint="@color/blue_300"
             app:icon="@drawable/ic_back_20"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
