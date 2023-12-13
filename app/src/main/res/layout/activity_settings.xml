@@ -20,20 +20,6 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="528dp"/>
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:text="@string/back_button"
-
-        app:backgroundTint="@color/blue_200"
-        app:icon="@drawable/ic_back_20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" app:singleSelection="true"/>
 
     <TextView
             android:text="@string/lang"
@@ -174,18 +160,6 @@
             app:layout_constraintTop_toTopOf="@+id/view" app:layout_constraintEnd_toEndOf="@+id/view"
             app:layout_constraintStart_toStartOf="@+id/view" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="0.624" android:id="@+id/materialDivider"/>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            app:backgroundTint="@color/blue_200"
-            android:contentDescription="Desc."
-            app:srcCompat="@drawable/ic_user_24" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.954"
-            app:layout_constraintVertical_bias="0.023"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_camera_24"
@@ -227,8 +201,8 @@
             android:textStyle="bold"
             android:layout_marginEnd="10dp"
             android:text="Logged User"
-            app:layout_constraintEnd_toStartOf="@+id/login_button" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/back_button" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/login_button"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="28dp"/>
     <TextView
             android:id="@+id/userEmailTv"
@@ -237,8 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp" android:text=""
             android:textStyle="italic"
-            app:layout_constraintEnd_toStartOf="@+id/login_button" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/back_button"
+            app:layout_constraintEnd_toStartOf="@+id/login_button"
             app:layout_constraintTop_toBottomOf="@+id/userUserTv"/>
     <TextView
             android:id="@+id/userCodeTv"
@@ -250,8 +223,41 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp" android:text=""
             android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/login_button" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/back_button"
+            app:layout_constraintEnd_toStartOf="@+id/login_button"
             app:layout_constraintTop_toBottomOf="@+id/userEmailTv"/>
+
+    <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp" app:srcCompat="@drawable/iconbg" android:id="@+id/icon_maps"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.051" app:layout_constraintVertical_bias="0.019"/>
+
+
+    <ImageButton
+            android:layout_width="50dp"
+            android:scaleType="centerCrop"
+            android:layout_height="50dp" app:srcCompat="@drawable/games"
+            android:id="@+id/games_button" android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.088" app:layout_constraintVertical_bias="0.035"
+            android:layout_marginTop="4dp"/>
+    <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp" app:srcCompat="@drawable/iconbg" android:id="@+id/icon_settings"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.951" app:layout_constraintVertical_bias="0.019"/>
+    <ImageButton
+            android:layout_width="60dp"
+            android:scaleType="centerCrop"
+            android:layout_height="60dp" app:srcCompat="@drawable/user"
+            android:id="@+id/login_button" android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.923" app:layout_constraintVertical_bias="0.018"
+            android:layout_marginTop="10dp" android:layout_marginEnd="-1dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
