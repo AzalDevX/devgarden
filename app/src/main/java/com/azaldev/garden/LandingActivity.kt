@@ -1,25 +1,84 @@
 package com.azaldev.garden
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
 import com.azaldev.garden.classes.database.AppDatabase
+import com.azaldev.garden.classes.entity.Game
 import com.azaldev.garden.globals.LocationServiceManager.startLocationService
 import com.azaldev.garden.globals.Utilities
 
 class LandingActivity : AppCompatActivity() {
 
+    val gameList: List<Game> = listOf(
+        Game(
+            id = 1,
+            coords = mapOf("x" to 43.40257, "y" to -2.94652),
+            name = "Pasabidea",
+            image = R.drawable.pasabidea,
+            isLocked = false,
+            isFinished = false
+        ),
+        Game(
+            id = 2,
+            coords = mapOf("x" to 43.4029, "y" to -2.94519),
+            name = "Errota",
+            image = R.drawable.errota,
+            isLocked = true,
+            isFinished = true
+        ),
+        Game(
+            id = 3,
+            coords = mapOf("x" to 43.40469, "y" to -2.94762),
+            name = "Alde Historikoa",
+            image = R.drawable.zaharra,
+            isLocked = true,
+            isFinished = true
+        ),
+        Game(
+            id = 4,
+            coords = mapOf("x" to 43.40519, "y" to -2.94778),
+            name = "Magdalena Eliza",
+            image = R.drawable.madalena,
+            isLocked = true,
+            isFinished = true
+        ),
+        Game(
+            id = 5,
+            coords = mapOf("x" to 43.40545, "y" to -2.94772),
+            name = "Santiago Arkua",
+            image = R.drawable.arkua,
+            isLocked = true,
+            isFinished = true
+        ),
+        Game(
+            id = 6,
+            coords = mapOf("x" to 43.40436, "y" to -2.94983),
+            name = "Ontziola",
+            image = R.drawable.plaza,
+            isLocked = true,
+            isFinished = true
+        ),
+        Game(
+            id = 7,
+            coords = mapOf("x" to 43.40739, "y" to -2.94522),
+            name = "Portua/Hondartza",
+            image = R.drawable.hondartza,
+            isLocked = true,
+            isFinished = true
+        ),
+    )
+
     private lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
-
         startLocationService(this, this);
+
+//        val mapPointer: ImageView = findViewById(R.id.location_1)
+//        val animation = AnimationUtils.loadAnimation(this, R.anim)
+//        mapPointer.startAnimation(animation)
 
         //Save on room database
         val database = AppDatabase.getInstance(applicationContext)
@@ -36,33 +95,16 @@ class LandingActivity : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.location_1).setOnClickListener {
-            openGoogleMapsWithDirections(this)
+            Utilities.openGoogleMapsWithDirections(this, 43.40257, -2.94652)
         }
     }
 
-    private fun openGoogleMapsWithDirections(context: Context) {
-        val destinationLat = 43.40257
-        val destinationLon = -2.94652
-        
-        val gmmIntentUri = Uri.parse("google.navigation:q=$destinationLat,$destinationLon&mode=w")
-
-        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-        mapIntent.setPackage("com.google.android.apps.maps")
-
-        if (mapIntent.resolveActivity(context.packageManager) != null) {
-            context.startActivity(mapIntent)
-        }
-    }
-
-}
-
-
-
-
-    @SuppressLint("MissingSuperCall")
-    fun onBackPressed() {
-//        super.onBackPressed()
+//    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
         /**
          * Block going back to the MainActivity
          */
+        if (true == false)
+            super.onBackPressed()
     }
+}

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Game (
     @PrimaryKey
     val id: Int = 1,
-    val coords: Map<String, Float>,
+    val coords: Map<String, Double>,
     val name: String,
     val image: Int,
     val isLocked: Boolean,

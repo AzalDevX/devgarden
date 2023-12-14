@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -13,7 +14,6 @@ import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.azaldev.garden.R
-import com.azaldev.garden.SettingsActivity
 import com.google.zxing.ResultPoint
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -53,6 +53,16 @@ object Utilities {
             }
 
         callback(isConnected)
+    }
+
+    fun openGoogleMapsWithDirections(context: Context, latitude: Double, longitude: Double) {
+        val gmmIntentUri = Uri.parse("google.navigation:q=$latitude,$longitude&mode=w")
+
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+
+        if (mapIntent.resolveActivity(context.packageManager) != null)
+            context.startActivity(mapIntent)
     }
 
     fun showToast(context: Context, message: String) {
