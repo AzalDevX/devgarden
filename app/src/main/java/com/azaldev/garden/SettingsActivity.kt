@@ -19,6 +19,7 @@ import com.azaldev.garden.globals.Utilities
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.materialswitch.MaterialSwitch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -41,7 +42,7 @@ class SettingsActivity : AppCompatActivity() {
         val button_eu: Button = findViewById(R.id.button_eu)
 
         val defaultColor = Color.argb(0, 0, 255, 0)
-        val colorSelected = ContextCompat.getColor(this, R.color.wood_300)
+        val colorSelected = ContextCompat.getColor(this, R.color.beige_300)
         val textColorSelected = Color.BLACK
 
         button_es.backgroundTintList = ColorStateList.valueOf(defaultColor)
@@ -154,6 +155,7 @@ class SettingsActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.login_button).setOnClickListener {
             Utilities.startActivity(this, LoginActivity::class.java)
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
