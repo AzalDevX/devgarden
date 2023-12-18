@@ -16,4 +16,10 @@ interface GameDao {
 
     @Query("SELECT COUNT(*) FROM Game WHERE id = :id")
     fun exists(id: Int): Int
+
+    @Query("DELETE FROM Auth WHERE id = :id")
+    fun delete(id: Int)
+
+    @Query("DELETE FROM Auth")
+    fun deleteAll()
 }

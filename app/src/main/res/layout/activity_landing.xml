@@ -16,59 +16,15 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:paddingStart="80dp"
-            android:id="@+id/scrollView2">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/cardScrollView">
+        <LinearLayout
+            android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
                       android:orientation="vertical"
                       android:paddingTop="200dp"
+                      android:id="@+id/card_container"
 
                       android:layout_gravity="center_horizontal">
-            <include
-                    layout="@layout/card_layout_1"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-            />
-            <include
-                    layout="@layout/card_layout_2"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-
-            />
-            <include
-                    layout="@layout/card_layout_3"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-
-            />
-            <include
-                    layout="@layout/card_layout_4"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-
-            />
-            <include
-                    layout="@layout/card_layout_5"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-
-            />
-            <include
-                    layout="@layout/card_layout_6"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-
-            />
-            <include
-                    layout="@layout/card_layout_7"
-                    android:layout_width="250dp"
-                    android:layout_height="125dp"
-                    android:layout_marginVertical="15dp"
-            />
         </LinearLayout>
     </ScrollView>
 

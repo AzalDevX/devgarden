@@ -5,14 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.azaldev.garden.classes.dao.AuthDao
-import com.azaldev.garden.classes.entity.GlobalSettings
+import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.dao.GlobalSettingsDao
+import com.azaldev.garden.classes.entity.GlobalSettings
 import com.azaldev.garden.classes.entity.Auth
+import com.azaldev.garden.classes.entity.Game
 
-@Database(entities = [GlobalSettings::class, Auth::class], version = 1)
+@Database(entities = [GlobalSettings::class, Auth::class, Game::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun GlobalSettingsDao(): GlobalSettingsDao
     abstract fun AuthDao(): AuthDao
+    abstract fun GameDao(): GameDao
 
     companion object {
         @Volatile
@@ -26,6 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
                     "garden_database"
                 )
 //                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

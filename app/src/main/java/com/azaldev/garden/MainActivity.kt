@@ -23,14 +23,14 @@ import java.util.concurrent.TimeUnit
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-
         setContentView(R.layout.activity_main)
+
+//        requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN
+//        )
+
 
         val device_lang = Locale.getDefault().language
         Log.i("devl|startup", "App has been started, device information:")
@@ -61,6 +61,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.d("devl|main", "Finished initializing classes.")
+
+        val gm = GameManager(this, this);
+        gm.initializeGames();
+
+        Log.d("devl|main", "Finished initializing games.")
+
 
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {

@@ -31,7 +31,8 @@ class LocationService : Service() {
 
 //            notify.send("Current location is x${location.latitude} y${location.longitude}", NotificationType.INFO, NotificationDuration.TEMPORARY)
 
-            checkProximityToPointsOfInterest(location)
+            sendLocationBroadcast(location);
+            checkProximityToPointsOfInterest(location);
         }
 
         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
@@ -49,6 +50,13 @@ class LocationService : Service() {
 
     private fun checkProximityToPointsOfInterest(location: Location) {
         // Implement logic to check proximity and print logs
+    }
+
+    private fun sendLocationBroadcast(location: Location) {
+        val intent = Intent("com.azaldev.garden.LOCATION_UPDATE")
+        intent.putExtra("latitude", location.latitude)
+        intent.putExtra("longitude", location.longitude)
+        sendBroadcast(intent)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
