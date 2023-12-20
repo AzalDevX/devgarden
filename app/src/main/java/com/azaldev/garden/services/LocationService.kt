@@ -14,14 +14,25 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.MainActivity
 import com.azaldev.garden.R
+import com.azaldev.garden.classes.dao.GameDao
+import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.globals.NotificationDuration
 import com.azaldev.garden.globals.NotificationType
 import com.azaldev.garden.globals.Notify
+import com.azaldev.garden.globals.Utilities
+import kotlinx.coroutines.*
 
-class LocationService : Service() {
-    private var currentLocation: Location? = null
+class LocationService() : Service() {
+    private var currentLocation: Location? = null;
+    private lateinit var lifecycleOwner: LifecycleOwner;
+    private val job = SupervisorJob();
+    private val scope = CoroutineScope(Dispatchers.Main + job)
+    private lateinit var database: AppDatabase;
+    private lateinit var gameDao: GameDao;
 
     private val locationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
@@ -49,7 +60,27 @@ class LocationService : Service() {
     }
 
     private fun checkProximityToPointsOfInterest(location: Location) {
-        // Implement logic to check proximity and print logs
+        scope.launch(Dispatchers.Default) {
+            val gameList = gameDao.getGames()
+
+            var distance: String = "";
+            var game_name: String = "";
+
+            Log.d("devl|location", "Updating the distance to ${gameList.size} games")
+
+            for (game in gameList) {
+                if (!game.isLocked) {
+                    distance = Utilities.calculateDistance(game.x, game.y, location.latitude, location.longitude)
+                        .toInt()
+                        .toString() + "m";
+                    game_name = game.name
+                }
+            }
+
+            updateNotification("You are $distance from $game_name")
+        }
+
+        Log.d("devl|location", "Update notification executed")
     }
 
     private fun sendLocationBroadcast(location: Location) {
@@ -62,6 +93,9 @@ class LocationService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         // Start the service in the foreground
         setupForegroundService()
+
+        database = AppDatabase.getInstance(applicationContext)
+        gameDao = database.GameDao();
 
         Log.i("devl|location", "Location service has been initialized!")
 

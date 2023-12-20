@@ -9,13 +9,14 @@ import android.content.pm.PermissionInfo.PROTECTION_NORMAL
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
 import com.azaldev.garden.services.LocationService
 
 object LocationServiceManager {
 
     private var isServiceRunning = false
 
-    fun startLocationService(context: Context, activity: Activity) {
+    fun startLocationService(context: Context, activity: Activity, lifecycleOwner: LifecycleOwner) {
         if (!isServiceRunning) {
             if (ActivityCompat.checkSelfPermission(
                     context,
@@ -29,6 +30,7 @@ object LocationServiceManager {
 
             Log.d("devl|service", "Starting location service...")
             val serviceIntent = Intent(context, LocationService::class.java)
+//            serviceIntent.putExtra("lifecycleOwner", lifecycleOwner)
             ContextCompat.startForegroundService(context, serviceIntent)
             isServiceRunning = true
         }

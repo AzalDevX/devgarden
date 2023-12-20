@@ -285,7 +285,7 @@
         app:srcCompat="@drawable/zubia"
         android:elevation="-1dp"/>
 
-    <com.azaldev.garden.jolasak.CustomView
+    <com.azaldev.garden.games.pasabidea.CustomView
         android:id="@+id/customView"
         android:layout_width="match_parent"
         android:layout_height="422dp"

@@ -2,12 +2,12 @@ package com.azaldev.garden.globals
 
 import android.content.Context
 import com.azaldev.garden.R
-import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.entity.Game
 import com.azaldev.garden.classes.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.lifecycle.*
+import com.azaldev.garden.games.pasabidea.PasabideaGame
 import kotlinx.coroutines.launch
 
 class GameManager(private val context: Context, private val lifecycleOwner: LifecycleOwner) {
@@ -20,6 +20,7 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.40257,
             y = -2.94652,
             name = "Pasabidea",
+            activityClassName = "com.azaldev.garden.games.pasabidea.PasabideaGame",
             image = R.drawable.pasabidea,
             max_progress = 6,
             isLocked = false,

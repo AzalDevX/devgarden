@@ -1,4 +1,4 @@
-package com.azaldev.garden.jolasak
+package com.azaldev.garden.games.pasabidea
 
 import android.content.Context
 import android.graphics.Canvas

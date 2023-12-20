@@ -11,6 +11,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.database.AppDatabase
@@ -18,8 +19,10 @@ import com.azaldev.garden.classes.entity.Game
 import com.azaldev.garden.globals.GameManager
 import com.azaldev.garden.globals.LocationServiceManager.startLocationService
 import com.azaldev.garden.globals.Utilities
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LandingActivity : AppCompatActivity() {
 
@@ -28,7 +31,7 @@ class LandingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
-        startLocationService(this, this);
+        startLocationService(this, this, this);
 
         database = AppDatabase.getInstance(applicationContext)
         gameDao = database.GameDao();
@@ -72,6 +75,7 @@ class LandingActivity : AppCompatActivity() {
 
                 for (game in gameList) {
                     val customCardView = layoutInflater.inflate(R.layout.game_layout_template, null)
+                    val isInRadious = Utilities.isLocationWithinRadius(x, y, game.x, game.y, 20f)
 
                     // Set image, title, and other details based on the game
                     val imageView = customCardView.findViewById<ImageView>(R.id.card_image)
@@ -85,13 +89,26 @@ class LandingActivity : AppCompatActivity() {
                     imageView.setImageResource(game.image)
 
                     // Set title using game data
-                    titleTextView.text = game.name.toString()
+                    titleTextView.text = game.name
                     imageDisabledFilter.visibility = if (game.isLocked) View.VISIBLE else View.INVISIBLE
                     imageDisabledLock.visibility = if (game.isLocked) View.VISIBLE else View.INVISIBLE
-                    imageLocate.visibility = if (game.isLocked) View.INVISIBLE else View.VISIBLE
+                    imageLocate.visibility = if (!isInRadious && !game.isLocked) View.VISIBLE else View.INVISIBLE
 
                     imageLocate.setOnClickListener {
-                        Utilities.openGoogleMapsWithDirections(this@LandingActivity, game.x, game.y)
+                        if (!isInRadious && !game.isLocked)
+                            Utilities.openGoogleMapsWithDirections(this@LandingActivity, game.x, game.y)
+                    }
+
+                    imageView.setOnClickListener {
+                        if (isInRadious && !game.isLocked){
+                            val activityClass = game.getActivityClass()
+
+                            if (activityClass != null) {
+                                Utilities.startActivity(this@LandingActivity, activityClass)
+                            } else {
+                                Utilities.showToast(this@LandingActivity, "Game is not yet implemented...")
+                            }
+                        }
                     }
 
                     // Set layout parameters programmatically

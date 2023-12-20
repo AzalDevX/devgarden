@@ -1,10 +1,10 @@
-package com.azaldev.garden
+package com.azaldev.garden.games.pasabidea
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import com.azaldev.garden.R
 
-class MiniGame : AppCompatActivity() {
+class PasabideaGame : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mini_game)

@@ -3,6 +3,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.location.Location
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
@@ -64,6 +65,30 @@ object Utilities {
         if (mapIntent.resolveActivity(context.packageManager) != null)
             context.startActivity(mapIntent)
     }
+
+    fun isLocationWithinRadius(
+        currentLatitude: Double,
+        currentLongitude: Double,
+        targetLatitude: Double,
+        targetLongitude: Double,
+        radiusMeters: Float
+    ): Boolean {
+        val distance = calculateDistance(
+            currentLatitude, currentLongitude,
+            targetLatitude, targetLongitude
+        )
+        return distance <= radiusMeters
+    }
+
+    fun calculateDistance(
+        lat1: Double, lon1: Double,
+        lat2: Double, lon2: Double
+    ): Float {
+        val results = FloatArray(1)
+        Location.distanceBetween(lat1, lon1, lat2, lon2, results)
+        return results[0]
+    }
+
 
     fun showToast(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
