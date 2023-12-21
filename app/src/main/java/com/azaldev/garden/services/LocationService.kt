@@ -29,6 +29,7 @@ import kotlinx.coroutines.*
 class LocationService() : Service() {
     private var currentLocation: Location? = null;
     private lateinit var lifecycleOwner: LifecycleOwner;
+    private var lastGameLocation: String = "null";
     private val job = SupervisorJob();
     private val scope = CoroutineScope(Dispatchers.Main + job)
     private lateinit var database: AppDatabase;
@@ -39,8 +40,6 @@ class LocationService() : Service() {
             currentLocation = location
 
             Log.d("devl|location", "Current location is x${location.latitude} y${location.longitude}")
-
-//            notify.send("Current location is x${location.latitude} y${location.longitude}", NotificationType.INFO, NotificationDuration.TEMPORARY)
 
             sendLocationBroadcast(location);
             checkProximityToPointsOfInterest(location);
@@ -64,20 +63,27 @@ class LocationService() : Service() {
             val gameList = gameDao.getGames()
 
             var distance: String = "";
-            var game_name: String = "";
+            var distanceInt: Int = 0;
+            var gameName: String = "";
 
             Log.d("devl|location", "Updating the distance to ${gameList.size} games")
 
             for (game in gameList) {
                 if (!game.isLocked) {
-                    distance = Utilities.calculateDistance(game.x, game.y, location.latitude, location.longitude)
-                        .toInt()
-                        .toString() + "m";
-                    game_name = game.name
+                    distanceInt =
+                        Utilities.calculateDistance(game.x, game.y, location.latitude, location.longitude).toInt();
+                    distance = distanceInt.toString() + "m";
+                    gameName = game.name
                 }
             }
 
-            updateNotification("You are $distance from $game_name")
+            if (distanceInt < 20 && lastGameLocation != gameName) {
+                Utilities.playSound(this@LocationService, R.raw.success);
+                lastGameLocation = gameName; // I know it doesn't look good, but it's just an easy way to prevent sound repeating
+            }
+
+
+            updateNotification("You are $distance from $gameName")
         }
 
         Log.d("devl|location", "Update notification executed")
@@ -137,7 +143,7 @@ class LocationService() : Service() {
             Handler(Looper.getMainLooper()).postDelayed({
                 checkLocationPermissionsAndStartService()
                 Log.d("devl|location", "Checking location permissions again...")
-            }, LOCATION_CHECK_INTERVAL.toLong())
+            }, LOCATION_PERMISSION_CHECK.toLong())
         }
     }
 
@@ -212,9 +218,10 @@ class LocationService() : Service() {
     }
 
     companion object {
-        const val NOTIFICATION_ID = 1
-        const val LOCATION_CHECK_INTERVAL= 10 * 1000 // in ms
-        const val CHANNEL_ID = "ForegroundServiceChannel"
-        const val CHANNEL_NAME = "asdasdad"
+        const val NOTIFICATION_ID = 1;
+        const val LOCATION_INTERVAL: Long = 15 * 1000; // in ms
+        const val LOCATION_PERMISSION_CHECK = 10 * 1000; // in ms
+        const val CHANNEL_ID = "ForegroundServiceChannel";
+        const val CHANNEL_NAME = "Game Service";
     }
 }

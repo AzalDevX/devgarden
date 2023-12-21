@@ -8,10 +8,6 @@ data class GlobalSettings(
     @PrimaryKey
     val id: Int = 1,
 
-    val lang: String,
-    val theme: String,
-    val lastUser: String,
-    val isLogged: Boolean,
-    val email: String,
-    val passwd: String
+    val lang: String?,
+    val theme: String?,
 )

@@ -11,8 +11,9 @@ import com.azaldev.garden.classes.dao.GlobalSettingsDao
 import com.azaldev.garden.classes.entity.GlobalSettings
 import com.azaldev.garden.classes.entity.Auth
 import com.azaldev.garden.classes.entity.Game
+import com.azaldev.garden.globals.Utilities
 
-@Database(entities = [GlobalSettings::class, Auth::class, Game::class], version = 5)
+@Database(entities = [GlobalSettings::class, Auth::class, Game::class], version = 7)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun GlobalSettingsDao(): GlobalSettingsDao
     abstract fun AuthDao(): AuthDao
@@ -24,16 +25,19 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "garden_database"
-                )
-//                    .allowMainThreadQueries()
-                    .fallbackToDestructiveMigration()
-                    .build()
-                INSTANCE = instance
-                instance
+                    val instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        AppDatabase::class.java,
+                        "garden_database"
+                    )
+                        /**
+                         * Unsafe method, do not use in any case
+                         * .allowMainThreadQueries()
+                         */
+                        .fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE = instance
+                    instance
             }
         }
     }

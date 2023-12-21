@@ -17,7 +17,7 @@
         app:singleSelection="true"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:backgroundTint="@color/beige_200"
+        app:backgroundTint="@color/blue_300"
 
         android:layout_gravity="bottom|end"
         android:text="@string/back_button"
@@ -34,7 +34,7 @@
         android:text="@string/login"
         android:textSize="25dp"
         android:textStyle="bold"
-        android:textColor="@color/beige_500"
+        android:textColor="@color/blue_400"
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.909" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.044"/>
@@ -114,7 +114,10 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:text="@string/register_or_login"
-        app:backgroundTint="@color/green_300"
+
+        android:textColor="@color/black"
+        app:iconTint="@color/blue_400"
+        app:backgroundTint="@color/blue_300"
 
         app:icon="@drawable/baseline_login_24"
         app:layout_constraintBottom_toBottomOf="parent"

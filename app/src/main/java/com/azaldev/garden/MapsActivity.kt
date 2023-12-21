@@ -1,7 +1,13 @@
 package com.azaldev.garden
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.lifecycle.lifecycleScope
+import com.azaldev.garden.classes.dao.GameDao
+import com.azaldev.garden.classes.database.AppDatabase
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -11,16 +17,26 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.azaldev.garden.databinding.ActivityMapsBinding
 import com.azaldev.garden.globals.Utilities
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var database: AppDatabase;
+    private lateinit var gameDao: GameDao;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        database = AppDatabase.getInstance(applicationContext)
+        gameDao = database.GameDao();
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -50,23 +66,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val plentziakoPasabidea = LatLng(43.40257, -2.94652)
-        val plentziakoErrota = LatLng(43.40297, -2.94519)
-        val plentziakoAldeHistorikoa = LatLng(43.40469, -2.94762)
-        val plentziakoSantaMariaMagdalenarenEliza = LatLng(43.40519, -2.94778)
-        val plentziakoSantiagoArkua = LatLng(43.40545, -2.94772)
-        val plentziakoOntziolarenEnparantza = LatLng(43.40436, -2.94983)
-        val plentziakoPortuaHondartza = LatLng(43.40739, -2.94522)
-        mMap.addMarker(MarkerOptions().position(plentziakoPasabidea).title("Pasabidea"))
-        mMap.addMarker(MarkerOptions().position(plentziakoErrota).title("Errota"))
-        mMap.addMarker(MarkerOptions().position(plentziakoAldeHistorikoa).title("Alde Historikoa"))
-        mMap.addMarker(MarkerOptions().position(plentziakoSantaMariaMagdalenarenEliza).title("Eliza"))
-        mMap.addMarker(MarkerOptions().position(plentziakoSantiagoArkua).title("Arkua"))
-        mMap.addMarker(MarkerOptions().position(plentziakoOntziolarenEnparantza).title("Enparantza"))
-        mMap.addMarker(MarkerOptions().position(plentziakoPortuaHondartza).title("Hondartza"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(plentziakoPasabidea, 16f))
+        mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE;
+        mMap.setMinZoomPreference(15f)
+        lifecycleScope.launch(Dispatchers.IO) {
+            val gameList = gameDao.getGames();
 
+            lifecycleScope.launch(Dispatchers.Main) {
+                for (game in gameList) {
+                    val originalBitmap = BitmapFactory.decodeResource(resources, if (game.id % 2 == 0) R.drawable.birdleft else R.drawable.birdright)
+                    val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 100, 100, false)
+                    val icon = BitmapDescriptorFactory.fromBitmap(resizedBitmap)
 
+                    mMap.addMarker(
+                        MarkerOptions()
+                            .icon(icon)
+                            .position(LatLng(game.x, game.y))
+                            .title(game.name)
+
+                    )
+
+                    if (!game.isLocked)
+                        mMap.animateCamera(
+                            CameraUpdateFactory.newLatLngZoom(LatLng(game.x, game.y),
+                                17f)
+                        )
+
+                }
+            }
+        }
     }
 }

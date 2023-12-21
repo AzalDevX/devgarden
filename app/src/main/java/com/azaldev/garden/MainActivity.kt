@@ -9,6 +9,8 @@ import android.view.WindowInsetsController
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.azaldev.garden.classes.dao.AuthDao
+import com.azaldev.garden.classes.dao.GlobalSettingsDao
 import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.classes.entity.Auth
 import com.azaldev.garden.com.WSClient
@@ -43,38 +45,62 @@ class MainActivity : AppCompatActivity() {
         Log.d("devl|main", "MainActivity has started!")
 
 
-        Log.d("devl|main", "Initializing classes...")
-
-
-        if (device_lang != null) {
-            Utilities.setLocale(this@MainActivity, device_lang)
-            Log.i("devl|main", "App language has been restored from memory. current language \"${device_lang}\"")
-        }
-
-        val globals = Globals()
+        Log.i("devl|main", "Initializing classes...")
 
         Utilities.hasInternetConnection(this) { isConnected ->
-            globals.has_connection = isConnected
+            Globals.has_connection = isConnected
             if (isConnected) {
-                globals.webSocketClient = WSClient("https://socko.azaldev.com")
+                Globals.webSocketClient = WSClient("https://socko.azaldev.com")
             }
         }
 
         Log.d("devl|main", "Finished initializing classes.")
 
-        val gm = GameManager(this, this);
-        gm.initializeGames();
+        Log.i("devl|main", "Initializing database and settings...")
 
-        Log.d("devl|main", "Finished initializing games.")
+        val database = AppDatabase.getInstance(applicationContext);
+        var authDao = database.AuthDao()
+        var settinsDao = database.GlobalSettingsDao()
 
-
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                TimeUnit.SECONDS.sleep(2)
-                Log.d("devl|main", "Launching landing page...")
-//                Utilities.startActivity(this@MainActivity, LandingActivity::class.java)
-                startActivity(Intent(this@MainActivity, LandingActivity::class.java))
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                Globals.stored_user = authDao.get()
+                Globals.stored_settings = settinsDao.getDefault()
+            } catch (e: IllegalStateException) {
+                withContext(Dispatchers.Main) {
+                    Utilities.showErrorAlert(this@MainActivity, "Database schema mismatch. Please update the app.") {
+                        finish()
+                    }
+                }
+                return@launch
             }
+
+            Log.i("devl|initializer", "Initializing database waiting for a successfully response");
+
+            var locale = Globals.stored_settings?.lang ?: device_lang
+            Utilities.setLocale(this@MainActivity, locale)
+            Log.i("devl|main", "App language has been restored from memory. locale set to $locale")
+
+            Log.i("devl|main", "Initializing games...")
+
+            val gm = GameManager(this@MainActivity, this@MainActivity);
+            gm.initializeGames();
+
+            Log.d("devl|main", "Finished initializing games.")
+
+
+            Log.i("devl|main", "Requesting essential permissions...")
+
+            while (
+                !PermissionUtils.checkAndRequestCameraPermission(this@MainActivity) ||
+                !PermissionUtils.checkAndRequestLocationPermission(this@MainActivity)
+            ) {
+                TimeUnit.SECONDS.sleep(1)
+            }
+
+            TimeUnit.SECONDS.sleep(1)
+            Log.d("devl|main", "Launching landing page...")
+            startActivity(Intent(this@MainActivity, LandingActivity::class.java))
         }
 
         Log.d("devl|main", "Execution finished.")

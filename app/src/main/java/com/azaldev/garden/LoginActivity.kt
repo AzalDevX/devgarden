@@ -3,6 +3,7 @@ package com.azaldev.garden
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -30,22 +31,23 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val globals = Globals()
         val contextView = findViewById<View>(R.id.loginLayoutCtx)
         val database = AppDatabase.getInstance(applicationContext)
         val authDao = database.AuthDao();
 
         Utilities.hasInternetConnection(this) { isConnected ->
-            globals.has_connection = isConnected
+            Globals.has_connection = isConnected
             if (!isConnected) {
-                Snackbar.make(contextView, "You are not connected to the internet, You wont have access to cloud features", Snackbar.LENGTH_LONG)
+                Snackbar.make(contextView, "You are not connected to the internet, You wont have access to cloud features", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Recheck") {}
                     .setTextColor(ContextCompat.getColor(this, R.color.red_400))
+                    .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
                     .show()
             }
         }
 
-        findViewById<ExtendedFloatingActionButton>(R.id.login_button).setOnClickListener {
+        val loginButton = findViewById<ExtendedFloatingActionButton>(R.id.login_button)
+        loginButton.setOnClickListener {
             val email = findViewById<TextInputEditText>(R.id.emailField).text.toString()
             val password = findViewById<TextInputEditText>(R.id.passwordField).text.toString()
 
@@ -59,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
                         findViewById<TextInputEditText>(R.id.emailField).requestFocus()
                     }
                     .setTextColor(ContextCompat.getColor(this, R.color.red_400))
+                    .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
                     .show()
                 return@setOnClickListener
             }
@@ -74,6 +77,7 @@ class LoginActivity : AppCompatActivity() {
             if (hEmail == "null" || hPassword == "null") {
                 Snackbar.make(contextView, "Captcha has been successfully verified, you may click the register/login button again", Snackbar.LENGTH_LONG)
                     .setTextColor(ContextCompat.getColor(this, R.color.green_600))
+                    .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
                     .show()
 
                 findViewById<ExtendedFloatingActionButton>(R.id.login_button).requestFocus()
@@ -81,31 +85,38 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            loginButton.shrink()
+            Handler().postDelayed({
+                loginButton.hide()
+            }, 700);
+
             val user_object = mapOf("email" to hEmail, "password" to hPassword)
 
-            if (globals.webSocketClient == null && globals.has_connection) {
-                globals.webSocketClient = WSClient("https://socko.azaldev.com")
+            if (Globals.webSocketClient == null && Globals.has_connection) {
+                Globals.webSocketClient = WSClient("https://socko.azaldev.com")
             }
 
-            if (globals.has_connection) {
-                globals.webSocketClient?.emit("register", user_object)
-                globals.webSocketClient?.on("register") { data ->
-                    val success = globals.webSocketClient?.parseCustomBoolean(data, "success") ?: false;
-                    val logged_in = globals.webSocketClient?.parseCustomBoolean(data, "loggedIn") ?: false;
-                    val teacher_code = globals.webSocketClient?.parseCustom(data, "teacherCode");
-                    val message = globals.webSocketClient?.parseMessage(data);
+            if (Globals.has_connection) {
+                Globals.webSocketClient?.emit("register", user_object)
+                Globals.webSocketClient?.on("register") { data ->
+                    val success = Globals.webSocketClient?.parseCustomBoolean(data, "success") ?: false;
+                    val logged_in = Globals.webSocketClient?.parseCustomBoolean(data, "loggedIn") ?: false;
+                    val teacher_code = Globals.webSocketClient?.parseCustom(data, "teacherCode");
+                    val message = Globals.webSocketClient?.parseMessage(data);
 
                     if (success) {
                         Log.i("devl|login", "Register/Login Succeed, response: $message")
 
                         Snackbar.make(contextView, message.toString(), Snackbar.LENGTH_SHORT)
                             .setTextColor(ContextCompat.getColor(this, if (logged_in) R.color.green_600 else R.color.blue_600))
+                            .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
                             .show()
                     } else {
                         Log.e("devl|login", "Register/Login Failed, response: $message")
 
                         Snackbar.make(contextView, message.toString(), Snackbar.LENGTH_SHORT)
                             .setTextColor(ContextCompat.getColor(this, R.color.red_400))
+                            .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
                             .show()
                     }
 
@@ -120,26 +131,30 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            if (!globals.has_connection) {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        var room_user = Auth(
-                            email = email,
-                            password = hPassword,
-                            code = "",
-                            server_synced = false
-                        );
+            if (!Globals.has_connection) {
+                lifecycleScope.launch(Dispatchers.IO) {
+                    var room_user = Auth(
+                        email = email,
+                        password = hPassword,
+                        code = "",
+                        server_synced = false
+                    );
 
-                        authDao.insert(room_user);
+                    authDao.insert(room_user);
+                    Globals.stored_user = room_user;
 
-                        withContext(Dispatchers.Main) {
-                            Snackbar.make(contextView, "Logged in without internet, some features will be unavailable", Snackbar.LENGTH_SHORT)
-                                .setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.blue_500))
-                                .show()
-                        }
+                    withContext(Dispatchers.Main) {
+                        Snackbar.make(contextView, "Logged in without internet, some features will be unavailable", Snackbar.LENGTH_SHORT)
+                            .setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.blue_500))
+                            .setBackgroundTint(ContextCompat.getColor(this@LoginActivity, R.color.blue_200))
+                            .show()
                     }
                 }
             }
+
+            Handler().postDelayed({
+                finish();
+            }, 4000);
         }
 
         findViewById<MaterialButton>(R.id.back_button).setOnClickListener {

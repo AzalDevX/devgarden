@@ -6,11 +6,27 @@ import com.azaldev.garden.classes.entity.GlobalSettings
 @Dao
 interface GlobalSettingsDao {
     @Query("SELECT * FROM GlobalSettings WHERE id = 1")
-    fun getGlobalSettings(): GlobalSettings?
+    fun get(): GlobalSettings?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertGlobalSettings(globalSettings: GlobalSettings)
+    fun insert(globalSettings: GlobalSettings)
 
     @Delete
-    fun deleteGlobalSettings(globalSettings: GlobalSettings)
+    fun delete(globalSettings: GlobalSettings)
+
+    @Query("UPDATE GlobalSettings SET lang = :lang WHERE id = 1")
+    fun updateLang(lang: String)
+
+    @Query("UPDATE GlobalSettings SET theme = :theme WHERE id = 1")
+    fun updateTheme(theme: String)
+
+    fun getDefault(): GlobalSettings {
+        val getDef = get()
+        return getDef ?: run {
+            // If the record doesn't exist, insert a default one
+            val defaultSettings = GlobalSettings(id = 1, lang = "en", theme = "dark")
+            insert(defaultSettings)
+            defaultSettings
+        }
+    }
 }

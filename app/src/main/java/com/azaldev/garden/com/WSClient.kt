@@ -1,6 +1,7 @@
 package com.azaldev.garden.com
 
 import android.util.Log
+import com.azaldev.garden.globals.Globals
 import io.socket.client.IO
 import io.socket.client.Socket
 import java.nio.charset.StandardCharsets
@@ -24,6 +25,7 @@ class WSClient(private val serverUrl: String) {
             connect();
         } catch (e: Exception) {
             Log.e("devl|ws", e.toString())
+            Globals.ws_api_status = false;
         }
     }
 
@@ -33,24 +35,29 @@ class WSClient(private val serverUrl: String) {
 
         socket.on(Socket.EVENT_CONNECT) {
             Log.i("devl|ws", "Connected to the server")
+            Globals.ws_api_status = true;
         }
 
         socket.on(Socket.EVENT_DISCONNECT) {
             Log.d("devl|ws", "Disconnected from the server")
+            Globals.ws_api_status = false;
         }
 
         socket.on(Socket.EVENT_CONNECT_ERROR) {
-            Log.e("devl|ws", "Connection error: ${it.toString()}")
+            Log.e("devl|ws", "Connection error: is Internet Enabled?")
+            Globals.ws_api_status = false;
         }
 
         socket.on("error") {
             Log.e("devl|ws", "Server error: $it")
+            Globals.ws_api_status = false;
         }
     }
 
     fun disconnect() {
         Log.d("devl|ws", "Disconnecting from the server...")
         socket.disconnect()
+        Globals.ws_api_status = false;
     }
 
     fun emit(event: String, data: String) {

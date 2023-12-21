@@ -15,8 +15,9 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.database.AppDatabase
+import com.azaldev.garden.classes.entity.Auth
 import com.azaldev.garden.classes.entity.Game
-import com.azaldev.garden.globals.GameManager
+import com.azaldev.garden.globals.Globals
 import com.azaldev.garden.globals.LocationServiceManager.startLocationService
 import com.azaldev.garden.globals.Utilities
 import com.google.android.material.snackbar.Snackbar
@@ -28,10 +29,19 @@ class LandingActivity : AppCompatActivity() {
 
     private lateinit var database: AppDatabase;
     private lateinit var gameDao: GameDao;
+    private var cacheStoredUser: Auth? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
-        startLocationService(this, this, this);
+
+        /**
+         * Basically if there is a user logged we consider
+         * them a teacher, so they will bypass game restrictions
+         */
+        if (Globals.stored_user == null)
+            startLocationService(this, this, this);
+        else
+            cacheStoredUser = Globals.stored_user;
 
         database = AppDatabase.getInstance(applicationContext)
         gameDao = database.GameDao();
@@ -48,12 +58,14 @@ class LandingActivity : AppCompatActivity() {
                 0, 0, 0)
 
         /**
-         * Subscribe to out location update
+         * Subscribe to out location update it there isn't any user logged
          */
-        val filter = IntentFilter("com.azaldev.garden.LOCATION_UPDATE")
-        registerReceiver(locationReceiver, filter)
+        if (Globals.stored_user == null) {
+            val filter = IntentFilter("com.azaldev.garden.LOCATION_UPDATE")
+            registerReceiver(locationReceiver, filter)
+        }
 
-        loadGames(0.0,0.0);
+        loadGames(0.0,0.0, Globals.stored_user != null);
 
         findViewById<ImageButton>(R.id.settings_button).setOnClickListener {
             Utilities.startActivity(this, SettingsActivity::class.java);
@@ -63,12 +75,11 @@ class LandingActivity : AppCompatActivity() {
         }
     }
 
-    fun loadGames(x: Double, y: Double) {
+    fun loadGames(x: Double = 0.0, y: Double = 0.0, bypass: Boolean = false) {
         lifecycleScope.launch(Dispatchers.IO) {
             val gameList = gameDao.getGames()
 
             lifecycleScope.launch(Dispatchers.Main) {
-
                 val mainLayout = findViewById<LinearLayout>(R.id.card_container)
 
                 mainLayout.removeAllViews()
@@ -90,17 +101,17 @@ class LandingActivity : AppCompatActivity() {
 
                     // Set title using game data
                     titleTextView.text = game.name
-                    imageDisabledFilter.visibility = if (game.isLocked) View.VISIBLE else View.INVISIBLE
-                    imageDisabledLock.visibility = if (game.isLocked) View.VISIBLE else View.INVISIBLE
-                    imageLocate.visibility = if (!isInRadious && !game.isLocked) View.VISIBLE else View.INVISIBLE
+                    imageDisabledFilter.visibility = if (game.isLocked && !bypass) View.VISIBLE else View.INVISIBLE
+                    imageDisabledLock.visibility = if (game.isLocked && !bypass) View.VISIBLE else View.INVISIBLE
+                    imageLocate.visibility = if (!isInRadious && !game.isLocked && !bypass) View.VISIBLE else View.INVISIBLE
 
                     imageLocate.setOnClickListener {
-                        if (!isInRadious && !game.isLocked)
+                        if (!isInRadious && !game.isLocked && !bypass)
                             Utilities.openGoogleMapsWithDirections(this@LandingActivity, game.x, game.y)
                     }
 
                     imageView.setOnClickListener {
-                        if (isInRadious && !game.isLocked){
+                        if ((isInRadious && !game.isLocked) || bypass){
                             val activityClass = game.getActivityClass()
 
                             if (activityClass != null) {
@@ -122,7 +133,9 @@ class LandingActivity : AppCompatActivity() {
                         0, // left margin
                         resources.getDimensionPixelSize(R.dimen.card_margin), // top margin
                         0, // right margin
-                        0 // resources.getDimensionPixelSize(R.dimen.card_margin_vertical) // bottom margin
+                        if(game.id == gameList.size)
+                            resources.getDimensionPixelSize(R.dimen.card_margin) * 4
+                        else 0   // bottom margin, we set it for the last card :D
                     )
 
                     // Apply layout parameters to customCardView
@@ -146,6 +159,16 @@ class LandingActivity : AppCompatActivity() {
                     loadGames(latitude, longitude)
             }
         }
+    }
+
+    /**
+     * Re-create the window if the user is not the same as the chached one
+     */
+    override fun onResume() {
+        super.onResume()
+        if (cacheStoredUser != Globals.stored_user)
+            recreate();
+        Log.i("devl|landing", "onResume() has been called, user is ${if (cacheStoredUser != Globals.stored_user) "changed" else "cached"}")
     }
 
     override fun onDestroy() {

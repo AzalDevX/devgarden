@@ -21,7 +21,7 @@ data class Game(
     fun getActivityClass(): Class<out AppCompatActivity>? {
         return try {
             Class.forName(activityClassName)?.asSubclass(AppCompatActivity::class.java)
-        } catch (e: ClassNotFoundException) {
+        } catch (e: Exception) {
             null
         }
     }

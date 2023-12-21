@@ -17,7 +17,7 @@
     <!-- To scan QR codes -->
     <uses-permission
             android:name="android.permission.CAMERA"/> <!-- To notify the user about real time updates and etc -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
+<!--    <uses-permission android:name="android.permission.VIBRATE"/>-->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
 
@@ -29,6 +29,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/Theme.Devgarden"
         tools:targetApi="31">
         <activity
