@@ -17,8 +17,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.azaldev.garden.R
 import com.google.zxing.ResultPoint
@@ -209,14 +211,28 @@ class QRCodeScannerDialogFragment : DialogFragment(), BarcodeCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val barcodeBg = view.findViewById<RelativeLayout>(R.id.barcodeBg);
 
         barcodeView = view.findViewById(R.id.barcodeScannerView)
         barcodeView.decodeSingle(this)
+
+
+        // Set background color with opacity programmatically
+        val backgroundColor = ContextCompat.getColor(requireContext(), R.color.gray_transparent)
+        barcodeView.setBackgroundColor(backgroundColor)
+        barcodeBg.setBackgroundColor(backgroundColor)
 
         val viewfinderView: ViewfinderView = barcodeView.findViewById(R.id.zxing_viewfinder_view)
         viewfinderView.visibility = View.VISIBLE
 
         barcodeView.setStatusText(promptText)
+
+        // Set maximum width and height programmatically
+        val maxWidth = resources.getDimensionPixelSize(R.dimen.max_qrcode_width)
+        val maxHeight = resources.getDimensionPixelSize(R.dimen.max_qrcode_height)
+
+        barcodeView.layoutParams.width = maxWidth
+        barcodeView.layoutParams.height = maxHeight
     }
 
     override fun onResume() {
