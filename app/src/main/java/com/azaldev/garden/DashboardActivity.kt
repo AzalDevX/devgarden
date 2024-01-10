@@ -4,39 +4,41 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.database.AppDatabase
-
+import com.azaldev.garden.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.azaldev.garden.databinding.ActivityMapsBinding
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
+
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    private lateinit var database: AppDatabase;
-    private lateinit var gameDao: GameDao;
+    private lateinit var database: AppDatabase
+    private lateinit var gameDao: GameDao
+    private lateinit var logout_button: ImageButton
+    private lateinit var back_button: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_dashboard)
 
         database = AppDatabase.getInstance(applicationContext)
+        val authDao = database.AuthDao();
         gameDao = database.GameDao();
 
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-
+        logout_button = findViewById(R.id.logout_button)
+        back_button = findViewById(R.id.back_button)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -44,25 +46,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
 
-        findViewById<MaterialButton>(R.id.back_button).setOnClickListener {
+        logout_button.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO) {
+                authDao.delete()
+                finish()
+            }
+        }
+
+        back_button.setOnClickListener {
             finish()
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
         mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE;
-        mMap.setMinZoomPreference(15f)
+        mMap.setMinZoomPreference(16f)
         lifecycleScope.launch(Dispatchers.IO) {
             val gameList = gameDao.getGames();
 

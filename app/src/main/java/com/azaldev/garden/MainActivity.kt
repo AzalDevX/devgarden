@@ -1,20 +1,26 @@
 package com.azaldev.garden
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.com.WSClient
-import com.azaldev.garden.globals.*
+import com.azaldev.garden.globals.GameManager
+import com.azaldev.garden.globals.Globals
+import com.azaldev.garden.globals.PermissionUtils
+import com.azaldev.garden.globals.Utilities
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 import java.util.concurrent.TimeUnit
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,21 +102,35 @@ class MainActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         val imageView = ImageView(this@MainActivity)
                         imageView.setImageResource(R.drawable.permissionimage)
+                        imageView.adjustViewBounds = true
+
                         MaterialAlertDialogBuilder(this@MainActivity)
                             .setTitle("Permissions required")
                             .setMessage("You need to grant permissions to use the app.")
                             .setView(imageView)
                             .setNeutralButton("Cancel") { dialog, which ->
                                 Utilities.showToast(this@MainActivity, "You need to grant permissions to use the app.")
+                                finish()
                             }
                             .setNegativeButton("Decline") { dialog, which ->
                                 Utilities.showToast(this@MainActivity, "You need to grant permissions to use the app.")
+                                finish()
                             }
                             .setPositiveButton("Accept") { dialog, which ->
-                               Utilities.showToast(this@MainActivity, "Opening settings...")
+                                Utilities.showToast(this@MainActivity, "Opening settings...")
+                                val packageName = "com.azaldev.garden"
+
+                                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                intent.data = Uri.parse("package:$packageName")
+                                startActivity(intent)
+                                finish()
                             }
                             .show()
+                if (loop_check > 10) {
+                    finish()
+                }
                     }
+
                     return@launch
                 }
             }

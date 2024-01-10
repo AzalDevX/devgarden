@@ -178,6 +178,7 @@ class SettingsActivity : AppCompatActivity() {
          * Or Set it to disable if there is a logged user, but it was logged without internet
          */
         val loginButton = findViewById<ImageButton>(R.id.login_button);
+        if (Globals.stored_user != null) loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
 
         if (Globals.stored_user != null && Globals.stored_user!!.server_synced)
             loginButton.visibility = View.INVISIBLE;
@@ -185,7 +186,11 @@ class SettingsActivity : AppCompatActivity() {
             loginButton.isClickable = false;
 
         loginButton.setOnClickListener {
-            Utilities.startActivity(this, LoginActivity::class.java)
+
+            Utilities.startActivity(
+                this,
+                if (Globals.stored_user == null) LoginActivity::class.java else DashboardActivity::class.java
+                )
         }
 
         val scanQrCode = findViewById<ImageButton>(R.id.camera_button)

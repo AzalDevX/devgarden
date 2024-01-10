@@ -4,7 +4,9 @@
 
     <string name="theme">THEME</string>
     <string name="scan">SCAN QR FOR ENTER TO THE CLASS</string>
-    <string name="blocked_scan">This feature is only available if you logged in with internet, which isn\'t you case. Please log back in to enable real time cloud feature</string>
+    <string name="blocked_scan">This feature is only available if you logged in with internet, which isn\'t you case.
+        Please log back in to enable real time cloud feature
+    </string>
 
     <string name="offline_account">Offline Account</string>
 
@@ -12,7 +14,8 @@
     <string name="abus_desc">Collaborating with UPV designers,
         we seamlessly merge their creativity with our technical expertise to craft a distinctive app.
         Transforming their designs, we create a perfect fusion of design and development,
-        delivering a cutting-edge digital experience for the future.</string>
+        delivering a cutting-edge digital experience for the future.
+    </string>
 
     <string name="game_1_title">Pasabidea</string>
     <string name="game_2_title">Errota</string>

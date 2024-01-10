@@ -20,4 +20,7 @@ interface AuthDao {
 
     @Query("SELECT password FROM Auth WHERE id = 1")
     fun password(): String?
+
+    @Query("DELETE FROM Auth WHERE id = 1")
+    fun delete(): Int?
 }
