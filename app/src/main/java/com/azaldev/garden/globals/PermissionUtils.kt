@@ -1,5 +1,6 @@
 package com.azaldev.garden.globals
 
+import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
@@ -32,7 +33,7 @@ object PermissionUtils {
             ) != PackageManager.PERMISSION_GRANTED ||
             ContextCompat.checkSelfPermission(
                 activity,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
+                android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             // Permission is not granted, request it
@@ -40,7 +41,7 @@ object PermissionUtils {
                 activity,
                 arrayOf(
                     android.Manifest.permission.ACCESS_FINE_LOCATION,
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
                 ),
                 LOCATION_PERMISSION_REQUEST_CODE
             )
