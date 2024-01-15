@@ -26,7 +26,7 @@ object PermissionUtils {
         } else return true;
     }
 
-    fun checkAndRequestLocationPermission(activity: Activity): Boolean {
+    fun checkAndRequestLocationPermission(activity: Activity ): Boolean {
         if (ContextCompat.checkSelfPermission(
                 activity,
                 android.Manifest.permission.ACCESS_FINE_LOCATION
