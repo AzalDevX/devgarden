@@ -30,4 +30,8 @@
     <string name="email">Posta elektronikoa</string>
     <string name="password">Pasahitza</string>
     <string name="register_or_login">Erregistratu edo saioa hasi</string>
+
+    <string name="team">Taldea</string>
+    <string name="minigame">Minijokoa</string>
+    <string name="progress">Aurrerabidea</string>
 </resources>

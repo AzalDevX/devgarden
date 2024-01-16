@@ -34,5 +34,9 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="register_or_login">Register Or Login</string>
-    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="team">Team</string>
+    <string name="minigame">Minigame</string>
+    <string name="progress">Progress</string>
+
 </resources>
