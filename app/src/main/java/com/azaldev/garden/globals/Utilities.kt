@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,9 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import com.journeyapps.barcodescanner.ViewfinderView
+import java.net.HttpURLConnection
+import java.net.InetAddress
+import java.net.URL
 import java.security.MessageDigest
 import java.util.*
 
@@ -46,6 +50,26 @@ object Utilities {
         context.resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 
+
+
+    fun canConnectToApi(callback: (Boolean) -> Unit) {
+        Thread {
+            try {
+                val url = URL(Globals.api_url + "/status")
+                val connection = url.openConnection() as HttpURLConnection
+                connection.connectTimeout = 5000
+
+                val responseCode = connection.responseCode
+                val hasConnection = responseCode == HttpURLConnection.HTTP_OK
+
+                Log.i("devl|utils", "Connection to API status: $hasConnection with code $responseCode")
+                callback(hasConnection)
+            } catch (e: Exception) {
+                Log.e("devl|utils", "Error while checking internet connection: ${e.message}")
+                callback(false)
+            }
+        }.start()
+    }
     fun hasInternetConnection(context: Context, callback: (Boolean) -> Unit) {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -107,6 +131,17 @@ object Utilities {
 
     fun showToast(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun showToast(context: Context, message: String, durationMillis: Long) {
+        val toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
+        toast.show()
+
+        // Use a Handler to delay the dismissal of the Toast
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            toast.cancel()
+        }, durationMillis)
     }
 
     fun sha256(input: String): String {
@@ -173,6 +208,8 @@ object Utilities {
      */
 
     fun scanQRCodePop(activity: AppCompatActivity, prompt: String, callback: (String?) -> Unit) {
+        if (!PermissionUtils.checkAndRequestCameraPermission(activity)) callback(null)
+
         val fragment = QRCodeScannerDialogFragment()
         fragment.setOnScanResultCallback(callback)
         fragment.setPrompt(prompt)

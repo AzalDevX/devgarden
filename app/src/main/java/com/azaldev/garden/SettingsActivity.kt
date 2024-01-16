@@ -18,7 +18,11 @@ import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.dao.AuthDao
 import com.azaldev.garden.classes.dao.GlobalSettingsDao
 import com.azaldev.garden.classes.database.AppDatabase
+import com.azaldev.garden.classes.entity.Auth
+import com.azaldev.garden.com.WSClient
 import com.azaldev.garden.globals.Globals
+import com.azaldev.garden.globals.PermissionUtils
+import com.azaldev.garden.globals.RNGName
 import com.azaldev.garden.globals.Utilities
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -35,6 +39,8 @@ import java.util.*
 class SettingsActivity : AppCompatActivity() {
     private lateinit var authDao: AuthDao;
     private lateinit var settinsDao: GlobalSettingsDao;
+    private var cacheStoredUser: Auth? = null;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +49,8 @@ class SettingsActivity : AppCompatActivity() {
         val database = AppDatabase.getInstance(applicationContext);
         authDao = database.AuthDao()
         settinsDao = database.GlobalSettingsDao()
+
+        cacheStoredUser = Globals.stored_user;
 
         var device_lang = Globals.stored_settings?.lang ?: Locale.getDefault().language
 
@@ -59,6 +67,17 @@ class SettingsActivity : AppCompatActivity() {
         button_es.backgroundTintList = ColorStateList.valueOf(defaultColor)
         button_en.backgroundTintList = ColorStateList.valueOf(defaultColor)
         button_eu.backgroundTintList = ColorStateList.valueOf(defaultColor)
+
+        val contextView = findViewById<View>(R.id.settingsCtx)
+
+        Utilities.canConnectToApi {
+            Globals.has_connection = it
+
+            if (Globals.has_connection && Globals.webSocketClient == null)
+                Globals.webSocketClient = WSClient(Globals.api_url)
+
+            Log.i("devl|main", "Internet connection status: $it, WSClient status: ${Globals.webSocketClient != null}")
+        }
 
         /**
          * Set language on load, a bit buggy
@@ -180,7 +199,10 @@ class SettingsActivity : AppCompatActivity() {
         val loginButton = findViewById<ImageButton>(R.id.login_button);
         if (Globals.stored_user != null) loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
 
-        if (Globals.stored_user != null && Globals.stored_user!!.server_synced)
+        if (
+            Globals.stored_user != null && Globals.stored_user!!.server_synced || // Ticher chek
+            Globals.stored_settings?.student_classcode != null // Student chek
+            )
             loginButton.visibility = View.INVISIBLE;
         else if (Globals.stored_user != null && !Globals.stored_user?.server_synced!!)
             loginButton.isClickable = false;
@@ -190,7 +212,7 @@ class SettingsActivity : AppCompatActivity() {
             Utilities.startActivity(
                 this,
                 if (Globals.stored_user == null) LoginActivity::class.java else DashboardActivity::class.java
-                )
+            )
         }
 
         val scanQrCode = findViewById<ImageButton>(R.id.camera_button)
@@ -204,23 +226,73 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         scanQrCode.setOnClickListener {
-//            if (!canUserQrCOde) return@setOnClickListener
+            if (!canUserQrCOde) return@setOnClickListener
+            if (!PermissionUtils.checkAndRequestCameraPermission(this)) return@setOnClickListener
 
             Utilities.scanQRCodePop(this, "Join Classroom") {
                 val result: String? = it
                 Log.i("devl|settings", "Scanned qr code to join classroom, got response $result")
 
-                if (Utilities.isValidCode(result))
-                    Utilities.showToast(this, "Joining class: $result")
-                else
+                if (!Utilities.isValidCode(result)) {
                     Snackbar.make(scanQrCode, "Invalid QR code format...", Snackbar.LENGTH_LONG)
-                        .setAction("Recheck") { scanQrCode.callOnClick() }
+                        .setAction("Try Again") { scanQrCode.callOnClick() }
                         .setTextColor(ContextCompat.getColor(this, R.color.red_400))
-                        .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
+                        .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
                         .show()
+
+                    return@scanQRCodePop
+                }
+
+                if (!Globals.has_connection) {
+                    Snackbar.make(contextView, "You are not connected to the internet :c", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Try Again") {}
+                        .setTextColor(ContextCompat.getColor(this, R.color.red_400))
+                        .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
+                        .show()
+
+                    return@scanQRCodePop
+                }
+
+                val group_name = RNGName.generate();
+                Log.i("devl|settings", "Joining class: $result with the name $group_name")
+
+                val group_object = mapOf("group" to group_name, "class" to result.toString())
+
+                Globals.webSocketClient?.emit("join_class", group_object)
+                Globals.webSocketClient?.on("join_class") { data ->
+                    val success = Globals.webSocketClient?.parseCustomBoolean(data, "success") ?: false;
+                    val already_in_class = Globals.webSocketClient?.parseCustomBoolean(data, "alreadyClass") ?: false;
+                    val group_created = Globals.webSocketClient?.parseCustomBoolean(data, "group") ?: false;
+
+                    val message = Globals.webSocketClient?.parseMessage(data);
+
+                    if (success && group_created) {
+                        Log.i("devl|settings", "Join Class Succeed, response: $message")
+
+                        Snackbar.make(contextView, message.toString(), Snackbar.LENGTH_SHORT)
+                            .setTextColor(ContextCompat.getColor(this, R.color.blue_300))
+                            .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
+                            .show()
+                    } else {
+                        Log.e("devl|settings", "Join Class Failed, response: $message")
+
+                        Snackbar.make(contextView, if (already_in_class) "This group is already in a class." else message.toString(), Snackbar.LENGTH_SHORT)
+                            .setTextColor(ContextCompat.getColor(this, R.color.red_400))
+                            .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
+                            .show()
+
+                        return@on
+                    }
+
+                    settinsDao.updateStudent(group_name, result.toString())
+                        Globals.stored_settings = settinsDao.getDefault()
+                    recreate() // Restart activity to apply the new locale
+                }
             }
         }
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -262,5 +334,12 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (cacheStoredUser != Globals.stored_user)
+            recreate();
+        Log.i("devl|landing", "onResume() has been called, user is ${if (cacheStoredUser != Globals.stored_user) "changed" else "cached"}")
     }
 }

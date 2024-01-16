@@ -20,13 +20,15 @@ object LocationServiceManager {
         if (!isServiceRunning) {
             if (ActivityCompat.checkSelfPermission(
                     context,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED)
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                     activity,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION),
-                    1001
+                    arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                    1005
                 )
+                Utilities.showToast(activity, "Please gran background location permission to continue", 10000)
+            }
 
             Log.d("devl|service", "Starting location service...")
             val serviceIntent = Intent(context, LocationService::class.java)
