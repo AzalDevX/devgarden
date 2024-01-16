@@ -13,7 +13,7 @@ import com.azaldev.garden.classes.entity.Auth
 import com.azaldev.garden.classes.entity.Game
 import com.azaldev.garden.globals.Utilities
 
-@Database(entities = [GlobalSettings::class, Auth::class, Game::class], version = 7)
+@Database(entities = [GlobalSettings::class, Auth::class, Game::class], version = 8)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun GlobalSettingsDao(): GlobalSettingsDao
     abstract fun AuthDao(): AuthDao

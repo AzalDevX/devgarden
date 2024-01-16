@@ -13,7 +13,7 @@ data class Game(
     val name: String,
     val image: Int,
     val activityClassName: String? = null,
-    val progress: Int = 0,
+    val progress: Int = 1,
     val max_progress: Int = 6,
     val isLocked: Boolean,
     val isFinished: Boolean,

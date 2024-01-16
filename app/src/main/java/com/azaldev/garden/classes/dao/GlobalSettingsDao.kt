@@ -20,11 +20,14 @@ interface GlobalSettingsDao {
     @Query("UPDATE GlobalSettings SET theme = :theme WHERE id = 1")
     fun updateTheme(theme: String)
 
+    @Query("UPDATE GlobalSettings SET student_groupname = :groupname, student_classcode = :classcode WHERE id = 1")
+    fun updateStudent(groupname: String, classcode: String)
+
     fun getDefault(): GlobalSettings {
         val getDef = get()
         return getDef ?: run {
             // If the record doesn't exist, insert a default one
-            val defaultSettings = GlobalSettings(id = 1, lang = "en", theme = "dark")
+            val defaultSettings = GlobalSettings(id = 1, lang = "en", theme = "dark", student_groupname = null, student_classcode = null)
             insert(defaultSettings)
             defaultSettings
         }

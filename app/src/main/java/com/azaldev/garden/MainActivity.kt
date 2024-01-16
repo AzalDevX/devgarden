@@ -1,12 +1,16 @@
 package com.azaldev.garden
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.com.WSClient
@@ -47,11 +51,13 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("devl|main", "Initializing classes...")
 
-        Utilities.hasInternetConnection(this) { isConnected ->
-            Globals.has_connection = isConnected
-            if (isConnected) {
-                Globals.webSocketClient = WSClient("https://socko.azaldev.com")
-            }
+        Utilities.canConnectToApi {
+            Globals.has_connection = it
+
+            if (Globals.has_connection)
+                Globals.webSocketClient = WSClient(Globals.api_url)
+
+            Log.i("devl|main", "Internet connection status: $it, WSClient status: ${Globals.webSocketClient != null}")
         }
 
         Log.d("devl|main", "Finished initializing classes.")
@@ -61,8 +67,10 @@ class MainActivity : AppCompatActivity() {
         val database = AppDatabase.getInstance(applicationContext);
         var authDao = database.AuthDao()
         var settinsDao = database.GlobalSettingsDao()
+        val updateText = findViewById<TextView>(R.id.introProcessDetails)
 
         lifecycleScope.launch(Dispatchers.IO) {
+            updateText.text = "Initializing database..."
             try {
                 Globals.stored_user = authDao.get()
                 Globals.stored_settings = settinsDao.getDefault()
@@ -91,15 +99,21 @@ class MainActivity : AppCompatActivity() {
 
             Log.i("devl|main", "Requesting essential permissions...")
 
+            updateText.text = "Requesting permissions..."
+
             var loop_check = 0
-            while (
-                !PermissionUtils.checkAndRequestCameraPermission(this@MainActivity) ||
-                !PermissionUtils.checkAndRequestLocationPermission(this@MainActivity)
-            ) {
-                TimeUnit.SECONDS.sleep(2)
-                loop_check += 1
-                if (loop_check > 5) {
+            do {
+                val locationPermission = PermissionUtils.checkAndRequestLocationPermission(this@MainActivity)
+
+                Log.i("devl|main", "Location permission: $locationPermission")
+                // val cameraPermission = PermissionUtils.checkAndRequestCameraPermission(this@MainActivity)
+
+                if (locationPermission)
+                    break
+
+                if (loop_check == 5) {
                     withContext(Dispatchers.Main) {
+
                         val imageView = ImageView(this@MainActivity)
                         imageView.setImageResource(R.drawable.permissionimage)
                         imageView.adjustViewBounds = true
@@ -118,22 +132,31 @@ class MainActivity : AppCompatActivity() {
                             }
                             .setPositiveButton("Accept") { dialog, which ->
                                 Utilities.showToast(this@MainActivity, "Opening settings...")
-                                val packageName = "com.azaldev.garden"
 
+                                val packageName = "com.azaldev.garden"
                                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                                 intent.data = Uri.parse("package:$packageName")
                                 startActivity(intent)
+
                                 finish()
                             }
                             .show()
-                if (loop_check > 10) {
+                    }
+                }
+
+                TimeUnit.SECONDS.sleep(2)
+                loop_check++;
+            } while (loop_check <= 10)
+
+            if (loop_check >= 10) {
+                withContext(Dispatchers.Main) {
+                    Utilities.showToast(this@MainActivity, "You need to grant permissions to use the app.")
                     finish()
                 }
-                    }
-
-                    return@launch
-                }
+                return@launch
             }
+
+            updateText.text = "Permissions granted, launching landing page..."
 
             TimeUnit.SECONDS.sleep(1)
             Log.d("devl|main", "Launching landing page...")
@@ -142,4 +165,22 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("devl|main", "Execution finished.")
     }
+
+    /*
+    override fun onResume() {
+        super.onResume()
+
+        val locationPermission = PermissionUtils.checkAndRequestLocationPermission(this@MainActivity)
+
+        Log.i("devl|main", "onResume() Location permission: $locationPermission")
+
+        if (
+            locationPermission
+        ) {
+            TimeUnit.SECONDS.sleep(1)
+            Log.d("devl|main", "Launching landing page...")
+            startActivity(Intent(this@MainActivity, LandingActivity::class.java))
+        }
+    }
+    */
 }

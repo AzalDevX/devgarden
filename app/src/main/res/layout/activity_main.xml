@@ -9,15 +9,15 @@
         tools:context=".MainActivity">
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/circularProgressIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        app:trackCornerRadius="5dp"
-        app:indicatorColor="@color/blue_200"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.976"/>
+            android:id="@+id/circularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:trackCornerRadius="5dp"
+            app:indicatorColor="@color/blue_200"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.847"/>
     <ImageView
         android:id="@+id/introImage"
         android:layout_width="298dp" android:layout_height="321dp" app:layout_constraintBottom_toBottomOf="parent"
@@ -46,6 +46,18 @@
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/introTitle"
         app:layout_constraintVertical_bias="0.037"/>
+
+    <TextView
+            android:id="@+id/introProcessDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:shadowColor="@color/blue_300"
+            android:text="..."
+            android:textColor="@color/blue_300"
+            android:textSize="15dp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/introTitle"
+            app:layout_constraintVertical_bias="0.856"/>
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:layout_width="match_parent"

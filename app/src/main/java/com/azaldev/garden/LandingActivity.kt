@@ -41,8 +41,7 @@ class LandingActivity : AppCompatActivity() {
          */
         if (Globals.stored_user == null)
             startLocationService(this, this, this);
-        else
-            cacheStoredUser = Globals.stored_user;
+        cacheStoredUser = Globals.stored_user;
 
         database = AppDatabase.getInstance(applicationContext)
         gameDao = database.GameDao();
