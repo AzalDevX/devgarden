@@ -35,9 +35,6 @@
             android:name=".games.pasabidea.PasabideaGame"
             android:exported="false" />
         <activity
-                android:name=".games.pasabidea.PasabideaGame"
-                android:exported="false"/>
-        <activity
                 android:name=".games.pasabidea.CustomView"
                 android:exported="false"/>
         <!--
@@ -70,6 +67,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LandingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
