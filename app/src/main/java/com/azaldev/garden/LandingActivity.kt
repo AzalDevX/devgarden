@@ -21,6 +21,7 @@ import com.azaldev.garden.globals.Globals
 import com.azaldev.garden.globals.LocationServiceManager.startLocationService
 import com.azaldev.garden.globals.Utilities
 import com.google.android.material.snackbar.Snackbar
+import games.magdalena.MagdalenaActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -56,6 +57,7 @@ class LandingActivity : AppCompatActivity() {
             cardScroll.setPadding(
                 (resources.displayMetrics.widthPixels - cardWidth) / 2,
                 0, 0, 0)
+
 
         /**
          * Subscribe to out location update it there isn't any user logged
