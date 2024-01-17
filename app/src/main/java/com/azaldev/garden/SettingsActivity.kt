@@ -288,8 +288,11 @@ class SettingsActivity : AppCompatActivity() {
                     }
 
                     settinsDao.updateStudent(group_name, result.toString())
-                        Globals.stored_settings = settinsDao.getDefault()
-                    recreate() // Restart activity to apply the new locale
+                    Globals.stored_settings = settinsDao.getDefault()
+                    runOnUiThread {
+                        Log.i("devl|settings", "Recreating settings to reload the language...")
+                        recreate() // Restart activity to apply the new locale
+                    }
                 }
             }
         }
