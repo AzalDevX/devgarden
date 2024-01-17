@@ -13,6 +13,12 @@
         fusionamos su creatividad con nuestra destreza técnica para crear una aplicación única.
         Transformamos sus diseños en una experiencia digital fluida,
         logrando la combinación perfecta entre diseño y desarrollo para una aplicación innovadora.</string>
+    <string name="pasabide_desc">
+        El primer registro que hace referencia al puente de Plentzia data del año 1414. El actual puente se construyó en 1991.
+        Para sustituir el puente de piedra destruido tras las inundaciones de 1983. Sin embargo, a lo largo de la historia ha habido varios puentes,
+        En 1508 una ordenanza municipal prohibió el cruce con antorchas por ser de madera y arder. En la actualidad,
+        ¡Está prohibido saltar de el!
+    </string>
 
     <string name="game_1_title">Pasabidea</string>
     <string name="game_2_title">Errota</string>

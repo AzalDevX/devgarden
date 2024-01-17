@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +46,9 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        findViewById<ImageView>(R.id.bird_left).visibility = View.INVISIBLE
+
 
         val database = AppDatabase.getInstance(applicationContext);
         authDao = database.AuthDao()
@@ -204,7 +208,8 @@ class SettingsActivity : AppCompatActivity() {
             loginButton.isClickable = false
         else if (Globals.stored_settings?.student_classcode != null)
             loginButton.visibility = View.INVISIBLE
-
+            findViewById<ImageView>(R.id.icon_settings).visibility = View.INVISIBLE
+            findViewById<ImageView>(R.id.bird_left).visibility = View.VISIBLE
 
         loginButton.setOnClickListener {
             Utilities.startActivity(

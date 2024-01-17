@@ -12,6 +12,10 @@
     <string name="abus_desc">EHUko diseinatzaileekin lankidetzan, beren sorkuntza eta gure trebetasun teknikoa uztartuz,
         aplikazio berezia sortzen dugu. Haien diseinuak era digital bateratu eta garatu bezain estua bihurtzen ditugu,
          diseinua eta garapena perfektu elkarren artean, etorkizunerako aplikazio berritzaile bat sortuz.</string>
+    <string name="pasabide_desc">Plentziako zubiari erreferentzia egiten dion lehen erregistroa 1414. urtekoa da. Gaur egungo zubia 1991n eraiki zen,
+    1983ko uholdeen ondoren suntsitutako harrizko zubia ordezkatzeko. Dena den, historian zehar hainbat zubi egon dira,
+    eta 1508an udal-ordenantza batek debekatu egin zuen zuziekin gurutzatzea, egurrezkoa zelako eta su har zezakeelako. Gaur egun,
+    debekatuta dago bertatik salto egitea, beraz, ezta pentsatu ere!</string>
 
     <string name="game_1_title">Pasabidea</string>
     <string name="game_2_title">Errota</string>
