@@ -196,19 +196,17 @@ class SettingsActivity : AppCompatActivity() {
          * Hide the login button if there is a logged user
          * Or Set it to disable if there is a logged user, but it was logged without internet
          */
-        val loginButton = findViewById<ImageButton>(R.id.login_button);
-        if (Globals.stored_user != null) loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
+        val loginButton = findViewById<ImageButton>(R.id.login_button)
 
-        if (
-            Globals.stored_user != null && Globals.stored_user!!.server_synced || // Ticher chek
-            Globals.stored_settings?.student_classcode != null // Student chek
-            )
-            loginButton.visibility = View.INVISIBLE;
-        else if (Globals.stored_user != null && !Globals.stored_user?.server_synced!!)
-            loginButton.isClickable = false;
+        if (Globals.stored_user != null && Globals.stored_user!!.server_synced)
+            loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
+        else if (Globals.stored_user != null && !Globals.stored_user!!.server_synced)
+            loginButton.isClickable = false
+        else if (Globals.stored_settings?.student_classcode != null)
+            loginButton.visibility = View.INVISIBLE
+
 
         loginButton.setOnClickListener {
-
             Utilities.startActivity(
                 this,
                 if (Globals.stored_user == null) LoginActivity::class.java else DashboardActivity::class.java

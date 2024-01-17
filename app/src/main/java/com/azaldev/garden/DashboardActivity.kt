@@ -4,16 +4,21 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TableLayout
 import android.widget.TableRow
+import com.google.gson.Gson
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.database.AppDatabase
+import com.azaldev.garden.com.WSClient
 import com.azaldev.garden.databinding.ActivityMapsBinding
+import com.azaldev.garden.globals.Globals
+import com.azaldev.garden.globals.Utilities
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,18 +26,20 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Objects
 
 class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
-    private lateinit var mMap: GoogleMap
-    private lateinit var database: AppDatabase
-    private lateinit var gameDao: GameDao
-    private lateinit var logout_button: ImageButton
-    private lateinit var back_button: ImageButton
-    private lateinit var table_layout: TableLayout
+    private lateinit var mMap           : GoogleMap
+    private lateinit var database       : AppDatabase
+    private lateinit var gameDao        : GameDao
+    private lateinit var logout_button  : ImageButton
+    private lateinit var back_button    : ImageButton
+    private lateinit var table_layout   : TableLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,28 +48,48 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         table_layout = findViewById(R.id.tableLayout)
         val rowCount = table_layout.childCount
 
+
+        val contextView = findViewById<View>(R.id.dashLayoutCtx)
+        Utilities.canConnectToApi {
+            Globals.has_connection = it
+
+            if (Globals.has_connection && Globals.webSocketClient == null)
+                Globals.webSocketClient = WSClient(Globals.api_url)
+
+            Log.i("devl|dashboard", "Internet connection status: $it, WSClient status: ${Globals.webSocketClient != null}")
+
+            if (!Globals.has_connection) {
+                Snackbar.make(contextView, "You are not connected to the internet, You wont have access to cloud features", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Recheck") {}
+                    .setTextColor(ContextCompat.getColor(this, R.color.red_400))
+                    .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
+                    .show()
+            }
+        }
+        data class TeamData(
+            val name        : String,
+            val game        : Int,
+            val location    : Objects,
+
+        )
+        Globals.webSocketClient?.on("fetch_class") { data ->
+            val success = Globals.webSocketClient?.parseCustomBoolean(data, "success") ?: false
+            Log.i("devl|dashboard", success.toString())
+            val teams : TeamData = Gson().fromJson(data, TeamData::class.java)
+            if (success) {
+                Log.i("devl|dashboard", teams.toString())
+                //teamsData = arrayOf(
+                    //TeamData()
+                //)
+            }
+
+        }
+
         for (i in rowCount - 1 downTo 1) {
             val row: View = table_layout.getChildAt(i)
             if (row is TableRow) {
                 table_layout.removeViewAt(i)
             }
-        }
-
-        data class TeamData(
-            val name: String,
-            val minigames: Int,
-            val progress: String
-        )
-
-        val teamsData = arrayOf(
-            TeamData("arrano-beltza", 4, "2/6"),
-            TeamData("katu-urdina", 4, "3/6"),
-            TeamData("txakur-gorria", 4, "5/6"),
-            TeamData("bale-zuria", 4, "3/6")
-        )
-
-        for (team in teamsData) {
-            createNewTeam(team.name, team.minigames, team.progress)
         }
 
 
