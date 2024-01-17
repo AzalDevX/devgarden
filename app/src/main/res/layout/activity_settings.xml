@@ -6,8 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
+        android:id="@+id/settingsCtx"
         android:scaleType="centerCrop"
         tools:context=".SettingsActivity">
+
+
 
     <View
             android:layout_width="match_parent"
@@ -15,11 +18,26 @@
             android:background="#70000000" android:id="@+id/view"/>
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/plants" android:id="@+id/imageView3"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="528dp"/>
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="560dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/plants"
+        />
+
+    <ImageView
+        android:id="@+id/bird_left"
+        android:layout_width="247dp"
+        android:layout_height="193dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginBottom="636dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/birdleft" />
 
     <TextView
             android:text="@string/lang"
@@ -255,15 +273,22 @@
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.951" app:layout_constraintVertical_bias="0.019"/>
+
     <ImageButton
-            android:layout_width="60dp"
-            android:scaleType="centerCrop"
-            android:layout_height="60dp" app:srcCompat="@drawable/user"
-            android:id="@+id/login_button" android:background="@android:color/transparent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.923" app:layout_constraintVertical_bias="0.018"
-            android:layout_marginTop="10dp" android:layout_marginEnd="-1dp"/>
+        android:id="@+id/login_button"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="-1dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.019"
+        app:srcCompat="@drawable/user" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

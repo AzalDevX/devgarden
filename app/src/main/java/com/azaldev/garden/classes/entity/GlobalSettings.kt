@@ -10,4 +10,7 @@ data class GlobalSettings(
 
     val lang: String?,
     val theme: String?,
+
+    val student_groupname: String?,
+    val student_classcode: String?,
 )

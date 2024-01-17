@@ -35,9 +35,15 @@ class LoginActivity : AppCompatActivity() {
         val database = AppDatabase.getInstance(applicationContext)
         val authDao = database.AuthDao();
 
-        Utilities.hasInternetConnection(this) { isConnected ->
-            Globals.has_connection = isConnected
-            if (!isConnected) {
+        Utilities.canConnectToApi {
+            Globals.has_connection = it
+
+            if (Globals.has_connection && Globals.webSocketClient == null)
+                Globals.webSocketClient = WSClient(Globals.api_url)
+
+            Log.i("devl|main", "Internet connection status: $it, WSClient status: ${Globals.webSocketClient != null}")
+
+            if (!Globals.has_connection) {
                 Snackbar.make(contextView, "You are not connected to the internet, You wont have access to cloud features", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Recheck") {}
                     .setTextColor(ContextCompat.getColor(this, R.color.red_400))
@@ -128,6 +134,7 @@ class LoginActivity : AppCompatActivity() {
                     );
 
                     authDao.insert(room_user);
+                    Globals.stored_user = room_user;
                 }
             }
 

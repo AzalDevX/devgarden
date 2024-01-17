@@ -7,6 +7,7 @@ import com.azaldev.garden.com.WSClient
 
 object Globals : Application(){
     var enviroment: String = "development"; // development or production
+    var api_url: String = "https://socko.azaldev.com";
     var app_language = "eu";
     var has_connection = false;
     var ws_api_status = false;

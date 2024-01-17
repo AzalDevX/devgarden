@@ -20,10 +20,7 @@ import com.azaldev.garden.MainActivity
 import com.azaldev.garden.R
 import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.database.AppDatabase
-import com.azaldev.garden.globals.NotificationDuration
-import com.azaldev.garden.globals.NotificationType
-import com.azaldev.garden.globals.Notify
-import com.azaldev.garden.globals.Utilities
+import com.azaldev.garden.globals.*
 import kotlinx.coroutines.*
 
 class LocationService() : Service() {
@@ -40,6 +37,44 @@ class LocationService() : Service() {
             currentLocation = location
 
             Log.d("devl|location", "Current location is x${location.latitude} y${location.longitude}")
+
+            scope.launch(Dispatchers.Default) {
+                val classcode: String? = Globals.stored_settings?.student_classcode;
+                val groupname: String? = Globals.stored_settings?.student_groupname;
+
+                Log.i("devl|location", "Classcode: $classcode, Groupname: $groupname")
+
+                if (
+                    classcode != null &&
+                    groupname != null
+                ) {
+                    val gameList = gameDao.getGames()
+                    var gameProgress = 0;
+                    for (game in gameList) {
+                        if (!game.isLocked) {
+                            gameProgress = (game.id * 100) + (game.progress * 10) + game.max_progress;
+                            Log.i("devl|location", "Game progress: $gameProgress for game ${game.name} game.id ${game.id}")
+                        }
+                    }
+
+                        val update_object = mapOf(
+                            "group" to groupname.toString(),
+                            "class" to classcode.toString(),
+                            "location_x" to location.latitude.toString(),
+                            "location_y" to location.longitude.toString(),
+                            "progress" to gameProgress.toString()
+                        )
+
+                        Globals.webSocketClient?.emit("update_class", update_object)
+                    /**
+                     *                   Globals.webSocketClient?.on("update_class") { data ->
+                     *                             val message = Globals.webSocketClient?.parseMessage(data);
+                     *                             Log.i("devl|location", "Received message from server: $message")
+                     *                         }
+                     */
+                }
+            }
+
 
             sendLocationBroadcast(location);
             checkProximityToPointsOfInterest(location);
@@ -132,7 +167,7 @@ class LocationService() : Service() {
 
             locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
-                30000,  // 30 seconds
+                LOCATION_INTERVAL,
                 0f,
                 locationListener
             )
@@ -148,10 +183,7 @@ class LocationService() : Service() {
     }
 
     private fun areLocationPermissionsGranted(): Boolean {
-        return (/*ActivityCompat.checkSelfPermission(
-            this,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED &&*/
+        return (
                 ActivityCompat.checkSelfPermission(
                     this,
                     Manifest.permission.ACCESS_BACKGROUND_LOCATION

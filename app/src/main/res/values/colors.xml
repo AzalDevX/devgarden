@@ -43,14 +43,14 @@
     <color name="beige_100">#fdefd7</color>
     <color name="beige_200">#fadaae</color>
     <color name="beige_300">#f7c587</color>
+    <color name="beige_350">#f0ae5d</color>
     <color name="beige_400">#f29a45</color>
     <color name="beige_500">#ee7e21</color>
     <color name="beige_600">#df6417</color>
-    <color name="beige_700">#b94c15</color>
+    <color name="beige_700">#a55f31</color>
     <color name="beige_800">#933c19</color>
     <color name="beige_900">#773417</color>
     <color name="beige_950">#40180a</color>
-
 
     <color name="gray_50">#fafafa</color>
     <color name="gray_100">#f5f5f5</color>
