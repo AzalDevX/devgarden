@@ -1,15 +1,19 @@
 package com.azaldev.garden
 
+import android.animation.ObjectAnimator
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -84,6 +88,7 @@ class LandingActivity : AppCompatActivity() {
                 val mainLayout = findViewById<LinearLayout>(R.id.card_container)
 
                 mainLayout.removeAllViews()
+                var is_last_unlocked = false;
 
                 for (game in gameList) {
                     val customCardView = layoutInflater.inflate(R.layout.game_layout_template, null)
@@ -96,6 +101,27 @@ class LandingActivity : AppCompatActivity() {
 
                     val imageLocate = customCardView.findViewById<ImageView>(R.id.card_locate)
                     val titleTextView = customCardView.findViewById<TextView>(R.id.card_title)
+
+                    val jumpAnimator = ObjectAnimator.ofFloat(imageLocate, "translationY", 0f, -25f, 0f)
+                    jumpAnimator.duration = 1500 // Adjust the duration as needed
+                    jumpAnimator.interpolator = AccelerateDecelerateInterpolator()
+                    jumpAnimator.repeatCount = ObjectAnimator.INFINITE // Repeat the animation infinitely
+
+                    jumpAnimator.start()
+
+                    if (!is_last_unlocked) {
+                        val swingAnimator = ObjectAnimator.ofFloat(imageDisabledLock, "rotation", 0f, 15f, 0f, -15f, 0f)
+                        swingAnimator.duration = 1000 // Adjust the duration as needed
+                        swingAnimator.interpolator = AccelerateDecelerateInterpolator()
+                        swingAnimator.repeatCount = ObjectAnimator.INFINITE // Repeat the animation infinitely
+
+                        swingAnimator.start()
+                    } else {
+                        val colorMatrix = ColorMatrix()
+                        colorMatrix.setSaturation(0f)
+                        val colorFilter = ColorMatrixColorFilter(colorMatrix)
+                        imageDisabledLock.colorFilter = colorFilter
+                    }
 
                     // Set image using game data
                     imageView.setImageResource(game.image)
@@ -141,6 +167,7 @@ class LandingActivity : AppCompatActivity() {
 
                     // Apply layout parameters to customCardView
                     customCardView.layoutParams = layoutParams
+                    is_last_unlocked = game.isLocked
 
                     // Add card view to the main layout
                     mainLayout.addView(customCardView)

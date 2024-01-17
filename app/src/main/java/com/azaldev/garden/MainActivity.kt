@@ -70,7 +70,9 @@ class MainActivity : AppCompatActivity() {
         val updateText = findViewById<TextView>(R.id.introProcessDetails)
 
         lifecycleScope.launch(Dispatchers.IO) {
-            updateText.text = "Initializing database..."
+            withContext(Dispatchers.Main) {
+                updateText.text = "Initializing database..."
+            }
             try {
                 Globals.stored_user = authDao.get()
                 Globals.stored_settings = settinsDao.getDefault()
@@ -99,7 +101,9 @@ class MainActivity : AppCompatActivity() {
 
             Log.i("devl|main", "Requesting essential permissions...")
 
-            updateText.text = "Requesting permissions..."
+            withContext(Dispatchers.Main) {
+                updateText.text = "Requesting permissions..."
+            }
 
             var loop_check = 0
             do {
@@ -113,7 +117,6 @@ class MainActivity : AppCompatActivity() {
 
                 if (loop_check == 5) {
                     withContext(Dispatchers.Main) {
-
                         val imageView = ImageView(this@MainActivity)
                         imageView.setImageResource(R.drawable.permissionimage)
                         imageView.adjustViewBounds = true
@@ -156,7 +159,9 @@ class MainActivity : AppCompatActivity() {
                 return@launch
             }
 
-            updateText.text = "Permissions granted, launching landing page..."
+            withContext(Dispatchers.Main) {
+                updateText.text = "Permissions granted, launching landing page..."
+            }
 
             TimeUnit.SECONDS.sleep(1)
             Log.d("devl|main", "Launching landing page...")

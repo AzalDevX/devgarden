@@ -31,9 +31,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Objects
 
+data class Location(
+    val x: Double,
+    val y: Double,
+    val _id: String
+)
+
+data class Student(
+    val _id: String,
+    val name: String,
+    val teacher_code: String,
+    val location: Location,
+    val progress: Int,
+    val __v: Int
+)
+
+data class ApiResponse(
+    val success: Boolean,
+    val message: String,
+    val all_students: List<Student>
+)
+
 class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
-
-
     private lateinit var mMap           : GoogleMap
     private lateinit var database       : AppDatabase
     private lateinit var gameDao        : GameDao
@@ -48,6 +67,16 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         table_layout = findViewById(R.id.tableLayout)
         val rowCount = table_layout.childCount
 
+        database = AppDatabase.getInstance(applicationContext)
+        val authDao = database.AuthDao()
+        gameDao = database.GameDao()
+
+        logout_button = findViewById(R.id.logout_button)
+        back_button = findViewById(R.id.back_button)
+
+        val originalBitmap = BitmapFactory.decodeResource(resources,R.drawable.iconsbabyfeet)
+        val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 100, 100, false)
+        val icon = BitmapDescriptorFactory.fromBitmap(resizedBitmap)
 
         val contextView = findViewById<View>(R.id.dashLayoutCtx)
         Utilities.canConnectToApi {
@@ -66,39 +95,45 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
                     .show()
             }
         }
-        data class TeamData(
-            val name        : String,
-            val game        : Int,
-            val location    : Objects,
 
-        )
+        val group_object = mapOf("token" to Utilities.sha256(Globals.stored_user?.email.toString()))
+
+        Globals.webSocketClient?.emit("fetch_class", group_object)
         Globals.webSocketClient?.on("fetch_class") { data ->
-            val success = Globals.webSocketClient?.parseCustomBoolean(data, "success") ?: false
-            Log.i("devl|dashboard", success.toString())
-            val teams : TeamData = Gson().fromJson(data, TeamData::class.java)
-            if (success) {
-                Log.i("devl|dashboard", teams.toString())
-                //teamsData = arrayOf(
-                    //TeamData()
-                //)
+            Log.i("devl|dashboard", data.toString())
+
+            val res: ApiResponse = Gson().fromJson(data, ApiResponse::class.java)
+
+            if (res.success) {
+                for (i in rowCount - 1 downTo 1) {
+                    val row: View = table_layout.getChildAt(i)
+                    if (row is TableRow) {
+                        table_layout.removeViewAt(i)
+                    }
+                }
+
+                for (student in res.all_students) {
+                    val student_progress = student.progress.toString().toCharArray()[1] + "/" + student.progress.toString().toCharArray()[2]
+                    createNewTeam(student.name, student.progress / 100, student_progress, student.location)
+
+                    runOnUiThread {
+                        mMap.addMarker(
+                            MarkerOptions()
+                                .icon(icon)
+                                .position(LatLng(student.location.x, student.location.y))
+                                .title(student.name)
+
+                        )
+
+                        mMap.animateCamera(
+                            CameraUpdateFactory.newLatLngZoom(
+                                LatLng(student.location.x, student.location.y), 17f
+                            )
+                        )
+                    }
+                }
             }
-
         }
-
-        for (i in rowCount - 1 downTo 1) {
-            val row: View = table_layout.getChildAt(i)
-            if (row is TableRow) {
-                table_layout.removeViewAt(i)
-            }
-        }
-
-
-        database = AppDatabase.getInstance(applicationContext)
-        val authDao = database.AuthDao()
-        gameDao = database.GameDao()
-
-        logout_button = findViewById(R.id.logout_button)
-        back_button = findViewById(R.id.back_button)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -109,6 +144,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         logout_button.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 authDao.delete()
+                Globals.stored_user = null
                 finish()
             }
         }
@@ -118,12 +154,20 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    fun createNewTeam(team_name : String, team_minigame : Int, team_progress : String){
+    fun createNewTeam(team_name : String, team_minigame : Int, team_progress : String, loc : Location){
         val tableRow = TableRow(this)
 
         val teamNameTextView = createCenteredTextView(team_name,R.color.beige_700)
         val minigameTextView = createCenteredTextView(team_minigame.toString(),R.color.beige_700)
         val progressTextView = createCenteredTextView(team_progress,R.color.beige_700)
+
+        teamNameTextView.setOnClickListener {
+            mMap.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(loc.x, loc.y), 17f
+                )
+            )
+        }
 
         tableRow.addView(teamNameTextView)
         tableRow.addView(minigameTextView)
@@ -138,7 +182,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         centeredTextView.setTextColor(ContextCompat.getColor(this, color))
         centeredTextView.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
         centeredTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
-        return  centeredTextView
+        return centeredTextView
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -147,8 +191,9 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE;
         mMap.setMinZoomPreference(16f)
         lifecycleScope.launch(Dispatchers.IO) {
-            val gameList = gameDao.getGames()
+            // val gameList = gameDao.getGames()
 
+            /*
             lifecycleScope.launch(Dispatchers.Main) {
                 for (game in gameList) {
                     val originalBitmap = BitmapFactory.decodeResource(resources,R.drawable.iconsbabyfeet)
@@ -170,6 +215,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 }
             }
+            */
         }
     }
 }

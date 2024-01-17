@@ -40,14 +40,12 @@
                 android:src="@drawable/location"
             />
             <ImageView
-                android:id="@+id/card_locked"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                    android:id="@+id/card_locked"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
 
-                android:layout_centerInParent="true"
-
-                android:scaleType="centerCrop"
-                android:src="@drawable/iconslock"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/iconslock" android:layout_centerInParent="true"/>
             <TextView
                 android:id="@+id/card_title"
 
