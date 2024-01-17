@@ -31,4 +31,8 @@
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
     <string name="register_or_login">Registrarse o iniciar sesión</string>
+
+    <string name="team">Equipo</string>
+    <string name="minigame">Minijuego</string>
+    <string name="progress">Progreso</string>
 </resources>

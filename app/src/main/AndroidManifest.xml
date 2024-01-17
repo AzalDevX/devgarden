@@ -35,8 +35,8 @@
             android:name=".games.pasabidea.PasabideaGame"
             android:exported="false" />
         <activity
-            android:name=".games.pasabidea.CustomView"
-            android:exported="false" />
+                android:name=".games.pasabidea.CustomView"
+                android:exported="false"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -49,18 +49,17 @@
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBN9M22aK-fVkN0x5ESmB-8PWuVAh09qiI" />
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBN9M22aK-fVkN0x5ESmB-8PWuVAh09qiI"/>
 
         <activity
-            android:name=".MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
+                android:name=".MapsActivity"
+                android:exported="false"/>
 
         <service
-            android:name=".services.LocationService"
-            android:enabled="true"
-            android:exported="false" />
+                android:name=".services.LocationService"
+                android:enabled="true"
+                android:exported="false"/>
 
         <activity
             android:name=".LoginActivity"
@@ -68,6 +67,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LandingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -79,9 +82,9 @@
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>
