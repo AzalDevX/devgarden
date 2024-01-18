@@ -39,6 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/birdleft" />
 
+
+
     <TextView
             android:text="@string/lang"
             android:textStyle="bold"
@@ -276,19 +278,29 @@
 
     <ImageButton
         android:id="@+id/login_button"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="-1dp"
         android:background="@android:color/transparent"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.911"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019"
+        app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@drawable/user" />
+
+    <ImageView
+        android:id="@+id/qr_code"
+        android:layout_width="247dp"
+        android:layout_height="193dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

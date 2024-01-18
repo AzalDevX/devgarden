@@ -3,6 +3,10 @@ package com.azaldev.garden
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.common.BitMatrix
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
@@ -206,10 +210,11 @@ class SettingsActivity : AppCompatActivity() {
             loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
         else if (Globals.stored_user != null && !Globals.stored_user!!.server_synced)
             loginButton.isClickable = false
-        else if (Globals.stored_settings?.student_classcode != null)
+        else if (Globals.stored_settings?.student_classcode != null){
             loginButton.visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.icon_settings).visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.bird_left).visibility = View.VISIBLE
+        }
 
         loginButton.setOnClickListener {
             Utilities.startActivity(
@@ -229,6 +234,30 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         scanQrCode.setOnClickListener {
+            //TODO: Teacher mode to this code
+
+            if(Globals.stored_user != null){
+
+                var qr_image = findViewById<ImageView>(R.id.qr_code)
+                var camera_button = findViewById<ImageButton>(R.id.camera_button)
+
+                // Generar el código QR
+                val qrData = Globals.stored_user?.code   //Teacher code
+                val bitMatrix: BitMatrix = MultiFormatWriter().encode(qrData.toString(), BarcodeFormat.QR_CODE, 300, 300)
+                val barcodeEncoder = BarcodeEncoder()
+                val bitmap = barcodeEncoder.createBitmap(bitMatrix)
+
+                qr_image.setImageBitmap(bitmap)
+                camera_button.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.baseline_qr_code_2_24))
+                qr_image.setOnClickListener {qr_image.visibility = View.VISIBLE}
+                return@setOnClickListener
+
+            }
+
+
+
+
+
             if (!canUserQrCOde) return@setOnClickListener
             if (!PermissionUtils.checkAndRequestCameraPermission(this)) return@setOnClickListener
 
