@@ -2,12 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature android:name="android.hardware.camera" android:required="false" /> <!-- Services permissions -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" android:required="true" /> <!-- Location permissions -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" /> <!-- Services permissions -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE"
+        android:required="true" /> <!-- Location permissions -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:required="true"  />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" android:required="true"  /> <!-- To check internet access -->
-    <uses-permission android:name="android.permission.INTERNET" android:required="true"  />
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.ACCESS_BACKGROUND_LOCATION"
+        android:required="true" /> <!-- To check internet access -->
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:required="true" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- To scan QR codes -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- To notify the user about real time updates and etc -->
     <!-- <uses-permission android:name="android.permission.VIBRATE"/> -->
@@ -25,7 +35,81 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Devgarden"
         tools:targetApi="31">
-
+        <activity
+            android:name=".games.portua.WindowFinPortua"
+            android:exported="false" />
+        <activity
+            android:name=".games.portua.Window2Portua"
+            android:exported="false" />
+        <activity
+            android:name=".games.portua.Window1Portua"
+            android:exported="false" />
+        <activity
+            android:name=".games.portua.PortuaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.portua.BanderaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.ontziola.WindowFinOntziola"
+            android:exported="false" />
+        <activity
+            android:name=".games.ontziola.Window2Onztiola"
+            android:exported="false" />
+        <activity
+            android:name=".games.ontziola.Window1Ontziola"
+            android:exported="false" />
+        <activity
+            android:name=".games.ontziola.OnztiolaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.aldehistorikoa.OntziolaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.santiagoarkua.WindowFinSantiagoArkua"
+            android:exported="false" />
+        <activity
+            android:name=".games.santiagoarkua.Window2SantiagoArkua"
+            android:exported="false" />
+        <activity
+            android:name=".games.santiagoarkua.Window1SantiagoArkua"
+            android:exported="false" />
+        <activity
+            android:name=".games.santiagoarkua.SantiagoArkuaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.aldehistorikoa.WindowFinAldeHistorikoa"
+            android:exported="false" />
+        <activity
+            android:name=".games.aldehistorikoa.Window2AldeHistorikoa"
+            android:exported="false" />
+        <activity
+            android:name=".games.aldehistorikoa.Window1AldeHistorikoa"
+            android:exported="false" />
+        <activity
+            android:name=".games.aldehistorikoa.AldeHistorikoaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.errota.WindowFinErrota"
+            android:exported="false" />
+        <activity
+            android:name=".games.errota.Window2Errota"
+            android:exported="false" />
+        <activity
+            android:name=".games.errota.Window1Errota"
+            android:exported="false" />
+        <activity
+            android:name=".games.errota.ErrotaGame"
+            android:exported="false" />
+        <activity
+            android:name=".games.magdalena.WindowFinMagdalena"
+            android:exported="false" />
+        <activity
+            android:name=".games.magdalena.Window2Magdalena"
+            android:exported="false" />
+        <activity
+            android:name=".games.magdalena.Winndows1Magdalena"
+            android:exported="false" />
         <activity
             android:name=".games.pasabidea.WindowFinPasabidea"
             android:exported="false" />
@@ -36,14 +120,14 @@
             android:name=".games.pasabidea.Window1Pasabidea"
             android:exported="false" />
         <activity
-            android:name="games.magdalena.MagdalenaActivity"
+            android:name=".games.magdalena.MagdalenaActivity"
             android:exported="false" />
         <activity
             android:name=".games.pasabidea.PasabideaGame"
             android:exported="false" />
         <activity
-                android:name=".games.pasabidea.CustomView"
-                android:exported="false"/>
+            android:name=".games.pasabidea.CustomView"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -56,17 +140,17 @@
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBN9M22aK-fVkN0x5ESmB-8PWuVAh09qiI"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBN9M22aK-fVkN0x5ESmB-8PWuVAh09qiI" />
 
         <activity
-                android:name=".MapsActivity"
-                android:exported="false"/>
+            android:name=".MapsActivity"
+            android:exported="false" />
 
         <service
-                android:name=".services.LocationService"
-                android:enabled="true"
-                android:exported="false"/>
+            android:name=".services.LocationService"
+            android:enabled="true"
+            android:exported="false" />
 
         <activity
             android:name=".LoginActivity"
@@ -89,9 +173,9 @@
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

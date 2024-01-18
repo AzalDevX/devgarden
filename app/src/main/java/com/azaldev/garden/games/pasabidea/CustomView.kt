@@ -3,11 +3,14 @@ package com.azaldev.garden.games.pasabidea
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.media.MediaPlayer
 import android.os.Handler
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import com.azaldev.garden.R
+import com.azaldev.garden.globals.Utilities
 
 data class ShipPoint(val x: Float, val y: Float, val order: Int)
 
@@ -16,7 +19,7 @@ class CustomView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-
+    private var mediaPlayer: MediaPlayer? = null
     private val handler = Handler()
     private val dotRadius = 20f
     private val dotPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -102,7 +105,7 @@ class CustomView @JvmOverloads constructor(
                 if (isCorrectOrder()) {
                     Log.d("CustomView", "TouchedPoints: fine")
                     // El usuario ha completado el barco correctamente
-                    // Realiza alguna acción, como mostrar un mensaje o cambiar el color del trazo
+                    Utilities.playSound(context, R.raw.success)
                 } else {
                     Log.d("CustomView", "TouchedPoints: not finished")
 
@@ -110,6 +113,7 @@ class CustomView @JvmOverloads constructor(
                         val isSequential = isSequentialOrder()
                         if (!isSequential) {
                             Log.d("CustomView", "MAL: no está en orden secuencial")
+                            Utilities.playSound(context, R.raw.error)
                             handler.postDelayed({
 
                                 Log.d("CustomView", "TouchedPoints: vuelve a empezar después del timeout")
@@ -160,7 +164,7 @@ class CustomView @JvmOverloads constructor(
         return touchedPoints.zipWithNext { first, second -> first.order + 1 == second.order }.all { it }
     }
 
-    private fun isCorrectOrder(): Boolean {
+    fun isCorrectOrder(): Boolean {
         // Verifica si los puntos tocados están en el orden correcto
         Log.d("CustomView", "TouchedPoints: ${touchedPoints.size}")
         Log.d("CustomView", "ShipPoints: $shipPoints ")

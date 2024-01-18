@@ -9,26 +9,19 @@ import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.classes.dao.GameDao
 import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.classes.entity.Auth
-import com.azaldev.garden.classes.entity.Game
 import com.azaldev.garden.globals.Globals
 import com.azaldev.garden.globals.LocationServiceManager.startLocationService
 import com.azaldev.garden.globals.Utilities
-import com.google.android.material.snackbar.Snackbar
-import games.magdalena.MagdalenaActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class LandingActivity : AppCompatActivity() {
 
