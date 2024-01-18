@@ -302,6 +302,7 @@
         android:background="@color/water"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
@@ -310,6 +311,7 @@
             android:layout_height="56dp"
             android:layout_marginBottom="76dp"
             android:text="Hurrengoa"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
