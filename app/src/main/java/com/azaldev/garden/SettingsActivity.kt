@@ -47,7 +47,6 @@ class SettingsActivity : AppCompatActivity() {
     private var cacheStoredUser: Auth? = null;
     private lateinit var qr_image : ImageView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -62,7 +61,7 @@ class SettingsActivity : AppCompatActivity() {
 
         cacheStoredUser = Globals.stored_user;
 
-        var device_lang = Globals.stored_settings?.lang ?: Locale.getDefault().language
+        var device_lang = if(Globals.stored_settings == null) Locale.getDefault().language else Globals.stored_settings?.lang.toString();
 
         val toggleButton: MaterialButtonToggleGroup = findViewById(R.id.toggleButton)
 
@@ -113,7 +112,7 @@ class SettingsActivity : AppCompatActivity() {
 
         toggleButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
             val button = findViewById<MaterialButton>(checkedId)
-            Log.d("devl|settings", "Checked button ${button.text} to ${isChecked} btn status: ${button.z}")
+            Log.d("devl|settings", "Checked button ${button.text} to ${isChecked} btn status: ${button.isChecked}")
 
             if (isChecked) {
                 button.backgroundTintList = ColorStateList.valueOf(colorSelected)
@@ -226,8 +225,6 @@ class SettingsActivity : AppCompatActivity() {
             qr_image.setImageBitmap(bitmap)
 
             findViewById<TextView>(R.id.scan_text).text = getString(R.string.scan_teacher)
-
-
         }
         else if (Globals.stored_user != null && !Globals.stored_user!!.server_synced)
             loginButton.isClickable = false
