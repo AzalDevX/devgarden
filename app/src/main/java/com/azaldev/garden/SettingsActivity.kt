@@ -206,10 +206,11 @@ class SettingsActivity : AppCompatActivity() {
             loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
         else if (Globals.stored_user != null && !Globals.stored_user!!.server_synced)
             loginButton.isClickable = false
-        else if (Globals.stored_settings?.student_classcode != null)
+        else if (Globals.stored_settings?.student_classcode != null) {
             loginButton.visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.icon_settings).visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.bird_left).visibility = View.VISIBLE
+        }
 
         loginButton.setOnClickListener {
             Utilities.startActivity(
