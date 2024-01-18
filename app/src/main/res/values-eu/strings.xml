@@ -4,6 +4,7 @@
 
     <string name="theme">GAIA</string>
     <string name="scan">QR ESKANATU GELARA SARTZEKO</string>
+    <string name="scan_teacher">QR-A SORTU</string>
     <string name="blocked_scan">Funtzio hau erabilgarria da, internet bidez saioa hasi baduzu, zure kasuan ez dagoelako. Mesedez, saioa hasi berriro errealitate-zerbitzu bultruz hornitu ahal izateko.</string>
 
     <string name="offline_account">Lineako Kontua</string>

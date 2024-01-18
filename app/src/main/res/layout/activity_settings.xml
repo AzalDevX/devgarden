@@ -58,15 +58,16 @@
 
 
     <TextView
-            android:text="@string/scan"
-            android:textStyle="bold"
+        android:id="@+id/scan_text"
+        android:text="@string/scan"
+        android:textStyle="bold"
             android:textColor="@color/white"
             android:shadowColor="#000000"
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView2"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.088"
@@ -294,8 +295,8 @@
 
     <ImageView
         android:id="@+id/qr_code"
-        android:layout_width="247dp"
-        android:layout_height="193dp"
+        android:layout_width="454dp"
+        android:layout_height="773dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

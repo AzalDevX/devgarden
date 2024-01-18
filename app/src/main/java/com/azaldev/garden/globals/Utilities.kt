@@ -1,6 +1,7 @@
 package com.azaldev.garden.globals
 import android.app.AlertDialog
 import android.app.Dialog
+import android.provider.Settings
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -98,6 +99,21 @@ object Utilities {
 
         if (mapIntent.resolveActivity(context.packageManager) != null)
             context.startActivity(mapIntent)
+    }
+
+    fun setBrightness(context : Context, brightnessValue: Int) {
+        Settings.System.putInt(
+            context.contentResolver,
+            Settings.System.SCREEN_BRIGHTNESS,
+            brightnessValue
+        )
+    }
+
+    fun getBrightness(context: Context): Int {
+        return Settings.System.getInt(
+            context.contentResolver,
+            Settings.System.SCREEN_BRIGHTNESS
+        )
     }
 
     fun isLocationWithinRadius(

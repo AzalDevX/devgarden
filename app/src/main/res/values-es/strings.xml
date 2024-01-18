@@ -4,6 +4,7 @@
 
     <string name="theme">TEMA</string>
     <string name="scan">ESCANEAR QR PARA ACCEDER A LA CLASE</string>
+    <string name="scan_teacher">GENERAR QR</string>
     <string name="blocked_scan">Esta función solo está disponible si iniciaste sesión con internet, lo cual no es tu caso. Por favor, vuelve a iniciar sesión para habilitar la función en la nube en tiempo real.</string>
 
     <string name="offline_account">Cuenta sin conexión</string>
