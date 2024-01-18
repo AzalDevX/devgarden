@@ -105,32 +105,33 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
             val res: ApiResponse = Gson().fromJson(data, ApiResponse::class.java)
 
             if (res.success) {
-                for (i in rowCount - 1 downTo 1) {
-                    val row: View = table_layout.getChildAt(i)
-                    if (row is TableRow) {
-                        table_layout.removeViewAt(i)
+                runOnUiThread {
+                    for (i in rowCount - 1 downTo 1) {
+                        val row: View = table_layout.getChildAt(i)
+                        if (row is TableRow) {
+                            table_layout.removeViewAt(i)
+                        }
                     }
-                }
 
-                for (student in res.all_students) {
-                    val student_progress = student.progress.toString().toCharArray()[1] + "/" + student.progress.toString().toCharArray()[2]
-                    createNewTeam(student.name, student.progress / 100, student_progress, student.location)
+                    for (student in res.all_students) {
+                        val student_progress = student.progress.toString().toCharArray()[1] + "/" + student.progress.toString().toCharArray()[2]
 
-                    runOnUiThread {
-                        mMap.addMarker(
-                            MarkerOptions()
-                                .icon(icon)
-                                .position(LatLng(student.location.x, student.location.y))
-                                .title(student.name)
+                            createNewTeam(student.name, student.progress / 100, student_progress, student.location)
 
-                        )
+                            mMap.addMarker(
+                                MarkerOptions()
+                                    .icon(icon)
+                                    .position(LatLng(student.location.x, student.location.y))
+                                    .title(student.name)
 
-                        mMap.animateCamera(
-                            CameraUpdateFactory.newLatLngZoom(
-                                LatLng(student.location.x, student.location.y), 17f
                             )
-                        )
-                    }
+
+                            mMap.animateCamera(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(student.location.x, student.location.y), 17f
+                                )
+                            )
+                        }
                 }
             }
         }
@@ -186,14 +187,16 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+        mMap = googleMap;
 
         mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE;
-        mMap.setMinZoomPreference(16f)
+        mMap.setMinZoomPreference(16f);
+
+        /*
         lifecycleScope.launch(Dispatchers.IO) {
             // val gameList = gameDao.getGames()
 
-            /*
+
             lifecycleScope.launch(Dispatchers.Main) {
                 for (game in gameList) {
                     val originalBitmap = BitmapFactory.decodeResource(resources,R.drawable.iconsbabyfeet)
@@ -215,7 +218,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 }
             }
-            */
         }
+         */
     }
 }
