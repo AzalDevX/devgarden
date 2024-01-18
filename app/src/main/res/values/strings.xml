@@ -4,6 +4,7 @@
 
     <string name="theme">THEME</string>
     <string name="scan">SCAN QR FOR ENTER TO THE CLASS</string>
+    <string name="scan_teacher">GENERATE QR</string>
     <string name="blocked_scan">This feature is only available if you logged in with internet, which isn\'t you case.
         Please log back in to enable real time cloud feature
     </string>

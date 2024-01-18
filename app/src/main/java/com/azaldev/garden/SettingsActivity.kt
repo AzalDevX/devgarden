@@ -3,6 +3,10 @@ package com.azaldev.garden
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.common.BitMatrix
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
@@ -41,6 +45,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var authDao: AuthDao;
     private lateinit var settinsDao: GlobalSettingsDao;
     private var cacheStoredUser: Auth? = null;
+    private lateinit var qr_image : ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +53,8 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         findViewById<ImageView>(R.id.bird_left).visibility = View.INVISIBLE
-
+        qr_image = findViewById(R.id.qr_code)
+        qr_image.visibility = View.INVISIBLE
 
         val database = AppDatabase.getInstance(applicationContext);
         authDao = database.AuthDao()
@@ -202,14 +208,34 @@ class SettingsActivity : AppCompatActivity() {
          */
         val loginButton = findViewById<ImageButton>(R.id.login_button)
 
-        if (Globals.stored_user != null && Globals.stored_user!!.server_synced)
+        if (Globals.stored_user != null && Globals.stored_user!!.server_synced) {
             loginButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iconsdashboard))
+
+            var camera_button = findViewById<ImageButton>(R.id.camera_button)
+            camera_button.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.baseline_qr_code_2_24))
+
+            val qrData = Globals.stored_user?.code   // Teacher code
+            val bitMatrix: BitMatrix = MultiFormatWriter().encode(qrData.toString(), BarcodeFormat.QR_CODE, 300, 300)
+            val barcodeEncoder = BarcodeEncoder()
+            val bitmap = barcodeEncoder.createBitmap(bitMatrix)
+
+            val paddingInDp = 125
+            val paddingInPixels = (paddingInDp * resources.displayMetrics.density).toInt()
+
+            qr_image.setPadding(paddingInPixels, paddingInPixels, paddingInPixels, paddingInPixels)
+            qr_image.setImageBitmap(bitmap)
+
+            findViewById<TextView>(R.id.scan_text).text = getString(R.string.scan_teacher)
+
+
+        }
         else if (Globals.stored_user != null && !Globals.stored_user!!.server_synced)
             loginButton.isClickable = false
-        else if (Globals.stored_settings?.student_classcode != null)
+        else if (Globals.stored_settings?.student_classcode != null) {
             loginButton.visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.icon_settings).visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.bird_left).visibility = View.VISIBLE
+        }
 
         loginButton.setOnClickListener {
             Utilities.startActivity(
@@ -228,7 +254,19 @@ class SettingsActivity : AppCompatActivity() {
             scanQrCode.colorFilter = ColorMatrixColorFilter(colorMatrix)
         }
 
+        qr_image.setOnClickListener {
+            qr_image.visibility = View.INVISIBLE
+            //Utilities.setBrightness(this, Utilities.getBrightness(this) - 5       0)
+        }
+
         scanQrCode.setOnClickListener {
+
+            if(Globals.stored_user != null)  {
+                qr_image.visibility = View.VISIBLE
+                //Utilities.setBrightness(this, Utilities.getBrightness(this) + 50)
+                return@setOnClickListener
+            }
+
             if (!canUserQrCOde) return@setOnClickListener
             if (!PermissionUtils.checkAndRequestCameraPermission(this)) return@setOnClickListener
 
