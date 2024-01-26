@@ -37,94 +37,94 @@
         android:theme="@style/Theme.Devgarden"
         tools:targetApi="31">
         <activity
-            android:name=".games.portua.WindowFinPortua"
+            android:name=".games.portua.Game7_Win5"
             android:exported="false" />
         <activity
-            android:name=".games.portua.Window2Portua"
+            android:name=".games.portua.Game7_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.portua.Window1Portua"
+            android:name=".games.portua.Game7_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.portua.PortuaGame"
+            android:name=".games.portua.Game7_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.portua.BanderaGame"
+            android:name=".games.portua.Game7_Win3"
             android:exported="false" />
         <activity
-            android:name=".games.ontziola.WindowFinOntziola"
+            android:name=".games.ontziola.Game6_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.ontziola.Window2Onztiola"
+            android:name=".games.ontziola.Game6_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.ontziola.Window1Ontziola"
+            android:name=".games.ontziola.Game6_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.ontziola.OnztiolaGame"
+            android:name=".games.ontziola.Game6_Win3"
             android:exported="false" />
         <activity
             android:name=".games.aldehistorikoa.OntziolaGame"
             android:exported="false" />
         <activity
-            android:name=".games.santiagoarkua.WindowFinSantiagoArkua"
+            android:name=".games.santiagoarkua.Game5_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.santiagoarkua.Window2SantiagoArkua"
+            android:name=".games.santiagoarkua.Game5_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.santiagoarkua.Window1SantiagoArkua"
+            android:name=".games.santiagoarkua.Game5_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.santiagoarkua.SantiagoArkuaGame"
+            android:name=".games.santiagoarkua.Game5_Win3"
             android:exported="false" />
         <activity
-            android:name=".games.aldehistorikoa.WindowFinAldeHistorikoa"
+            android:name=".games.aldehistorikoa.Game3_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.aldehistorikoa.Window2AldeHistorikoa"
+            android:name=".games.aldehistorikoa.Game3_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.aldehistorikoa.Window1AldeHistorikoa"
+            android:name=".games.aldehistorikoa.Game3_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.aldehistorikoa.AldeHistorikoaGame"
+            android:name=".games.aldehistorikoa.Game3_Win3"
             android:exported="false" />
         <activity
-            android:name=".games.errota.WindowFinErrota"
+            android:name=".games.errota.Game2_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.errota.Window2Errota"
+            android:name=".games.errota.Game2_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.errota.Window1Errota"
+            android:name=".games.errota.Game2_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.errota.ErrotaGame"
+            android:name=".games.errota.Game2_Win3"
             android:exported="false" />
         <activity
-            android:name=".games.magdalena.WindowFinMagdalena"
+            android:name=".games.magdalena.Game4_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.magdalena.Window2Magdalena"
+            android:name=".games.magdalena.Game4_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.magdalena.Winndows1Magdalena"
+            android:name=".games.magdalena.Game4_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.pasabidea.WindowFinPasabidea"
+            android:name=".games.pasabidea.Game1_Win4"
             android:exported="false" />
         <activity
-            android:name=".games.pasabidea.Window2Pasabidea"
+            android:name=".games.pasabidea.Game1_Win2"
             android:exported="false" />
         <activity
-            android:name=".games.pasabidea.Window1Pasabidea"
+            android:name=".games.pasabidea.Game1_Win1"
             android:exported="false" />
         <activity
-            android:name=".games.magdalena.MagdalenaActivity"
+            android:name=".games.magdalena.Game4_Win3"
             android:exported="false" />
         <activity
-            android:name=".games.pasabidea.PasabideaGame"
+            android:name=".games.pasabidea.Game1_Win3"
             android:exported="false" />
         <activity
             android:name=".games.pasabidea.CustomView"

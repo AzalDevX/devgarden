@@ -7,7 +7,6 @@ import com.azaldev.garden.classes.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.lifecycle.*
-import com.azaldev.garden.games.pasabidea.PasabideaGame
 import kotlinx.coroutines.launch
 
 class GameManager(private val context: Context, private val lifecycleOwner: LifecycleOwner) {
@@ -20,9 +19,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.40257,
             y = -2.94652,
             name = "Pasabidea",
-            activityClassName = "com.azaldev.garden.games.pasabidea.PasabideaGame",
+            activityClassName = "com.azaldev.garden.games.pasabidea.Game1_Win1",
             image = R.drawable.pasabidea,
-            max_progress = 6,
+            max_progress = 5,
             isLocked = false,
             isFinished = false
         ),
@@ -31,8 +30,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.4029,
             y = -2.94519,
             name = "Errota",
+            activityClassName = "com.azaldev.garden.games.errota.Game2_Win1",
             image = R.drawable.errota,
-            max_progress = 6,
+            max_progress = 4,
             isLocked = true,
             isFinished = true
         ),
@@ -41,8 +41,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.40469,
             y = -2.94762,
             name = "Alde Historikoa",
+            activityClassName = "com.azaldev.garden.games.aldehistorikoa.Game3_Win1",
             image = R.drawable.zaharra,
-            max_progress = 6,
+            max_progress = 4,
             isLocked = true,
             isFinished = true
         ),
@@ -51,8 +52,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.40519,
             y = -2.94778,
             name = "Magdalena Eliza",
+            activityClassName = "com.azaldev.garden.games.magdalena.Game4_Win1",
             image = R.drawable.madalena,
-            max_progress = 6,
+            max_progress = 4,
             isLocked = true,
             isFinished = true
         ),
@@ -61,8 +63,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x =  43.40545,
             y = -2.94772,
             name = "Santiago Arkua",
+            activityClassName = "com.azaldev.garden.games.santiagoarkua.Game5_Win1",
             image = R.drawable.arkua,
-            max_progress = 6,
+            max_progress = 4,
             isLocked = true,
             isFinished = true
         ),
@@ -71,8 +74,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.40436,
             y = -2.94983,
             name = "Ontziola",
+            activityClassName = "com.azaldev.garden.games.ontziola.Game6_Win1",
             image = R.drawable.plaza,
-            max_progress = 6,
+            max_progress = 4,
             isLocked = true,
             isFinished = true
         ),
@@ -81,8 +85,9 @@ class GameManager(private val context: Context, private val lifecycleOwner: Life
             x = 43.40739,
             y = -2.94522,
             name = "Portua/Hondartza",
+            activityClassName = "com.azaldev.garden.games.portua.Game7_Win1",
             image = R.drawable.hondartza,
-            max_progress = 6,
+            max_progress = 5,
             isLocked = true,
             isFinished = true
         ),
