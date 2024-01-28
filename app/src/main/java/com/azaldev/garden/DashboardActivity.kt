@@ -111,27 +111,28 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
                         if (row is TableRow) {
                             table_layout.removeViewAt(i)
                         }
+
                     }
 
                     for (student in res.all_students) {
                         val student_progress = student.progress.toString().toCharArray()[1] + "/" + student.progress.toString().toCharArray()[2]
 
-                            createNewTeam(student.name, student.progress / 100, student_progress, student.location)
+                        createNewTeam(student.name, student.progress / 100, student_progress, student.location)
 
-                            mMap.addMarker(
-                                MarkerOptions()
-                                    .icon(icon)
-                                    .position(LatLng(student.location.x, student.location.y))
-                                    .title(student.name)
+                        mMap.addMarker(
+                            MarkerOptions()
+                                .icon(icon)
+                                .position(LatLng(student.location.x, student.location.y))
+                                .title(student.name)
 
+                        )
+
+                        mMap.animateCamera(
+                            CameraUpdateFactory.newLatLngZoom(
+                                LatLng(student.location.x, student.location.y), 17f
                             )
-
-                            mMap.animateCamera(
-                                CameraUpdateFactory.newLatLngZoom(
-                                    LatLng(student.location.x, student.location.y), 17f
-                                )
-                            )
-                        }
+                        )
+                    }
                 }
             }
         }
