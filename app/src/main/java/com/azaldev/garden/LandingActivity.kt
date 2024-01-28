@@ -136,9 +136,14 @@ class LandingActivity : AppCompatActivity() {
 
                             if (game.progress != 0 && activityClass == null) {
                                 Utilities.showErrorAlert(this@LandingActivity, "You have already completed this game, do you want to do it again? ¡You will lose your progress!") {
-                                    game.getActivityClass() // null safety
-                                        ?.let { it1 -> Utilities.startActivity(this@LandingActivity, it1) }
+                                    val activityClassR = game.getActivityClass();
+                                    if (activityClassR != null)
+                                        Utilities.startActivity(this@LandingActivity, activityClassR)
+                                    else
+                                        Utilities.showToast(this@LandingActivity, "Game is not yet implemented...")
                                 }
+
+                                return@setOnClickListener
                             }
 
                             if (activityClass != null) {
