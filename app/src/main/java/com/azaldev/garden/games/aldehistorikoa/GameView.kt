@@ -41,6 +41,17 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         canvas.drawLine(startX, startY, endX, endY, linePaint)
     }
 
+    fun clearCanvas() {
+        // Restaura las coordenadas de inicio y fin a cero para que la línea desaparezca
+        startX = 0f
+        startY = 0f
+        endX = 0f
+        endY = 0f
+
+        // Invalida la vista para que se llame a onDraw y se borre la línea
+        invalidate()
+    }
+
     fun handleTouchEvent(action: Int, x: Float, y: Float) {
         when (action) {
             MotionEvent.ACTION_DOWN -> {
@@ -77,6 +88,9 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                     if (correctSolutions.any { it.first == imageStart && it.second == imageEnd }) {
                         Log.i("devl|GameView", "Coincidencia encontrada: ($imageStart, $imageEnd)")
                         counter++
+                        showToast("Correcto, llevas $counter de 3")
+                        hideClosestImages()
+                        clearCanvas()
                         if (counter >= 3) {
                             // Utiliza el contexto de la actividad almacenado para iniciar la nueva actividad
                             val intent = Intent(activityContext, Game3_Win4::class.java)
@@ -86,9 +100,6 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                         Log.i("devl|GameView", "No hay coincidencia con las IDs: ($imageStart, $imageEnd)")
                     }
                 }
-
-                // Aquí puedes realizar acciones adicionales al levantar el dedo, si es necesario
-                showToast("Línea dibujada")
             }
         }
     }
@@ -96,6 +107,20 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     // Nuevo método para inicializar el contexto de la actividad
     fun initActivityContext(activityContext: Context) {
         this.activityContext = activityContext
+    }
+
+    private fun hideClosestImages() {
+        val closestStartImageIds = findClosestStartImagesToLine()
+        val closestEndImageIds = findClosestImagesToLine()
+
+        // Oculta las imágenes cercanas
+        closestStartImageIds.forEach { hideImageById(it) }
+        closestEndImageIds.forEach { hideImageById(it) }
+    }
+
+    private fun hideImageById(imageId: Int) {
+        val imageView = (context as? Game3_Win3)?.findViewById<ImageView>(imageId)
+        imageView?.visibility = View.INVISIBLE
     }
 
     private fun getResourceNameWithoutPackage(resourceId: Int): String {
