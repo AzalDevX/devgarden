@@ -10,6 +10,14 @@ interface GameDao {
 
     @Query("SELECT * FROM Game WHERE id = :id")
     fun getGame(id: Int): Game
+    @Query("UPDATE Game SET progress = progress + :by WHERE id = :id")
+    fun adv_progress(id: Int, by: Int) // Add progress to the game
+
+    @Query("UPDATE Game SET isFinished = 1 WHERE id = :id")
+    fun finish_game(id: Int)
+
+    @Query("UPDATE Game SET isLocked = 0 WHERE id = :id + 1")
+    fun unlock_nextgame(id: Int)
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insert(newGame: Game)

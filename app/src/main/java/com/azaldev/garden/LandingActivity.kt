@@ -132,7 +132,19 @@ class LandingActivity : AppCompatActivity() {
 
                     imageView.setOnClickListener {
                         if ((isInRadious && !game.isLocked) || bypass){
-                            val activityClass = game.getActivityClass()
+                            val activityClass = if (game.progress == 0) game.getActivityClass() else game.getActivityProgress()
+
+                            if (game.progress != 0 && activityClass == null) {
+                                Utilities.showErrorAlert(this@LandingActivity, "You have already completed this game, do you want to do it again? ¡You will lose your progress!") {
+                                    val activityClassR = game.getActivityClass();
+                                    if (activityClassR != null)
+                                        Utilities.startActivity(this@LandingActivity, activityClassR)
+                                    else
+                                        Utilities.showToast(this@LandingActivity, "Game is not yet implemented...")
+                                }
+
+                                return@setOnClickListener
+                            }
 
                             if (activityClass != null) {
                                 Utilities.startActivity(this@LandingActivity, activityClass)
