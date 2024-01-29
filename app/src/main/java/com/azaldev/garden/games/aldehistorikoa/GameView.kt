@@ -102,16 +102,17 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                         hideClosestImages()
                         clearCanvas()
                         if (counter >= 3) {
-                                val current_game = gameDao.getGame(game_id);
-                                gameDao.adv_progress(game_id, 1);
+                            val current_game = gameDao.getGame(game_id);
+                            gameDao.adv_progress(game_id, 1);
 
-                                val next_game = current_game.getActivityProgress()
-                                    Log.i("devl|game33", "Moving to the next game")
+                            val next_game = current_game.getActivityProgress()
 
-                                    if (next_game != null)
-                                        Utilities.startActivity(activityContext, next_game)
-                                    else
-                                        Utilities.startActivity(activityContext, LandingActivity::class.java)
+                            Log.i("devl|game33", "Moving to the next game")
+
+                            if (next_game != null)
+                                Utilities.startActivity(activityContext, next_game)
+                            else
+                                Utilities.startActivity(activityContext, LandingActivity::class.java)
 
                         }
                     } else {
