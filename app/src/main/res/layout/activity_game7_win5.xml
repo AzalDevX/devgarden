@@ -20,7 +20,7 @@
             android:layout_width="315dp"
             android:layout_height="56dp"
             android:layout_marginBottom="32dp"
-            android:text="Hurrengoa"
+            android:text="@string/next_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -39,10 +39,10 @@
 
     <TextView
         android:id="@+id/textView31"
-        android:layout_width="248dp"
-        android:layout_height="79dp"
+        android:layout_width="321dp"
+        android:layout_height="78dp"
         android:justificationMode="inter_word"
-        android:text="ZORIONAK"
+        android:text="@string/game_win"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +57,7 @@
         android:layout_width="359dp"
         android:layout_height="133dp"
         android:justificationMode="inter_word"
-        android:text="ZURE ITSASONTZIA PORTURA HELDU DA! ZORIONAK ITSAS-ABENTURA GAINDITZEAGATIK!"
+        android:text="@string/game7_win"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

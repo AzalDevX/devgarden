@@ -46,30 +46,6 @@ class Game3_Win3 : AppCompatActivity() {
 
         // Inicializar el contexto de la actividad en GameView
         gameView.initActivityContext(this)
-
-        val game_id = 3;
-        val database = AppDatabase.getInstance(this)
-        val gameDao = database.GameDao();
-
-        findViewById<Button>(R.id.next_game).setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val current_game = gameDao.getGame(game_id);
-
-                gameDao.adv_progress(game_id, 1);
-
-                val next_game = current_game.getActivityProgress();
-                lifecycleScope.launch(Dispatchers.Main) {
-                    Log.i("devl|game33", "Moving to the next game")
-
-                    if (next_game != null)
-                        Utilities.startActivity(this@Game3_Win3, next_game)
-                    else
-                        Utilities.startActivity(this@Game3_Win3, LandingActivity::class.java)
-
-                    finish()
-                }
-            }
-        }
     }
 
     private fun setOnTouchListener(imageView: ImageView) {

@@ -10,6 +10,7 @@
     </string>
 
     <string name="offline_account">Offline Account</string>
+    <string name="logged_account">Logged User</string>
 
     <string name="abus_title">ABOUT US</string>
     <string name="abus_desc">Collaborating with UPV designers,
@@ -17,18 +18,82 @@
         Transforming their designs, we create a perfect fusion of design and development,
         delivering a cutting-edge digital experience for the future.
     </string>
-    <string name="pasabide_desc">The first record referring to the Plentzia Bridge dates back to 1414. The current bridge was built in 1991
+
+    <string name="next_button">Go Next</string>
+    <string name="game_win">Congratulations</string>
+
+    <string name="game1">1. Game</string>
+    <string name="game1_title">Pasabidea</string>
+    <string name="game1_win1">The first record referring to the Plentzia Bridge dates back to 1414. The current bridge was built in 1991
         to replace the stone bridge destroyed after the 1983 floods. However, there have been bridges throughout history.
         and in 1508 a municipal ordinance prohibited the crossing with torches, because it was made of wood, and could burn. Nowadays,
         it is forbidden to jump out of it, therefore!</string>
+    <string name="game1_win2">Now, to be able to return to Plentzia\'s past, you too will have to build a time passage. Come on guys!</string>
+    <string name="game1_win">You got the boat!!</string>
 
-    <string name="game_1_title">Pasabidea</string>
-    <string name="game_2_title">Errota</string>
-    <string name="game_3_title">Alde Historikoa</string>
-    <string name="game_4_title">Magdalena Eliza</string>
-    <string name="game_5_title">Santiago Arkua</string>
-    <string name="game_6_title">Ontziola</string>
-    <string name="game_7_title">Portua/Hondartza</string>
+    <string name="game2">2. Game</string>
+    <string name="game2_title">Errota</string>
+    <string name="game2_win1">The original building was built in the Middle Ages, more precisely, in the 16th century. century.
+        This, taking advantage of the high tide in the estuary, stored the water in a reservoir and released it when the sea level fell.
+        This movement rotated the upper stone of the mill on the lower one, creating an interaction between the two. In its operation,
+        the grains were entered from the top and turned into flour was taken out through a hole into the corresponding tank</string>
+    <string name="game2_win2">The journeys at sea are quite long; so you\'ll need to bring something to eat during your adventure, right?
+        That\'s what we have the mill for! Put the wheat inside and, taking into account the operation of the mill, step by step,
+        you will create flour. Then, bread can be made with that flour. How sweet!</string>
+    <string name="game2_win">You got the wheel rudder!!</string>
+
+    <string name="game3">3. Game</string>
+    <string name="game3_title">Alde Historikoa</string>
+    <string name="game3_win1">We have reached the old or historic part of Plentzia, most of the houses here are from the Middle Ages,
+        from when Plentzia began to develop; first with trade, then with whaling, and finally with shipbuilding.
+        Although there are indications that this area was populated around the time of the Romans and in 1299 the port of Plasencia de Butron (Plentzia)
+        received the category of town, through the letter given by the Lord Diego López de Haro of Bizkaia, the same who founded the town of Bilbao.</string>
+    <string name="game3_win2">In this district you will find the three goods you need to take to other ports: iron ore, sardines and cod. To find them,
+        you will have to go to three places. I remember what the places looked like, because I have pictures, but I don\'t remember the names of each one! Cod in Barrenkal,
+        iron ore in Kristo Emparantza and sardines in Eleiz Emparantza… but I don\'t know which picture is which! Can you help me?
+        Go to those places and match each picture with the corresponding merchandise!</string>
+    <string name="game3_win">You got the mast!!</string>
+
+    <string name="game4">4. Game</string>
+    <string name="game4_title">Magdalena Eliza</string>
+    <string name="game4_win1">The historical center of Plentzia is built on a small hill, and on the top is the church of Santa Maria Magdalena.
+        The religious temple matches the nautical motifs, as there is a guard tower to protect the coast and the entrance to the estuary.
+        Next to this church, at the entrance from the old town, there is a small part of the medieval wall. In fact, in the past Plentzia was walled.</string>
+    <string name="game4_win2">Town festivals used to be celebrated near the church, as well as some celebrations. So,
+        to celebrate that you got all the bread to eat and all the goods to take to the boat, let\'s dance in the Alunelul church emparanza!</string>
+    <string name="game4_win">You got the cup!!</string>
+
+    <string name="game5">5. Game</string>
+    <string name="game5_title">Santiago Arkua</string>
+    <string name="game5_win1">Although its aesthetics are not particularly striking, in light of the previously mentioned wall, it must be said that the
+        historical value of the arch is incalculable, since this arch is the only remnant of the walls that surrounded the town of Plentzia.
+        As a result of time and the pressure of the buildings, all the other remains have deteriorated or disappeared between the walls of the houses,
+        revealing the importance of the Arch of Santiago.</string>
+    <string name="game5_win2">Before going to the sea, it is essential to make sure that the town will not have any problems. Therefore, help the citizens
+        of Plentzia to rebuild the wall!</string>
+    <string name="game5_win">You got sails!!</string>
+
+    <string name="game6">6. Game</string>
+    <string name="game6_title">Ontziola</string>
+    <string name="game6_win1">The Plentzia river experienced its golden age in the 18th century. of the end of the century and the XIX. Between the beginning of
+        the 20th century, when the shipyards located on the coast were the most important in all of Bizkaia. However, after 1840, shipbuilding in Plentzia began to
+        decline due to the complex geographical characteristics of the area; as a result, the shipyards moved to Mundakara, Lekeitio and Bilbao, removing Plentziaco and
+        creating a new emparanza.</string>
+    <string name="game6_win2">Now that we\'re at the shipyard, it\'s time to build your ships! You have to connect all the pieces obtained before with their names
+        and then you will place each part in its proper place, completing the boat. Once that\'s done, you\'ll get the last part: the anchor!</string>
+    <string name="game6_win">You got the anchor!!</string>
+
+    <string name="game7">7. Game</string>
+    <string name="game7_title">Portua/Hondartza</string>
+    <string name="game7_win1">The port of Plentzia &quot;La Gallarda&quot; it is also known by the name in the town. The port is located in the interior of the Butroi river,
+        a few meters from the bay of Plentzia. Several years ago, the main purpose of the port was trade. As the years progressed, it also began to be used for fishing.
+        The fishermen of Plentzia mainly caught whales and cod. Today, it is not used for this purpose, due to the difficulties in getting large ships to the port.
+        Instead, La Gallarda is full of recreational boats. A few meters away, we can find Plentzia beach, located at the mouth of the river.</string>
+    <string name="game7_win2">Your ships are ready to sail, but they are missing one thing: a flag! You have to design and paint the flag of your ships,
+        however you want, of course. Once you\'ve given your personal touches, you\'ll be truly ready to embark on your nautical adventure.
+        But be careful! Watch out for the rocks!</string>
+    <string name="game7_win">YOUR BOAT HAS ARRIVED IN PORT! CONGRATULATIONS ON SURVIVING THE SEA ADVENTURE!</string>
+
 
     <string name="lang">LANGUAGE</string>
     <string name="es">Español</string>

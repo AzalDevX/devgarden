@@ -3,38 +3,118 @@
     <string name="back_button">Volver</string>
 
     <string name="theme">TEMA</string>
-    <string name="scan">ESCANEAR QR PARA ACCEDER A LA CLASE</string>
+    <string name="scan">ESCANEAR QR PARA ENTRAR EN LA CLASE</string>
     <string name="scan_teacher">GENERAR QR</string>
-    <string name="blocked_scan">Esta función solo está disponible si iniciaste sesión con internet, lo cual no es tu caso. Por favor, vuelve a iniciar sesión para habilitar la función en la nube en tiempo real.</string>
-
-    <string name="offline_account">Cuenta sin conexión</string>
-
-    <string name="abus_title">SOBRE NOSOTROS</string>
-    <string name="abus_desc">En colaboración con diseñadores de la UPV,
-        fusionamos su creatividad con nuestra destreza técnica para crear una aplicación única.
-        Transformamos sus diseños en una experiencia digital fluida,
-        logrando la combinación perfecta entre diseño y desarrollo para una aplicación innovadora.</string>
-    <string name="pasabide_desc">
-        El primer registro que hace referencia al puente de Plentzia data del año 1414. El actual puente se construyó en 1991.
-        Para sustituir el puente de piedra destruido tras las inundaciones de 1983. Sin embargo, a lo largo de la historia ha habido varios puentes,
-        En 1508 una ordenanza municipal prohibió el cruce con antorchas por ser de madera y arder. En la actualidad,
-        ¡Está prohibido saltar de el!
+    <string name="blocked_scan">Esta función solo está disponible si iniciaste sesión con internet, lo cual no es tu caso.
+        Por favor, vuelve a iniciar sesión para habilitar la función en la nube en tiempo real.
     </string>
 
-    <string name="game_1_title">Pasabidea</string>
-    <string name="game_2_title">Errota</string>
-    <string name="game_3_title">Alde Historikoa</string>
-    <string name="game_4_title">Magdalena Eliza</string>
-    <string name="game_5_title">Santiago Arkua</string>
-    <string name="game_6_title">Ontziola</string>
-    <string name="game_7_title">Portua/Hondartza</string>
+    <string name="offline_account">Cuenta sin conexión</string>
+    <string name="logged_account">Usuario conectado</string>
+
+    <string name="abus_title">SOBRE NOSOTROS</string>
+    <string name="abus_desc">Colaborando con diseñadores de la UPV,
+        fusionamos de manera impecable su creatividad con nuestra experiencia técnica para crear una aplicación distintiva.
+        Transformando sus diseños, creamos una fusión perfecta de diseño y desarrollo,
+        ofreciendo una experiencia digital de vanguardia para el futuro.
+    </string>
+
+    <string name="next_button">Siguiente</string>
+    <string name="game_win">¡Felicidades!</string>
+
+    <string name="game1">1. Juego</string>
+    <string name="game1_title">Pasabidea</string>
+    <string name="game1_win1">El primer registro que hace referencia al Puente de Plentzia se remonta a 1414. El puente actual se construyó en 1991
+        para reemplazar el puente de piedra destruido después de las inundaciones de 1983. Sin embargo, ha habido puentes a lo largo de la historia.
+        y en 1508 una ordenanza municipal prohibía cruzar con antorchas, porque estaba hecho de madera y podía arder. Hoy en día,
+        está prohibido saltar de él, ¡así que ten cuidado!
+    </string>
+    <string name="game1_win2">Ahora, para poder volver al pasado de Plentzia, también tendrás que construir un pasaje temporal. ¡Vamos, chicos!
+    </string>
+    <string name="game1_win">¡Conseguiste el barco!</string>
+
+    <string name="game2">2. Juego</string>
+    <string name="game2_title">Errota</string>
+    <string name="game2_win1">El edificio original se construyó en la Edad Media, más precisamente, en el siglo XVI.
+        Aprovechando la marea alta en la ría, almacenaba el agua en un depósito y la liberaba cuando el nivel del mar bajaba.
+        Este movimiento hacía girar la piedra superior del molino sobre la inferior, creando una interacción entre ambas. En su funcionamiento,
+        los granos se introducían desde arriba y la harina resultante se sacaba por un agujero al depósito correspondiente.
+    </string>
+    <string name="game2_win2">Los viajes en el mar son bastante largos; así que necesitarás llevar algo para comer durante tu aventura, ¿verdad?
+        ¡Para eso tenemos el molino! Coloca el trigo dentro y, teniendo en cuenta el funcionamiento del molino, paso a paso,
+        crearás harina. Luego, con esa harina se puede hacer pan. ¡Qué dulce!
+    </string>
+    <string name="game2_win">¡Conseguiste el timón de la rueda!</string>
+
+    <string name="game3">3. Juego</string>
+    <string name="game3_title">Alde Historikoa</string>
+    <string name="game3_win1">Hemos llegado a la parte antigua o histórica de Plentzia, la mayoría de las casas aquí son de la Edad Media,
+        desde cuando Plentzia comenzó a desarrollarse; primero con el comercio, luego con la pesca de ballenas y finalmente con la construcción naval.
+        Aunque hay indicios de que esta área estaba poblada en la época de los romanos y en 1299 el puerto de Plasencia de Butrón (Plentzia)
+        recibió la categoría de villa, a través de la carta otorgada por el Señor Diego López de Haro de Bizkaia, el mismo que fundó la ciudad de Bilbao.
+    </string>
+    <string name="game3_win2">En este distrito encontrarás los tres bienes que necesitas llevar a otros puertos: mineral de hierro, sardinas y bacalao. Para encontrarlos,
+        tendrás que ir a tres lugares. Recuerdo cómo eran los lugares, porque tengo fotos, ¡pero no recuerdo los nombres de cada uno! Bacalao en Barrenkal,
+        mineral de hierro en Kristo Emparantza y sardinas en Eleiz Emparantza… ¡pero no sé qué imagen es la de cada uno! ¿Puedes ayudarme?
+        Ve a esos lugares y empareja cada imagen con la mercancía correspondiente.
+    </string>
+    <string name="game3_win">¡Conseguiste el mástil!</string>
+
+    <string name="game4">4. Juego</string>
+    <string name="game4_title">Magdalena Eliza</string>
+    <string name="game4_win1">El centro histórico de Plentzia está construido en una pequeña colina, y en la cima se encuentra la iglesia de Santa María Magdalena.
+        El templo religioso coincide con motivos náuticos, ya que hay una torre de guardia para proteger la costa y la entrada a la ría.
+        Junto a esta iglesia, en la entrada desde la ciudad antigua, hay una pequeña parte de la muralla medieval. De hecho, en el pasado Plentzia estaba amurallada.
+    </string>
+    <string name="game4_win2">Las fiestas del pueblo solían celebrarse cerca de la iglesia, así como algunas celebraciones. Entonces,
+        para celebrar que conseguiste todo el pan para comer y todas las mercancías para llevar al barco, ¡bailaremos en la iglesia de Alunelul emparanza!
+    </string>
+    <string name="game4_win">¡Conseguiste la copa!</string>
+
+    <string name="game5">5. Juego</string>
+    <string name="game5_title">Santiago Arkua</string>
+    <string name="game5_win1">Aunque su estética no es particularmente llamativa, a la luz de la muralla mencionada anteriormente, hay que decir que el
+        valor histórico del arco es incalculable, ya que este arco es el único vestigio de las murallas que rodeaban la ciudad de Plentzia.
+        Como resultado del tiempo y la presión de los edificios, todos los demás restos se han deteriorado o desaparecido entre las paredes de las casas,
+        revelando la importancia del Arco de Santiago.
+    </string>
+    <string name="game5_win2">Antes de ir al mar, es esencial asegurarse de que el pueblo no tendrá problemas. Por lo tanto, ayuda a los ciudadanos
+        de Plentzia a reconstruir la muralla.
+    </string>
+    <string name="game5_win">¡Conseguiste las velas!</string>
+
+    <string name="game6">6. Juego</string>
+    <string name="game6_title">Ontziola</string>
+    <string name="game6_win1">El río Plentzia vivió su época dorada a finales del siglo XVIII. y principios del siglo XIX. Entre el comienzo de
+        el siglo XX, cuando los astilleros ubicados en la costa eran los más importantes de todo Bizkaia. Sin embargo, después de 1840, la construcción naval en Plentzia comenzó a
+        declinar debido a las complejas características geográficas de la zona; como resultado, los astilleros se trasladaron a Mundaka, Lekeitio y Bilbao, alejando Plentziaco y
+        creando una nueva emparanza.
+    </string>
+    <string name="game6_win2">Ahora que estamos en el astillero, ¡es hora de construir tus barcos! Debes conectar todas las piezas obtenidas anteriormente con sus nombres
+        y luego colocarás cada parte en su lugar correspondiente, completando el barco. ¡Una vez hecho esto, obtendrás la última parte: el ancla!
+    </string>
+    <string name="game6_win">¡Conseguiste el ancla!</string>
+
+    <string name="game7">7. Juego</string>
+    <string name="game7_title">Portua/Hondartza</string>
+    <string name="game7_win1">El puerto de Plentzia "La Gallarda" también es conocido por ese nombre en el pueblo. El puerto está ubicado en el interior del río Butroi,
+        a pocos metros de la bahía de Plentzia. Hace varios años, el propósito principal del puerto era el comercio. Con el tiempo, también comenzó a utilizarse para la pesca.
+        Los pescadores de Plentzia cazaban principalmente ballenas y bacalao. Hoy en día, no se utiliza para este fin, debido a las dificultades para llevar grandes barcos al puerto.
+        En cambio, La Gallarda está llena de barcos recreativos. A pocos metros de distancia, podemos encontrar la playa de Plentzia, ubicada en la desembocadura del río.
+    </string>
+    <string name="game7_win2">Tus barcos están listos para zarpar, ¡pero les falta algo: una bandera! Debes diseñar y pintar la bandera de tus barcos,
+        como quieras, por supuesto. Una vez que le hayas dado tus toques personales, estarás realmente listo para embarcarte en tu aventura náutica.
+        ¡Pero ten cuidado! ¡Cuidado con las rocas!
+    </string>
+    <string name="game7_win">¡TU BARCO HA LLEGADO AL PUERTO! ¡FELICITACIONES POR SOBREVIVIR A LA AVENTURA EN EL MAR!
+    </string>
 
     <string name="lang">IDIOMA</string>
     <string name="es">Español</string>
-    <string name="en">English</string>
+    <string name="en">Inglés</string>
     <string name="eu">Euskera</string>
 
-    <string name="login">Sesión del profesor</string>
+    <string name="login">Inicio de sesión del profesor</string>
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
     <string name="register_or_login">Registrarse o iniciar sesión</string>
@@ -44,5 +124,4 @@
     <string name="progress">Progreso</string>
 
     <string name="writehere">Escribe aquí</string>
-
 </resources>

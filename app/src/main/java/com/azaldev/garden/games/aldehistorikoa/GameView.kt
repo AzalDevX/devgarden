@@ -11,9 +11,15 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.azaldev.garden.LandingActivity
 import com.azaldev.garden.R
+import com.azaldev.garden.classes.dao.GameDao
+import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.globals.Utilities
 import com.google.zxing.common.detector.MathUtils.distance
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     private val linePaint: Paint = Paint()
@@ -29,6 +35,10 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     // Nuevas variables para almacenar los umbrales de distancia
     private var startDistanceThreshold: Float = 0f
     private var endDistanceThreshold: Float = 0f
+    private val game_id = 3
+    private lateinit var database : AppDatabase
+    private lateinit var gameDao : GameDao
+
 
     init {
         linePaint.color = Color.BLACK
@@ -92,9 +102,17 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                         hideClosestImages()
                         clearCanvas()
                         if (counter >= 3) {
-                            // Utiliza el contexto de la actividad almacenado para iniciar la nueva actividad
-                            val intent = Intent(activityContext, Game3_Win4::class.java)
-                            activityContext.startActivity(intent)
+                                val current_game = gameDao.getGame(game_id);
+                                gameDao.adv_progress(game_id, 1);
+
+                                val next_game = current_game.getActivityProgress()
+                                    Log.i("devl|game33", "Moving to the next game")
+
+                                    if (next_game != null)
+                                        Utilities.startActivity(activityContext, next_game)
+                                    else
+                                        Utilities.startActivity(activityContext, LandingActivity::class.java)
+
                         }
                     } else {
                         Log.i("devl|GameView", "No hay coincidencia con las IDs: ($imageStart, $imageEnd)")
@@ -107,6 +125,8 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     // Nuevo método para inicializar el contexto de la actividad
     fun initActivityContext(activityContext: Context) {
         this.activityContext = activityContext
+        this.database = AppDatabase.getInstance(activityContext)
+        this.gameDao = database.GameDao();
     }
 
     private fun hideClosestImages() {
