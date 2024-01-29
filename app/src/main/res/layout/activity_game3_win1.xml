@@ -57,7 +57,7 @@
         app:srcCompat="@drawable/aldezaharra2" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/player_button"
         android:layout_width="84dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"

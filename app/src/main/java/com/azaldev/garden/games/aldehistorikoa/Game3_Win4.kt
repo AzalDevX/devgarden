@@ -2,6 +2,11 @@ package com.azaldev.garden.games.aldehistorikoa
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import com.azaldev.garden.LandingActivity
+import com.azaldev.garden.R
+import com.azaldev.garden.globals.Utilities
+
 import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
