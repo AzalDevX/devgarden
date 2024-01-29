@@ -31,9 +31,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val passwordToggle = findViewById<TextInputLayout>(R.id.passwordFieldL)
         val contextView = findViewById<View>(R.id.loginLayoutCtx)
         val database = AppDatabase.getInstance(applicationContext)
         val authDao = database.AuthDao();
+        passwordToggle.isPasswordVisibilityToggleEnabled = false
+
 
         Utilities.canConnectToApi {
             Globals.has_connection = it

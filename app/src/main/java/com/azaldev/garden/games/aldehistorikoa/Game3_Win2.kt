@@ -37,10 +37,8 @@ class Game3_Win2 : AppCompatActivity() {
         findViewById<Button>(R.id.next_game).setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
-
+                val next_game = current_game.getActivityProgress(1);
                 gameDao.adv_progress(game_id, 1);
-
-                val next_game = current_game.getActivityProgress();
                 lifecycleScope.launch(Dispatchers.Main) {
                     Log.i("devl|game32", "Moving to the next game")
 
