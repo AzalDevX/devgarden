@@ -8,12 +8,9 @@ import android.widget.ImageButton
 import com.azaldev.garden.R
 import com.azaldev.garden.globals.Utilities
 import android.util.Log
-import android.widget.Button
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.LandingActivity
-import com.azaldev.garden.R
 import com.azaldev.garden.classes.database.AppDatabase
-import com.azaldev.garden.globals.Utilities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

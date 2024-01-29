@@ -46,7 +46,7 @@ class Game3_Win3 : AppCompatActivity() {
 
         // Inicializar el contexto de la actividad en GameView
         gameView.initActivityContext(this)
-        
+
         val game_id = 3;
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
@@ -69,6 +69,7 @@ class Game3_Win3 : AppCompatActivity() {
                     finish()
                 }
             }
+        }
     }
 
     private fun setOnTouchListener(imageView: ImageView) {
