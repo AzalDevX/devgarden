@@ -42,4 +42,7 @@
     <string name="team">Equipo</string>
     <string name="minigame">Minijuego</string>
     <string name="progress">Progreso</string>
+
+    <string name="writehere">Escribe aquí</string>
+
 </resources>

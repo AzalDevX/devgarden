@@ -3,7 +3,10 @@ package com.azaldev.garden.games.ontziola
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.LandingActivity
 import com.azaldev.garden.R
@@ -20,8 +23,13 @@ class Game6_Win1 : AppCompatActivity() {
         val game_id = 6;
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
+        val player_button = findViewById<ImageButton>(R.id.player_button)
+        val next_game = findViewById<Button>(R.id.next_game)
 
-        findViewById<Button>(R.id.next_game).setOnClickListener {
+        next_game.visibility = INVISIBLE
+
+
+        next_game.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
 
@@ -39,6 +47,12 @@ class Game6_Win1 : AppCompatActivity() {
                     finish()
                 }
             }
+        }
+
+        player_button.setOnClickListener {
+            Utilities.playSound(this,R.raw.game6_win1)
+            player_button.visibility = INVISIBLE
+            next_game.visibility = VISIBLE
         }
     }
 }
