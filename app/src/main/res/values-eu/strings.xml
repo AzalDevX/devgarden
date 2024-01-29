@@ -39,4 +39,6 @@
     <string name="team">Taldea</string>
     <string name="minigame">Minijokoa</string>
     <string name="progress">Aurrerabidea</string>
+
+    <string name="writehere">Idatzi hemen</string>
 </resources>

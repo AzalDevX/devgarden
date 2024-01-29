@@ -136,6 +136,9 @@ class LandingActivity : AppCompatActivity() {
 
                             if (game.progress != 0 && activityClass == null) {
                                 Utilities.showErrorAlert(this@LandingActivity, "You have already completed this game, do you want to do it again? ¡You will lose your progress!") {
+                                    lifecycleScope.launch(Dispatchers.IO) {
+                                        gameDao.reset_progress(game.id)
+                                    }
                                     val activityClassR = game.getActivityClass();
                                     if (activityClassR != null)
                                         Utilities.startActivity(this@LandingActivity, activityClassR)

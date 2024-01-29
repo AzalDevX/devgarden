@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
+    android:background="@drawable/background"
     tools:context=".games.pasabidea.Game1_Win1">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <TextView
         android:id="@+id/textView27"
@@ -13,6 +19,7 @@
         android:layout_height="246dp"
         android:justificationMode="inter_word"
         android:text="Plentziako ibaiak bere urrezko aroa bizi izan zuen XVIII. mendearen amaieraren eta XIX. mendearen hasieraren artean, itsasertzean kokatuta zeuden ontziolak Bizkaia osoko garrantzitsuenak zirenean. Hala ere, 1840tik aurrera, Plentziako ontzigintza gutxiagotzen hasi zen eremuaren ezaugarri geografiko konplexuak zirela eta; ondorioz, ontziolak Mundakara, Lekeitiora eta Bilbora mugitu ziren, Plentziakoa kenduz eta enparantza berria sortuz."
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +56,7 @@
         android:layout_width="228dp"
         android:layout_height="80dp"
         android:text="ONTZIOLA"
+        android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +65,7 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/player_button"
         android:layout_width="84dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"

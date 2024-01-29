@@ -21,7 +21,9 @@ class Game6_Win4 : AppCompatActivity() {
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
 
-        findViewById<Button>(R.id.next_game).setOnClickListener {
+        val next_game = findViewById<Button>(R.id.next_game)
+
+        next_game.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
 
@@ -40,5 +42,6 @@ class Game6_Win4 : AppCompatActivity() {
                 }
             }
         }
+
     }
 }

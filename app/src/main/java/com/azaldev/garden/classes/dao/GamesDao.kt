@@ -13,6 +13,9 @@ interface GameDao {
     @Query("UPDATE Game SET progress = progress + :by WHERE id = :id")
     fun adv_progress(id: Int, by: Int) // Add progress to the game
 
+    @Query("UPDATE Game SET progress = 1, isFinished = 0, isLocked = 0 WHERE id = :id")
+    fun reset_progress(id: Int)
+
     @Query("UPDATE Game SET isFinished = 1 WHERE id = :id")
     fun finish_game(id: Int)
 
