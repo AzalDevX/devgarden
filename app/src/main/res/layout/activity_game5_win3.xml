@@ -6,22 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".games.santiagoarkua.Game5_Win3">
 
-    <FrameLayout
-            android:id="@+id/gameTable"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/piecesContainer">
-        <!-- Game table contents go here -->
-    </FrameLayout>
-
-    <LinearLayout
-            android:id="@+id/piecesContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-        <!-- Preview pieces go here -->
-    </LinearLayout>
+    <com.azaldev.garden.games.santiagoarkua.DragAndPlaceGameView
+            android:id="@+id/dragGameView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
