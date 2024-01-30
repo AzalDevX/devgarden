@@ -41,6 +41,7 @@
         That\'s what we have the mill for! Put the wheat inside and, taking into account the operation of the mill, step by step,
         you will create flour. Then, bread can be made with that flour. How sweet!</string>
     <string name="game2_win">You got the wheel rudder!!</string>
+    <string name="game2_water">Tap the water first.</string>
 
     <string name="game3">3. Game</string>
     <string name="game3_title">Alde Historikoa</string>
@@ -82,6 +83,7 @@
     <string name="game6_win2">Now that we\'re at the shipyard, it\'s time to build your ships! You have to connect all the pieces obtained before with their names
         and then you will place each part in its proper place, completing the boat. Once that\'s done, you\'ll get the last part: the anchor!</string>
     <string name="game6_win">You got the anchor!!</string>
+    <string name="game6_next">You did well!! Next…</string>
 
     <string name="game7">7. Game</string>
     <string name="game7_title">Portua/Hondartza</string>

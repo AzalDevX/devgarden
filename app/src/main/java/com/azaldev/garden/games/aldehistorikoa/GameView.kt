@@ -98,7 +98,7 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                     if (correctSolutions.any { it.first == imageStart && it.second == imageEnd }) {
                         Log.i("devl|GameView", "Coincidencia encontrada: ($imageStart, $imageEnd)")
                         counter++
-                        showToast("Correcto, llevas $counter de 3")
+                        Utilities.showToast(activityContext,"$counter/3")
                         hideClosestImages()
                         clearCanvas()
                         if (counter >= 3) {
@@ -225,9 +225,5 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             // Manejar el caso en que la referencia a la ImageView es nula
             return Pair(0f, 0f)  // Puedes ajustar este valor según sea necesario
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

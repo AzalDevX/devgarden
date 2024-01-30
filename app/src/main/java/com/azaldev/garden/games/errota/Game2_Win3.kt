@@ -80,7 +80,7 @@ class Game2_Win3 : AppCompatActivity() {
                 counter++
                 checkAndShowImages()
             } else {
-                Utilities.showToast(this@Game2_Win3, "Ura ikutu lehenago.")
+                Utilities.showToast(this@Game2_Win3, getString(R.string.game2_water))
             }
         }
 
