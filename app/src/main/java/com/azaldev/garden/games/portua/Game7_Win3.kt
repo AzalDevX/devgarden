@@ -1,9 +1,12 @@
 package com.azaldev.garden.games.portua
 
+import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.LandingActivity
 import com.azaldev.garden.R
@@ -11,8 +14,12 @@ import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.globals.Utilities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 class Game7_Win3 : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game7_win3)
@@ -21,7 +28,7 @@ class Game7_Win3 : AppCompatActivity() {
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
 
-        findViewById<Button>(R.id.next_game).setOnClickListener {
+        findViewById<Button>(R.id.saveButton).setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
 
@@ -39,5 +46,14 @@ class Game7_Win3 : AppCompatActivity() {
                 }
             }
         }
+        val drawingView = findViewById<DrawingView>(R.id.drawingView)
+        val clearButton = findViewById<Button>(R.id.clearButton)
+        val saveButton = findViewById<Button>(R.id.saveButton)
+
+        clearButton.setOnClickListener {
+            drawingView.clearCanvas()
+        }
+
     }
+
 }
