@@ -3,10 +3,7 @@ package com.azaldev.garden.games.errota
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
-import com.azaldev.garden.R
-import com.azaldev.garden.globals.Utilities
 import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
