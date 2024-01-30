@@ -20,7 +20,7 @@
             android:layout_width="315dp"
             android:layout_height="56dp"
             android:layout_marginBottom="32dp"
-            android:text="Hurrengoa"
+            android:text="@string/next_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -39,23 +39,24 @@
 
     <TextView
         android:id="@+id/textView31"
-        android:layout_width="243dp"
-        android:layout_height="162dp"
+        android:layout_width="328dp"
+        android:layout_height="63dp"
         android:justificationMode="inter_word"
-        android:text="ZORIONAK"
+        android:text="@string/game_win"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27" />
+        app:layout_constraintVertical_bias="0.227" />
 
     <TextView
         android:id="@+id/textView32"
         android:layout_width="243dp"
         android:layout_height="55dp"
-        android:text="Kofa lortu duzu!!"
+        android:text="@string/game4_win"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -187,13 +187,13 @@ object Utilities {
         }
     }
 
-    fun showErrorAlert(context: Context, message: String, onDismiss: () -> Unit) {
+    fun showErrorAlert(context: Context, message: String, onAccept: () -> Unit) {
         AlertDialog.Builder(context)
             .setTitle("Error")
             .setMessage(message)
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
-                onDismiss.invoke()
+                onAccept.invoke()
             }
             .show()
     }

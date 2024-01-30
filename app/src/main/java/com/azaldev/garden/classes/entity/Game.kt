@@ -25,4 +25,12 @@ data class Game(
             null
         }
     }
+
+    fun getActivityProgress(sum: Int = 0): Class<out AppCompatActivity>? {
+        return try {
+            Class.forName("${activityClassName?.substringBeforeLast('.')}.Game${id}_Win${progress + sum}")?.asSubclass(AppCompatActivity::class.java)
+        } catch (e: Exception) {
+            null
+        }
+    }
 }

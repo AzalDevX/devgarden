@@ -12,7 +12,7 @@
         android:layout_width="369dp"
         android:layout_height="246dp"
         android:justificationMode="inter_word"
-        android:text="Eraikin originala Erdi Aroan eraiki zen, zehatzago esanda, XVI. mendean. Honek, itsasadarreko itsasgora aprobetxatuz, ura biltegi batean pilatzen zuen eta itsas maila jaisten zenean isuri egiten zuen. Mugimendu horrek errotaren goiko harria behekoaren gainean biratzen zuen, bien arteko elkarreragin bat sortuz. Bere funtzionamenduan, aleak goitik sartzen ziren eta irin bihurtuta zulo batetik ateratzen zen zegokion tankera. "
+        android:text=". "
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
