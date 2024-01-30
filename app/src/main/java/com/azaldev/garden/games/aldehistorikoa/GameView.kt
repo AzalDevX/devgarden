@@ -19,6 +19,7 @@ import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.globals.Utilities
 import com.google.zxing.common.detector.MathUtils.distance
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
@@ -102,18 +103,20 @@ class GameView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                         hideClosestImages()
                         clearCanvas()
                         if (counter >= 3) {
-                            val current_game = gameDao.getGame(game_id);
-                            gameDao.adv_progress(game_id, 1);
+                            GlobalScope.launch(Dispatchers.IO) {
+                                val current_game = gameDao.getGame(game_id);
 
-                            val next_game = current_game.getActivityProgress()
+                                val next_game = current_game.getActivityProgress(1)
+                                gameDao.adv_progress(game_id, 1);
 
-                            Log.i("devl|game33", "Moving to the next game")
-
-                            if (next_game != null)
-                                Utilities.startActivity(activityContext, next_game)
-                            else
-                                Utilities.startActivity(activityContext, LandingActivity::class.java)
-
+                                Log.i("devl|game33", "Moving to the next game")
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    if (next_game != null)
+                                        Utilities.startActivity(activityContext, next_game)
+                                    else
+                                        Utilities.startActivity(activityContext, LandingActivity::class.java)
+                                }
+                            }
                         }
                     } else {
                         Log.i("devl|GameView", "No hay coincidencia con las IDs: ($imageStart, $imageEnd)")

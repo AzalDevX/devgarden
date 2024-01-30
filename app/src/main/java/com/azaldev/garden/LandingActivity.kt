@@ -14,7 +14,9 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
 import androidx.lifecycle.lifecycleScope
+import com.azaldev.garden.classes.dao.AuthDao
 import com.azaldev.garden.classes.dao.GameDao
+import com.azaldev.garden.classes.dao.GlobalSettingsDao
 import com.azaldev.garden.classes.database.AppDatabase
 import com.azaldev.garden.classes.entity.Auth
 import com.azaldev.garden.globals.Globals
@@ -27,6 +29,8 @@ class LandingActivity : AppCompatActivity() {
 
     private lateinit var database: AppDatabase;
     private lateinit var gameDao: GameDao;
+    private lateinit var authDao: AuthDao;
+    private lateinit var settinsDao: GlobalSettingsDao;
     private var cacheStoredUser: Auth? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,15 @@ class LandingActivity : AppCompatActivity() {
 
         database = AppDatabase.getInstance(applicationContext)
         gameDao = database.GameDao();
+        authDao = database.AuthDao();
+        settinsDao = database.GlobalSettingsDao();
+
+        if (Globals.stored_settings == null) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                Globals.stored_user = authDao.get()
+                Globals.stored_settings = settinsDao.getDefault()
+            }
+        }
 
         /**
          * Calculate the left padding based on the screen size and card size, ez tbh

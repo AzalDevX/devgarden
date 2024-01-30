@@ -271,11 +271,12 @@ class QRCodeScannerDialogFragment : DialogFragment(), BarcodeCallback {
 
 
         // Set background color with opacity programmatically
-        val backgroundColor = ContextCompat.getColor(requireContext(), R.color.gray_transparent)
-        barcodeView.setBackgroundColor(backgroundColor)
-        barcodeBg.setBackgroundColor(backgroundColor)
+//        val backgroundColor = ContextCompat.getColor(requireContext(), R.color.gray_transparent)
+//        barcodeView.setBackgroundColor(backgroundColor)
+//        barcodeBg.setBackgroundColor(backgroundColor)
 
         val viewfinderView: ViewfinderView = barcodeView.findViewById(R.id.zxing_viewfinder_view)
+        val viewWrapperView: DecoratedBarcodeView = barcodeView.findViewById(R.id.barcodeScannerView)
         viewfinderView.visibility = View.VISIBLE
 
         barcodeView.setStatusText(promptText)

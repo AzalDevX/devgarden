@@ -21,6 +21,7 @@ class Game7_Win3 : AppCompatActivity() {
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
 
+        /*
         findViewById<Button>(R.id.next_game).setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
@@ -37,7 +38,7 @@ class Game7_Win3 : AppCompatActivity() {
 
                     finish()
                 }
-            }
-        }
+
+        }*/
     }
 }
