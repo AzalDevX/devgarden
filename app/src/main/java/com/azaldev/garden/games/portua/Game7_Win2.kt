@@ -3,7 +3,10 @@ package com.azaldev.garden.games.portua
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.INVISIBLE
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.lifecycle.lifecycleScope
 import com.azaldev.garden.LandingActivity
 import com.azaldev.garden.R
@@ -20,6 +23,17 @@ class Game7_Win2 : AppCompatActivity() {
         val game_id = 7;
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
+        val player_button = findViewById<ImageButton>(R.id.player_button)
+        val next_game = findViewById<Button>(R.id.next_game)
+
+        next_game.visibility = INVISIBLE
+
+        player_button.setOnClickListener {
+            player_button.visibility = INVISIBLE
+            Utilities.playSound(this,R.raw.game7_win2){
+                next_game.visibility = View.VISIBLE
+            }
+        }
 
         findViewById<Button>(R.id.next_game).setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {

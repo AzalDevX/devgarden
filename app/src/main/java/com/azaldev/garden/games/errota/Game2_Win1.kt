@@ -25,7 +25,7 @@ class Game2_Win1 : AppCompatActivity() {
         next_game.visibility = INVISIBLE
 
         player_button.setOnClickListener {
-                Utilities.playSound(this, R.raw.audio_game2_win1) {
+                Utilities.playSound(this, R.raw.game2_win1) {
                     player_button.visibility = VISIBLE
                     next_game.visibility = VISIBLE
                 }
