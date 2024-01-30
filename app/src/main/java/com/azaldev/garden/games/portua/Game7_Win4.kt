@@ -55,7 +55,7 @@ class Game7_Win4 : AppCompatActivity() {
                     finish()
                 }
             }
-        }*/
+        }
     }
 
 }

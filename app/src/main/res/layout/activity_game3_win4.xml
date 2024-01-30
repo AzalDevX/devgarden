@@ -37,12 +37,24 @@
         android:id="@+id/imageView7"
         android:layout_width="416dp"
         android:layout_height="712dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:srcCompat="@drawable/masta" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="279dp"
+        android:layout_height="56dp"
+        android:text="@string/game3_win"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/textView31"
@@ -56,19 +68,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.148" />
 
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="279dp"
-        android:layout_height="56dp"
-        android:text="@string/game3_win"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"

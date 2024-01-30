@@ -28,8 +28,8 @@ class Game7_Win3 : AppCompatActivity() {
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
 
-        /*
-        findViewById<Button>(R.id.next_game).setOnClickListener {
+
+        findViewById<Button>(R.id.saveButton).setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
 
