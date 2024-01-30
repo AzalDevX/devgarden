@@ -45,6 +45,7 @@
         irina sortuko duzu. Ondoren, trigu horrekin ogia egin daiteke. Zelako gozoa!
     </string>
     <string name="game2_win">Zigilu errodaduna lortu duzu!</string>
+    <string name="game2_water">Ura sakatu lehenik.</string>
 
     <string name="game3">3. Jokoa</string>
     <string name="game3_title">Alde Historikoa</string>
@@ -93,6 +94,7 @@
         eta ondoren, pieza bakoitzari bere tokian kokatuko duzu, ontzia osatuz. Unetik gero, azken pieza lortuko duzu: ancla!
     </string>
     <string name="game6_win">Ankila lortu duzu!</string>
+    <string name="game6_next">Ongi egin duzu!! Hurrengoa…</string>
 
     <string name="game7">7. Jokoa</string>
     <string name="game7_title">Portua/Hondartza</string>
