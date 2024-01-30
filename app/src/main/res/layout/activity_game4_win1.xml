@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".games.magdalena.Game4_Win1">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <TextView
         android:id="@+id/textView33"
         android:layout_width="363dp"
         android:layout_height="60dp"
-        android:text="MAGDALENA ELIZA"
+        android:text="@string/game4_title"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +29,7 @@
         android:layout_width="361dp"
         android:layout_height="234dp"
         android:justificationMode="inter_word"
-        android:text="Plentziako herrigune historikoa menditxo baten gainean eraikita dago, eta gailurrean Santa Maria Magdalena eliza dago. Tenplu erlijiosoak bat egiten du itsas motiboekin, dorre zaindari bat baitago kostaldea eta itsasadarrerako sarrera babesteko. Eliza horren ondoan, alde zaharretik sartzeko sarreran, Erdi Aroko harresi zati txiki bat dago. Izan ere, antzinean Plentzia harresituta egon zen. "
+        android:text="@string/game4_win1"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +63,7 @@
         app:srcCompat="@drawable/magdalenaeliza" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/player_button"
         android:layout_width="84dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"
@@ -73,7 +79,7 @@
         android:id="@+id/next_game"
         android:layout_width="370dp"
         android:layout_height="60dp"
-        android:text="@string/back_button"
+        android:text="@string/next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"

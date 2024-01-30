@@ -267,13 +267,13 @@ class SettingsActivity : AppCompatActivity() {
             if (!canUserQrCOde) return@setOnClickListener
             if (!PermissionUtils.checkAndRequestCameraPermission(this)) return@setOnClickListener
 
-            Utilities.scanQRCodePop(this, "Join Classroom") {
+            Utilities.scanQRCodePop(this, getString(R.string.join_classroom)) {
                 val result: String? = it
                 Log.i("devl|settings", "Scanned qr code to join classroom, got response $result")
 
                 if (!Utilities.isValidCode(result)) {
-                    Snackbar.make(scanQrCode, "Invalid QR code format...", Snackbar.LENGTH_LONG)
-                        .setAction("Try Again") { scanQrCode.callOnClick() }
+                    Snackbar.make(scanQrCode, getString(R.string.invalid_qr), Snackbar.LENGTH_LONG)
+                        .setAction(getString(R.string.try_again)) { scanQrCode.callOnClick() }
                         .setTextColor(ContextCompat.getColor(this, R.color.red_400))
                         .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
                         .show()
@@ -282,8 +282,8 @@ class SettingsActivity : AppCompatActivity() {
                 }
 
                 if (!Globals.has_connection) {
-                    Snackbar.make(contextView, "You are not connected to the internet :c", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Try Again") {}
+                    Snackbar.make(contextView, getString(R.string.no_internet), Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getString(R.string.try_again)) {}
                         .setTextColor(ContextCompat.getColor(this, R.color.red_400))
                         .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
                         .show()
@@ -314,7 +314,7 @@ class SettingsActivity : AppCompatActivity() {
                     } else {
                         Log.e("devl|settings", "Join Class Failed, response: $message")
 
-                        Snackbar.make(contextView, if (already_in_class) "This group is already in a class." else message.toString(), Snackbar.LENGTH_SHORT)
+                        Snackbar.make(contextView, if (already_in_class) getString(R.string.group_in_class) else message.toString(), Snackbar.LENGTH_SHORT)
                             .setTextColor(ContextCompat.getColor(this, R.color.red_400))
                             .setBackgroundTint(ContextCompat.getColor(this, R.color.green_200))
                             .show()

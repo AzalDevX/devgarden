@@ -5,20 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
+    android:background="@drawable/background"
     tools:context=".games.pasabidea.Game1_Win1">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="369dp"
         android:layout_height="246dp"
         android:justificationMode="inter_word"
-        android:text="Eraikin originala Erdi Aroan eraiki zen, zehatzago esanda, XVI. mendean. Honek, itsasadarreko itsasgora aprobetxatuz, ura biltegi batean pilatzen zuen eta itsas maila jaisten zenean isuri egiten zuen. Mugimendu horrek errotaren goiko harria behekoaren gainean biratzen zuen, bien arteko elkarreragin bat sortuz. Bere funtzionamenduan, aleak goitik sartzen ziren eta irin bihurtuta zulo batetik ateratzen zen zegokion tankera. "
+        android:text="@string/game2_win1"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.379" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -57,7 +63,7 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/player_button"
         android:layout_width="84dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"
@@ -73,7 +79,7 @@
         android:id="@+id/next_game"
         android:layout_width="370dp"
         android:layout_height="60dp"
-        android:text="@string/back_button"
+        android:text="@string/next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"

@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".games.pasabidea.Game1_Win2">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="413dp"
@@ -19,7 +25,7 @@
             android:layout_width="315dp"
             android:layout_height="56dp"
             android:layout_marginBottom="32dp"
-            android:text="Hurrengoa"
+            android:text="@string/next_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +36,7 @@
         android:layout_width="353dp"
         android:layout_height="192dp"
         android:justificationMode="inter_word"
-        android:text="Zuen itsasontziak nabigatzeko prest daude, baina gauza bat falta zaie: bandera! Zuen itsasontzien bandera diseinatu eta margoztu behar duzue, nahi duzuen moduan, noski. Behin zuen ukitu pertsonalak emanda, benetan prest egongo zarete itsas-abentura hasteko. Baina, adi egon! Kontuz arrokekin!"
+        android:text="@string/game7_win2"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +49,7 @@
         android:id="@+id/textView30"
         android:layout_width="111dp"
         android:layout_height="35dp"
-        android:text="7. Jolasa:"
+        android:text="@string/game7"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +59,7 @@
         app:layout_constraintVertical_bias="0.156" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/player_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"

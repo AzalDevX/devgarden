@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 Globals.stored_settings = settinsDao.getDefault()
             } catch (e: IllegalStateException) {
                 withContext(Dispatchers.Main) {
-                    Utilities.showErrorAlert(this@MainActivity, "Database schema mismatch. Please update the app.") {
+                    Utilities.showErrorAlert(this@MainActivity, getString(R.string.data_schema_mismatch)) {
                         finish()
                     }
                 }
@@ -123,18 +123,18 @@ class MainActivity : AppCompatActivity() {
 
                         MaterialAlertDialogBuilder(this@MainActivity)
                             .setTitle("Permissions required")
-                            .setMessage("You need to grant permissions to use the app.")
+                            .setMessage(getString(R.string.grant_permission))
                             .setView(imageView)
                             .setNeutralButton("Cancel") { dialog, which ->
-                                Utilities.showToast(this@MainActivity, "You need to grant permissions to use the app.")
+                                Utilities.showToast(this@MainActivity, getString(R.string.grant_permission))
                                 finish()
                             }
                             .setNegativeButton("Decline") { dialog, which ->
-                                Utilities.showToast(this@MainActivity, "You need to grant permissions to use the app.")
+                                Utilities.showToast(this@MainActivity, getString(R.string.grant_permission))
                                 finish()
                             }
                             .setPositiveButton("Accept") { dialog, which ->
-                                Utilities.showToast(this@MainActivity, "Opening settings...")
+                                Utilities.showToast(this@MainActivity, getString(R.string.open_settings))
 
                                 val packageName = "com.azaldev.garden"
                                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
 
             if (loop_check >= 10) {
                 withContext(Dispatchers.Main) {
-                    Utilities.showToast(this@MainActivity, "You need to grant permissions to use the app.")
+                    Utilities.showToast(this@MainActivity, getString(R.string.grant_permission))
                     finish()
                 }
                 return@launch

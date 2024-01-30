@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".games.pasabidea.Game1_Win2">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
+    
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="413dp"
         android:layout_height="160dp"
@@ -19,7 +25,7 @@
             android:layout_width="315dp"
             android:layout_height="56dp"
             android:layout_marginBottom="32dp"
-            android:text="Hurrengoa"
+            android:text="@string/next_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +36,7 @@
         android:layout_width="354dp"
         android:layout_height="218dp"
         android:justificationMode="inter_word"
-        android:text="Itsasoan bidaiak nahiko luzeak izaten dira; beraz, zerbait eraman behar izango duzue zuen abenturan zehar jateko, ezta? Horretarako dugu errota! Sar ezazue garia barruan eta, errotaren funtzionamendua kontuan hartuz, pausuz pausu, irina sortuko duzue. Gero, irina horrekin ogia egin ahal izango da. A ze gozo! "
+        android:text="@string/game2_win2"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +49,7 @@
         android:id="@+id/textView30"
         android:layout_width="111dp"
         android:layout_height="35dp"
-        android:text="2. Jolasa:"
+        android:text="@string/game2"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +59,7 @@
         app:layout_constraintVertical_bias="0.135" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/player_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"

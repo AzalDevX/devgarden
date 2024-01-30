@@ -3,42 +3,142 @@
     <string name="back_button">Atzera</string>
 
     <string name="theme">GAIA</string>
-    <string name="scan">QR ESKANATU GELARA SARTZEKO</string>
-    <string name="scan_teacher">QR-A SORTU</string>
-    <string name="blocked_scan">Funtzio hau erabilgarria da, internet bidez saioa hasi baduzu, zure kasuan ez dagoelako. Mesedez, saioa hasi berriro errealitate-zerbitzu bultruz hornitu ahal izateko.</string>
+    <string name="scan">ESKANATU QR KLASEAN SARTZEKO</string>
+    <string name="scan_teacher">QR SORTU</string>
+    <string name="blocked_scan">Funtzio hau soilik eskuragarri da internet bidez saioa hastean, zure kasuan ez dagoena.
+        Mesedez, saioa hasi berriro saioa hasteko egiaztatu.
+    </string>
 
-    <string name="offline_account">Lineako Kontua</string>
+    <string name="offline_account">Konektatu gabeko kontua</string>
+    <string name="logged_account">Konektatutako erabiltzailea</string>
 
     <string name="abus_title">GURI BURUZ</string>
-    <string name="abus_desc">EHUko diseinatzaileekin lankidetzan, beren sorkuntza eta gure trebetasun teknikoa uztartuz,
-        aplikazio berezia sortzen dugu. Haien diseinuak era digital bateratu eta garatu bezain estua bihurtzen ditugu,
-         diseinua eta garapena perfektu elkarren artean, etorkizunerako aplikazio berritzaile bat sortuz.</string>
-    <string name="pasabide_desc">Plentziako zubiari erreferentzia egiten dion lehen erregistroa 1414. urtekoa da. Gaur egungo zubia 1991n eraiki zen,
-    1983ko uholdeen ondoren suntsitutako harrizko zubia ordezkatzeko. Dena den, historian zehar hainbat zubi egon dira,
-    eta 1508an udal-ordenantza batek debekatu egin zuen zuziekin gurutzatzea, egurrezkoa zelako eta su har zezakeelako. Gaur egun,
-    debekatuta dago bertatik salto egitea, beraz, ezta pentsatu ere!</string>
+    <string name="abus_desc">UPVko diseinatzaileekin lankidetzan,
+        beren sorkuntza eta gaitasun teknikoa uztartuz aplikazio berezia sortzen dugu.
+        Bere diseinuak birformulatuz, diseinu eta garapenaren perfektu fusioa sortzen dugu,
+        etorkizuneko esperientzia digital muntatzeko.
+    </string>
 
-    <string name="game_1_title">Pasabidea</string>
-    <string name="game_2_title">Errota</string>
-    <string name="game_3_title">Alde Historikoa</string>
-    <string name="game_4_title">Magdalena Eliza</string>
-    <string name="game_5_title">Santiago Arkua</string>
-    <string name="game_6_title">Ontziola</string>
-    <string name="game_7_title">Portua/Hondartza</string>
+    <string name="next_button">Hurrengoa</string>
+    <string name="game_win">Zorionak</string>
+
+    <string name="game1">1. Jokoa</string>
+    <string name="game1_title">Pasabidea</string>
+    <string name="game1_win1">Plentzia Zubia buruzko lehen erregistroa 1414an datatzen da. Une honetan eraiki zen zubia 1991an
+        1983ko uholdeak ondoren suntsitu zen harri zubia ordeztu behar izan zen. Hala ere, historia osoan zubiak izan dira.
+        eta 1508an ordenantza udalerriak fakutatzea debekatu zuen antortxa batekin gurutzatzea, zuhaitz batetik egina, eta erreztu egin zitekeen. Gaur egun,
+        horretatik saltzea debekatuta dago, beraz, zaindu!
+    </string>
+    <string name="game1_win2">Orain, Plentziaren iraganera itzultzeko, denok garraio pasabidea eraiki beharko duzu ere. Etorri, mutilak!
+    </string>
+    <string name="game1_win">Ontzi bat lortu duzu!</string>
+
+    <string name="game2">2. Jokoa</string>
+    <string name="game2_title">Errota</string>
+    <string name="game2_win1">Eraikin originala Erdi Aroan eraiki zen, zehatzago esanda, XVI. mendean.
+        Horrek itsasarmoko fluxu handia aprobetxatuz, ura biltegi batean gordetzen zuen eta itsas maila jaitsienean askatzen zuen.
+        Mugimendu honek erregetanako harri gaineko harrizkoa harri azpiko gainean biribildu zuen, elkarren arteko interakzioa sortuz. Bere eragiketan,
+        grainak goitik sartu ziren eta sorturiko irina hole batetik kanpo ateratzen zen egokitzeko tangoan.
+    </string>
+    <string name="game2_win2">Itsasoko bidaiek nahiko luzeak izaten dira; hauengatik ekinez edateko bat ekartzea beharko duzu, zuzenean ezta?
+        Hori da gure errota duten arazorako! Trigu sartu eta, errota erabiliz, pauso bakoitza hartu, urte luzez,
+        irina sortuko duzu. Ondoren, trigu horrekin ogia egin daiteke. Zelako gozoa!
+    </string>
+    <string name="game2_win">Zigilu errodaduna lortu duzu!</string>
+
+    <string name="game3">3. Jokoa</string>
+    <string name="game3_title">Alde Historikoa</string>
+    <string name="game3_win1">Plentziaren parte zahar edo historikora heldu gara, hainbat etxeen gehiena Erdi Arokoa da,
+        Plentziak garatzen hasi zen une honetan; lehenengo komertzioarekin, gero balearen bidez eta azkenik ontzi eraikitzailearekin.
+        Hainbat seinale daude eskuragarri erromatarren denboran eta 1299an Plasencia de Butron (Plentzia)en portuak kategorian jasotzen zuen.
+        Bizkaiko Diego López de Haro Jaunak eman zion eskutik jasotako gutunaren bidez, Bilbo hiria sortu zuena.
+    </string>
+    <string name="game3_win2">Kale honetan hiru merkataritzara eramateko behar dituzun hiru ondasunak aurkituko dituzu: burdin-geruza, sardina eta bakailao. Hauek aurkitzeko,
+        hiru lekuetara jo beharko duzu. Lekuen itxura gogoratzen dut, argazkiak baditut, baina ez dut bakoitzaren izenak gogoratzen! Bakailao Barrenkalean,
+        burdin-geruza Kristo Emparantzan eta sardina Eleiz Emparantzan… baina ez dakit zein argazkia zein izena den! Lagundu dezakezu?
+        Joan zure leku horietara eta antzeko irudi bakoitzari merkantzia dagokiona parekatu.
+    </string>
+    <string name="game3_win">Armakoa lortu duzu!</string>
+
+    <string name="game4">4. Jokoa</string>
+    <string name="game4_title">Magdalena Eliza</string>
+    <string name="game4_win1">Plentziaren erdigune historikoa mendiz mendi batetik eraiki da, eta gainean Santa Maria Magdalena eliza dago.
+        Herri-templotik itsas motifoei bat egiten zaio, hondartzara eta estuarioaren sarrera babesteko dorretxea dagoelako.
+        Elizaren alboan, herri zaharraren sarreraetik, harriaren harritza txiki bat dago. Izan ere, Plentzia mundu arteko dorrearekin murritu zen garaian.
+    </string>
+    <string name="game4_win2">Herriko jaiak elizaren ondoan ospatzen ziren, baita zenbaki batzuk ere. Hala ere,
+        ogia eta merkantzi guztiak hartu eta ontziari eramateko, Alunelul eliza emparanza dantzatu dezagun!
+    </string>
+    <string name="game4_win">Kopa lortu duzu!</string>
+
+    <string name="game5">5. Jokoa</string>
+    <string name="game5_title">Santiago Arkua</string>
+    <string name="game5_win1">Bere estetika ez da bereziki nabarmena, aurreko murru hori aintzat hartuta, esan beharra dago
+        Santiago arkuk murruaren inguruko hirian ziren harresaien bakarra dela. Denboraren eta eraikinen presioaren ondorioz, beste guztiak
+        hondatu edo desagertu dira etxeen hormen artean, Santiago Arcoaren garrantzia agerian utziz.
+    </string>
+    <string name="game5_win2">Itsasora joate aurretik, ziur izan behar da herriak arazoik ez duen. Horregatik, Plentziako biztanleei
+        laguntza eman, horma berreskuratzeko!
+    </string>
+    <string name="game5_win">Zabaltzen lortu duzu!</string>
+
+    <string name="game6">6. Jokoa</string>
+    <string name="game6_title">Ontziola</string>
+    <string name="game6_win1">Plentziako ibaiak bere aro urrean bizi izan zuen XVIII. mende amaieratik XIX. mendearen hasiera arte. Duela gutxi
+        mendea, itsasertzetan kokaturiko ontzi-ereduenak Bizkaiko guztietan garrantzitsuenak izan ziren. Hala ere, 1840 urtearen ondoren, Plentzian ontzi-erreskurapena hasi zen
+        lurraldearen ezaugarri geografiko konplexuak direla eta. Rezultatua bezala, ontzi-ereduak Mundakara, Lekeitiora eta Bilborantz eraman ziren, Plentziaco kenduz eta
+        emparanza berria sortuz.
+    </string>
+    <string name="game6_win2">Orain ontziola dagoen lekuan gaude, zure ontziak eraiki behar dira! Aurrekoan lortutako piezak izenekin konektatu behar dituzu
+        eta ondoren, pieza bakoitzari bere tokian kokatuko duzu, ontzia osatuz. Unetik gero, azken pieza lortuko duzu: ancla!
+    </string>
+    <string name="game6_win">Ankila lortu duzu!</string>
+
+    <string name="game7">7. Jokoa</string>
+    <string name="game7_title">Portua/Hondartza</string>
+    <string name="game7_win1">Plentziako portua "La Gallarda" ere badakio izena herrian. Portua Butroi ibaiaren barnean kokatuta dago,
+        Plentziaren badia pare bat metroko distantzian. Urte batzuk lehenago, portuaren helburu nagusia komertzia zen. Denborarekin, arrantza ere hasi zen erabiltzen.
+        Plentziako arrantzaleek baleak eta bakailaoa batzen zuten. Gaur egun, hau ez da helburu horretarako erabiliko, ontzi handiak portura eramateko zailtasunak direla eta.
+        Bestelako, La Gallardak ontzi hoberenekin beteta dago. Urrunetik, Plentziako hondartza aurkitu dezakegu, ibaiaren ertzan kokatuta.
+    </string>
+    <string name="game7_win2">Zure ontziak nabigatzeko prest daude, baina ezer falta zaie: bandera bat! Zure ontzien bandera diseinatu eta margotu behar duzu,
+        nahi duzun moduan, jakina. Unikoa egin ondoren, benetan prest izango zara zure bidaia itsasoz hartzen. Baina zaindu! Harriekin kontuz!
+    </string>
+    <string name="game7_win">ZURE ONTZIA PORTURA IRITSI DA! ZORIONAK ITSASO AVENTURAREAN BIZIRIK IZATEAGATIK!
+    </string>
 
     <string name="lang">HIZKUNTZA</string>
-    <string name="es">Español</string>
-    <string name="en">English</string>
-    <string name="eu">Euskera</string>
+    <string name="es">Espainiera</string>
+    <string name="en">Ingelesa</string>
+    <string name="eu">Euskara</string>
 
-    <string name="login">Irakasle Saioa</string>
-    <string name="email">Posta elektronikoa</string>
+    <string name="login">Irakaslearen Saioa hasi</string>
+    <string name="email">E-posta</string>
     <string name="password">Pasahitza</string>
     <string name="register_or_login">Erregistratu edo saioa hasi</string>
 
     <string name="team">Taldea</string>
     <string name="minigame">Minijokoa</string>
-    <string name="progress">Aurrerabidea</string>
+    <string name="progress">Aurrerapena</string>
 
     <string name="writehere">Idatzi hemen</string>
+
+    <string name="game_completed">Joko hau jadanik osatu duzu, berriro egin nahi duzu? Zure aurrerapena galduko duzu!</string>
+    <string name="game_not_implemented">Jokoa oraindik ez dago inplikatuta…</string>
+
+    <string name="internet_error">Interneteko sarearekin konektaturik ez zaude, zerbitzuak ez dituzu erabilgarri izango</string>
+    <string name="user_error">Erabiltzaile izena edo pasahitza baliogabeak dira</string>
+    <string name="user_no_internet">Internetik gabe saioa hasten, zenbaki batzuk ez izango dira erabilgarri</string>
+
+    <string name="data_schema_mismatch">Datu-basearen eskema desegokiak. Mesedez, eguneratu aplikazioa.</string>
+    <string name="grant_permission">Baimenak eman behar dituzu aplikazioa erabiltzeko.</string>
+    <string name="open_settings">Ajusteak irekitzen…</string>
+
+    <string name="join_classroom">Ikasgelan sartu</string>
+    <string name="invalid_qr">QR kodearen formatu baliogabea…</string>
+    <string name="try_again">Saiatu berriro</string>
+    <string name="no_internet">Interneteko sarearekin konektaturik ez zaude :c</string>
+    <string name="group_in_class">Taldea dagoeneko klase batean dago.</string>
+
+
 </resources>

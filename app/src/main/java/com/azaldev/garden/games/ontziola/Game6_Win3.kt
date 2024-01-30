@@ -52,7 +52,7 @@ class Game6_Win3 : AppCompatActivity() {
 
                 if (newText == wordToCompare) {
                     hideKeyboard() // Oculta el teclado
-                    Utilities.showToast(this@Game6_Win3, "Ondo egin duzu!! Hurrengoa...")
+                    Utilities.showToast(this@Game6_Win3, getString(R.string.game6_next))
                     corrects++
                     handler.postDelayed({
                         val (newWord, newImage) = wordImageMap[corrects] ?: Pair("", 0)

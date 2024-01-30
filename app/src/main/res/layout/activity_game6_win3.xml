@@ -7,13 +7,44 @@
     android:background="@drawable/background"
     tools:context=".games.ontziola.Game6_Win4">
 
-    <View
+     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#70000000"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="413dp"
+        android:layout_height="160dp"
+        android:background="@color/water"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/next_game"
+            android:layout_width="315dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="32dp"
+            android:text="Hurrengoa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="416dp"
+        android:layout_height="712dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/aingura"
+        tools:layout_editor_absoluteY="82dp" />
 
     <TextView
         android:id="@+id/textView35"

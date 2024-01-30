@@ -5,14 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
+    android:background="@drawable/background"
     tools:context=".games.pasabidea.Game1_Win1">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="369dp"
         android:layout_height="246dp"
         android:justificationMode="inter_word"
-        android:text="Bere estetika bereziki deigarria ez izan arren, aurretik aipatutako harresiaren kontuaren harira, esan behar da arkuaren balio historikoa kalkulaezina dela, arku hau Plentzia hiribildua inguratzen zuten hormen aztarna bakarra baita. Denboraren eta eraikinen presioaren ondorioz, beste aztarna guztiak etxeen hormen artean hondatzen edo desagertzen joan dira, Santiago Arkuaren garrantzia agerian utziz."
+        android:text="@string/game5_win1"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +42,7 @@
         android:id="@+id/textView28"
         android:layout_width="401dp"
         android:layout_height="76dp"
-        android:text="SANTIAGO ARKUA"
+        android:text="@string/game5_title"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +51,7 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/player_button"
         android:layout_width="84dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"
@@ -61,7 +67,7 @@
         android:id="@+id/next_game"
         android:layout_width="370dp"
         android:layout_height="60dp"
-        android:text="@string/back_button"
+        android:text="@string/next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"

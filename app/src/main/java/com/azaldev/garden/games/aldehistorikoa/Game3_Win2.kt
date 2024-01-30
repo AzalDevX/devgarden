@@ -29,9 +29,10 @@ class Game3_Win2 : AppCompatActivity() {
         next_game_btn.visibility = View.INVISIBLE
 
         player_button.setOnClickListener {
-            Utilities.playSound(this,R.raw.game3_win2)
-            player_button.visibility = View.INVISIBLE
-            next_game_btn.visibility = View.VISIBLE
+            Utilities.playSound(this,R.raw.game3_win2){
+                player_button.visibility = View.INVISIBLE
+                next_game_btn.visibility = View.VISIBLE
+            }
         }
 
         findViewById<Button>(R.id.next_game).setOnClickListener {

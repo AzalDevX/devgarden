@@ -2,6 +2,8 @@ package com.azaldev.garden.games.errota
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageButton
 import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +18,18 @@ class Game2_Win2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game2_win2)
+
+        val player_button = findViewById<ImageButton>(R.id.player_button)
+        val next_game = findViewById<Button>(R.id.next_game)
+        next_game.visibility = View.INVISIBLE
+
+        player_button.setOnClickListener {
+            Utilities.playSound(this, R.raw.audio_game2_win2) {
+                player_button.visibility = View.VISIBLE
+                next_game.visibility = View.VISIBLE
+            }
+            player_button.visibility = View.INVISIBLE
+        }
 
         val game_id = 2;
         val database = AppDatabase.getInstance(this)

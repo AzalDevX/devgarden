@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".games.pasabidea.Game1_Win2">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="413dp"
@@ -19,7 +25,7 @@
             android:layout_width="315dp"
             android:layout_height="56dp"
             android:layout_marginBottom="32dp"
-            android:text="Hurrengoa"
+            android:text="@string/next_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +36,7 @@
         android:layout_width="354dp"
         android:layout_height="251dp"
         android:justificationMode="inter_word"
-        android:text="Auzo honetan beste portuetara eraman behar dituzuen hiru salgaiak aurkituko dituzue: burdin-minerala, sardinak eta bakailaoa. Horiek aurkitzeko, hiru lekuetara joan behar izango zarete. Lekuen itxura gogoratzen dut, argazkiak ditudalako, baina ez dut gogoratzen zein izen zuen bakoitzak! Barrenkalen bakailaoa, Kristo Enparantzan burdin-minerala eta Eleiz Enparantzan sardinak… baina ez dakit zein irudi den zein! Lagundu ahal didazue? Leku horietara joan zaitezte eta lotu itzazue irudi bakoitza dagokion salgaiarekin! "
+        android:text="@string/game3_win2"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +49,7 @@
         android:id="@+id/textView30"
         android:layout_width="111dp"
         android:layout_height="35dp"
-        android:text="3. Jolasa:"
+        android:text="@string/game3"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
