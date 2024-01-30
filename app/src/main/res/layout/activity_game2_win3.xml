@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/clayout"
+    android:background="@drawable/background"
     tools:context=".games.errota.Game2_Win3">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000" android:id="@+id/view"/>
 
     <ImageView
         android:id="@+id/errota_marrazkia"
