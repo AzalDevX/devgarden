@@ -45,6 +45,7 @@
         crearás harina. Luego, con esa harina se puede hacer pan. ¡Qué dulce!
     </string>
     <string name="game2_win">¡Conseguiste el timón de la rueda!</string>
+    <string name="game2_water">Toca el agua primero.</string>
 
     <string name="game3">3. Juego</string>
     <string name="game3_title">Alde Historikoa</string>
@@ -94,6 +95,7 @@
         y luego colocarás cada parte en su lugar correspondiente, completando el barco. ¡Una vez hecho esto, obtendrás la última parte: el ancla!
     </string>
     <string name="game6_win">¡Conseguiste el ancla!</string>
+    <string name="game6_next">¡Lo hiciste bien! Siguiente...</string>
 
     <string name="game7">7. Juego</string>
     <string name="game7_title">Portua/Hondartza</string>
