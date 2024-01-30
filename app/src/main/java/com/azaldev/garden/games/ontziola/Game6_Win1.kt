@@ -28,7 +28,6 @@ class Game6_Win1 : AppCompatActivity() {
 
         next_game.visibility = INVISIBLE
 
-
         next_game.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
@@ -49,8 +48,8 @@ class Game6_Win1 : AppCompatActivity() {
         }
 
         player_button.setOnClickListener {
-            Utilities.playSound(this,R.raw.game6_win1){
                 player_button.visibility = INVISIBLE
+            Utilities.playSound(this,R.raw.game6_win1){
                 next_game.visibility = VISIBLE
             }
         }

@@ -36,6 +36,9 @@ class Game4_Win3 : AppCompatActivity() {
         // Inicia la reproducción del video
         videoView.start()
 
+
+
+
         // Mostrar el MediaController y vincularlo al VideoView
         mediaController.show(0)
         mediaController.setAnchorView(videoView)
@@ -49,7 +52,7 @@ class Game4_Win3 : AppCompatActivity() {
         val database = AppDatabase.getInstance(this)
         val gameDao = database.GameDao();
 
-        findViewById<Button>(R.id.next_game).setOnClickListener {
+        videoView.setOnCompletionListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
 
