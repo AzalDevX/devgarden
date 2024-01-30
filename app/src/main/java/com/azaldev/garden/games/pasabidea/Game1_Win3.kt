@@ -12,7 +12,7 @@ class Game1_Win3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game1_win3)
 
-        val button = findViewById<Button>(R.id.button)
+        val button = findViewById<Button>(R.id.next_game)
         val customView = findViewById<CustomView>(R.id.customView)
 
         // Asocia el evento clic al botón para hacerlo visible

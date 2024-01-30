@@ -113,7 +113,7 @@ class LocationService() : Service() {
             }
 
             if (distanceInt < 20 && lastGameLocation != gameName) {
-                Utilities.playSound(this@LocationService, R.raw.success);
+                Utilities.playSound(this@LocationService, R.raw.success, {});
                 lastGameLocation = gameName; // I know it doesn't look good, but it's just an easy way to prevent sound repeating
             }
 

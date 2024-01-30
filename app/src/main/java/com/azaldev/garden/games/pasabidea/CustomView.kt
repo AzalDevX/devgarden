@@ -105,7 +105,7 @@ class CustomView @JvmOverloads constructor(
                 if (isCorrectOrder()) {
                     Log.d("CustomView", "TouchedPoints: fine")
                     // El usuario ha completado el barco correctamente
-                    Utilities.playSound(context, R.raw.success)
+                    Utilities.playSound(context, R.raw.success, {})
                 } else {
                     Log.d("CustomView", "TouchedPoints: not finished")
 
@@ -113,7 +113,7 @@ class CustomView @JvmOverloads constructor(
                         val isSequential = isSequentialOrder()
                         if (!isSequential) {
                             Log.d("CustomView", "MAL: no está en orden secuencial")
-                            Utilities.playSound(context, R.raw.error)
+                            Utilities.playSound(context, R.raw.error, {})
                             handler.postDelayed({
 
                                 Log.d("CustomView", "TouchedPoints: vuelve a empezar después del timeout")

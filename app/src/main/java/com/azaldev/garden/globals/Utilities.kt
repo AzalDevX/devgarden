@@ -139,10 +139,10 @@ object Utilities {
         return results[0]
     }
 
-    fun playSound(context: Context, resId: Int) {
+    fun playSound(context: Context, resId: Int, callback: () -> Unit) {
         val mediaPlayer = MediaPlayer.create(context, resId)
         mediaPlayer.start()
-        mediaPlayer.setOnCompletionListener { mediaPlayer.release() }
+        mediaPlayer.setOnCompletionListener { mediaPlayer.release(); callback() }
     }
 
     fun showToast(context: Context, message: String) {

@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/player_button"
         android:layout_width="84dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"
@@ -58,7 +58,7 @@
         app:srcCompat="@drawable/baseline_play_circle_24" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/next_game"
         android:layout_width="370dp"
         android:layout_height="60dp"
         android:text="@string/back_button"
