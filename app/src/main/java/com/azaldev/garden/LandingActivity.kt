@@ -136,7 +136,7 @@ class LandingActivity : AppCompatActivity() {
                     titleTextView.text = game.name
                     imageDisabledFilter.visibility = if (game.isLocked && !bypass) View.VISIBLE else View.INVISIBLE
                     imageDisabledLock.visibility = if (game.isLocked && !bypass) View.VISIBLE else View.INVISIBLE
-                    imageLocate.visibility = if (!isInRadious && !game.isLocked && !bypass) View.VISIBLE else View.INVISIBLE
+                    imageLocate.visibility = if (!isInRadious && !game.isLocked && !bypass /*&& !game.isFinished*/) View.VISIBLE else View.INVISIBLE
 
                     imageLocate.setOnClickListener {
                         if (!isInRadious && !game.isLocked && !bypass)

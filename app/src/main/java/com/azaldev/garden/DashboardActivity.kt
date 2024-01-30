@@ -67,6 +67,8 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         table_layout = findViewById(R.id.tableLayout)
         val rowCount = table_layout.childCount
 
+        Log.i("devl|dashboard", "row count: $rowCount")
+
         database = AppDatabase.getInstance(applicationContext)
         val authDao = database.AuthDao()
         gameDao = database.GameDao()
@@ -104,7 +106,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
 
             val res: ApiResponse = Gson().fromJson(data, ApiResponse::class.java)
 
-            if (res.success) {
+            if (res.success && res.all_students.size > 0) {
                 runOnUiThread {
                     for (i in rowCount - 1 downTo 1) {
                         val row: View = table_layout.getChildAt(i)
@@ -115,7 +117,12 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
 
                     for (student in res.all_students) {
-                        val student_progress = student.progress.toString().toCharArray()[1] + "/" + student.progress.toString().toCharArray()[2]
+                        Log.i("devl|dashboard", "progress: ${student.progress}")
+                        val student_progress =
+                            if(student.progress >= 100)
+                                student.progress.toString().toCharArray()[1] + "/" + student.progress.toString().toCharArray()[2]
+                            else
+                                "0/0"
 
                         createNewTeam(student.name, student.progress / 100, student_progress, student.location)
 
