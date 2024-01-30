@@ -124,4 +124,22 @@
     <string name="progress">Progreso</string>
 
     <string name="writehere">Escribe aquí</string>
+
+    <string name="game_completed">Ya has completado este juego, ¿quieres hacerlo de nuevo? ¡Perderás tu progreso!</string>
+    <string name="game_not_implemented">El juego aún no está implementado…</string>
+
+    <string name="internet_error">No estás conectado a internet, no tendrás acceso a las funciones en la nube</string>
+    <string name="user_error">Nombre de usuario o contraseña no válidos</string>
+    <string name="user_no_internet">Sesión iniciada sin conexión a internet, algunas funciones no estarán disponibles</string>
+
+    <string name="data_schema_mismatch">Desajuste en el esquema de la base de datos. Por favor, actualiza la aplicación.</string>
+    <string name="grant_permission">Necesitas otorgar permisos para usar la aplicación.</string>
+    <string name="open_settings">Abriendo ajustes…</string>
+
+    <string name="join_classroom">Unirse a la clase</string>
+    <string name="invalid_qr">Formato de código QR no válido…</string>
+    <string name="try_again">Intentar de nuevo</string>
+    <string name="no_internet">No estás conectado a internet :c</string>
+    <string name="group_in_class">Este grupo ya está en una clase.</string>
+
 </resources>

@@ -111,5 +111,25 @@
 
     <string name="writehere">Write here</string>
 
+    <string name="game_completed">You have already completed this game, do you want to do it again? ¡You will lose your progress!</string>
+    <string name="game_not_implemented">Game is not yet implemented…</string>
+
+    <string name="internet_error">You are not connected to the internet, You wont have access to cloud features</string>
+    <string name="user_error">Invalid username or password</string>
+    <string name="user_no_internet">Logged in without internet, some features will be unavailable</string>
+
+    <string name="data_schema_mismatch">Database schema mismatch. Please update the app.</string>
+    <string name="grant_permission">You need to grant permissions to use the app.</string>
+    <string name="open_settings">Opening settings…</string>
+
+    <string name="join_classroom">Join Classroom</string>
+    <string name="invalid_qr">Invalid QR code format…</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_internet">You are not connected to the internet :c</string>
+    <string name="group_in_class">This group is already in a class.</string>
+
+
+    <string name=""></string>
+    <string name=""></string>
 
 </resources>

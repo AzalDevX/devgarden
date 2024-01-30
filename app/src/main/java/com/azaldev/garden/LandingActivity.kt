@@ -135,7 +135,7 @@ class LandingActivity : AppCompatActivity() {
                             val activityClass = if (game.progress == 0) game.getActivityClass() else game.getActivityProgress()
 
                             if (game.progress != 0 && activityClass == null) {
-                                Utilities.showErrorAlert(this@LandingActivity, "You have already completed this game, do you want to do it again? ¡You will lose your progress!") {
+                                Utilities.showErrorAlert(this@LandingActivity, getString(R.string.game_completed)) {
                                     lifecycleScope.launch(Dispatchers.IO) {
                                         gameDao.reset_progress(game.id)
                                     }
@@ -143,7 +143,7 @@ class LandingActivity : AppCompatActivity() {
                                     if (activityClassR != null)
                                         Utilities.startActivity(this@LandingActivity, activityClassR)
                                     else
-                                        Utilities.showToast(this@LandingActivity, "Game is not yet implemented...")
+                                        Utilities.showToast(this@LandingActivity, getString(R.string.game_not_implemented))
                                 }
 
                                 return@setOnClickListener
@@ -152,7 +152,7 @@ class LandingActivity : AppCompatActivity() {
                             if (activityClass != null) {
                                 Utilities.startActivity(this@LandingActivity, activityClass)
                             } else {
-                                Utilities.showToast(this@LandingActivity, "Game is not yet implemented...")
+                                Utilities.showToast(this@LandingActivity, getString(R.string.game_not_implemented))
                             }
                         }
                     }

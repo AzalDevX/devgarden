@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
             Log.i("devl|main", "Internet connection status: $it, WSClient status: ${Globals.webSocketClient != null}")
 
             if (!Globals.has_connection) {
-                Snackbar.make(contextView, "You are not connected to the internet, You wont have access to cloud features", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(contextView, getString(R.string.internet_error), Snackbar.LENGTH_INDEFINITE)
                     .setAction("Recheck") {}
                     .setTextColor(ContextCompat.getColor(this, R.color.red_400))
                     .setBackgroundTint(ContextCompat.getColor(this, R.color.blue_200))
@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             if (email == "" || password == "") {
                 Log.d("devl|login", "Invalid email $email or password $password")
 
-                Snackbar.make(contextView, "Invalid username or password", Snackbar.LENGTH_SHORT)
+                Snackbar.make(contextView, getString(R.string.user_error), Snackbar.LENGTH_SHORT)
                     .setAction("Try Again") {
                         findViewById<TextInputEditText>(R.id.emailField).requestFocus()
                     }
@@ -154,7 +154,7 @@ class LoginActivity : AppCompatActivity() {
                     Globals.stored_user = room_user;
 
                     withContext(Dispatchers.Main) {
-                        Snackbar.make(contextView, "Logged in without internet, some features will be unavailable", Snackbar.LENGTH_SHORT)
+                        Snackbar.make(contextView, getString(R.string.user_no_internet), Snackbar.LENGTH_SHORT)
                             .setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.blue_500))
                             .setBackgroundTint(ContextCompat.getColor(this@LoginActivity, R.color.blue_200))
                             .show()

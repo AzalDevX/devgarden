@@ -122,4 +122,23 @@
     <string name="progress">Aurrerapena</string>
 
     <string name="writehere">Idatzi hemen</string>
+
+    <string name="game_completed">Joko hau jadanik osatu duzu, berriro egin nahi duzu? Zure aurrerapena galduko duzu!</string>
+    <string name="game_not_implemented">Jokoa oraindik ez dago inplikatuta…</string>
+
+    <string name="internet_error">Interneteko sarearekin konektaturik ez zaude, zerbitzuak ez dituzu erabilgarri izango</string>
+    <string name="user_error">Erabiltzaile izena edo pasahitza baliogabeak dira</string>
+    <string name="user_no_internet">Internetik gabe saioa hasten, zenbaki batzuk ez izango dira erabilgarri</string>
+
+    <string name="data_schema_mismatch">Datu-basearen eskema desegokiak. Mesedez, eguneratu aplikazioa.</string>
+    <string name="grant_permission">Baimenak eman behar dituzu aplikazioa erabiltzeko.</string>
+    <string name="open_settings">Ajusteak irekitzen…</string>
+
+    <string name="join_classroom">Ikasgelan sartu</string>
+    <string name="invalid_qr">QR kodearen formatu baliogabea…</string>
+    <string name="try_again">Saiatu berriro</string>
+    <string name="no_internet">Interneteko sarearekin konektaturik ez zaude :c</string>
+    <string name="group_in_class">Taldea dagoeneko klase batean dago.</string>
+
+
 </resources>
