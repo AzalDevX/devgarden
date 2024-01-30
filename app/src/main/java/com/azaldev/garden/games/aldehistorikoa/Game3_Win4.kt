@@ -25,7 +25,12 @@ class Game3_Win4 : AppCompatActivity() {
             lifecycleScope.launch(Dispatchers.IO) {
                 val current_game = gameDao.getGame(game_id);
 
-                                val next_game = current_game.getActivityProgress();gameDao.adv_progress(game_id, 1);
+                val next_game = current_game.getActivityProgress(1);
+                gameDao.adv_progress(game_id, 1);
+
+                gameDao.finish_game(game_id);
+                gameDao.unlock_nextgame(game_id);
+
                 lifecycleScope.launch(Dispatchers.Main) {
                     Log.i("devl|game34", "Moving to the next game")
 

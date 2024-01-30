@@ -195,13 +195,15 @@ class DragAndPlaceGameView(context: Context, attrs: AttributeSet?) : View(contex
                 for (piece in pieces) {
                     bufferCanvas?.drawBitmap(it, piece.srcRect, piece.destRect, mPaint)
 
-                    canvas.drawLine(
-                        piece.destRect.centerX().toFloat(),
-                        piece.destRect.centerY().toFloat(),
-                        piece.initialRect.centerX().toFloat(),
-                        piece.initialRect.centerY().toFloat(),
-                        debugPaint
-                    )
+                    /*
+                      canvas.drawLine(
+                            piece.destRect.centerX().toFloat(),
+                            piece.destRect.centerY().toFloat(),
+                            piece.initialRect.centerX().toFloat(),
+                            piece.initialRect.centerY().toFloat(),
+                            debugPaint
+                        )
+                    */
                 }
                 bufferBitmap?.let { canvas.drawBitmap(it, 0f, 0f, mPaint) }
                 // drawDebugRects(pieceRects, canvas)

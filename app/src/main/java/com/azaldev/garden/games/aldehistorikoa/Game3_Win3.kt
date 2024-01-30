@@ -46,7 +46,6 @@ class Game3_Win3 : AppCompatActivity() {
 
         // Inicializar el contexto de la actividad en GameView
         gameView.initActivityContext(this)
-
     }
 
     private fun setOnTouchListener(imageView: ImageView) {

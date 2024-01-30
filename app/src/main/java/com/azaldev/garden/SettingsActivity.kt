@@ -257,7 +257,6 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         scanQrCode.setOnClickListener {
-
             if(Globals.stored_user != null)  {
                 qr_image.visibility = View.VISIBLE
                 //Utilities.setBrightness(this, Utilities.getBrightness(this) + 50)
