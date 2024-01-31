@@ -1,0 +1,4 @@
+<!-- res/color/greyscale.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#FF808080" />
+</selector>

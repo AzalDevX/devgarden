@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Devgarden" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.Devgarden" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@color/green_100</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 
-    <style name="Theme.Devgarden" parent="Base.Theme.Devgarden"/>
+
+    <style name="Theme.Devgarden" parent="Base.Theme.Devgarden">
+        <item name="colorPrimary">@color/blue_200</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>
