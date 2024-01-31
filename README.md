@@ -1,4 +1,4 @@
-# DevGarden - Kindergarden's MiniGames Application
+# DevGarden - Kindergarten's MiniGames Application
 
 ## Description
 DevGarden is an Android application developed in Kotlin that offers a collection of educational mini-games designed for children in preschool. This application provides interactive activities specifically tailored for the learning and entertainment of young children.
@@ -25,8 +25,7 @@ If you wish to contribute to DevGarden, follow these steps:
 ## Authors
 - [AzalDevX](https://github.com/AzalDevX)
 - [AngleSad](https://github.com/AngleSad)
-- [itsxnoobx](https://github.com/itsxnoobx)
-- [jav9i](https://github.com/jav9i)
+- [itsxnoobx](https://github.com/itsxnoobx) && [imxnoobx](https://github.com/imxnoobx)
 
 ## License
 This project is under the [Apache License v2](https://www.apache.org/licenses/LICENSE-2.0). See the `LICENSE` file for more details.
