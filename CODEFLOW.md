@@ -22,10 +22,6 @@ This README file describes the coding rules that must be followed in this projec
    - All issues, bugs, and tasks should be registered on GitHub using the issue tracking system.
    - Include detailed information in each issue, such as a description, assignment, and appropriate labels.
 
-## Project Structure
-
-...
-
 ## Testing and Documentation
 
 - One test must be created for each pull request.
