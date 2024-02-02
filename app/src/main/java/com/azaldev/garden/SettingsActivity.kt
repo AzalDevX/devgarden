@@ -31,6 +31,7 @@ import com.azaldev.garden.globals.RNGName
 import com.azaldev.garden.globals.Utilities
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
@@ -157,6 +158,14 @@ class SettingsActivity : AppCompatActivity() {
                 button.backgroundTintList = ColorStateList.valueOf(defaultColor)
                 button.setTextColor(Color.WHITE)
             }
+        }
+
+        val theme = findViewById<MaterialSwitch>(R.id.theme)
+        theme.setOnClickListener {
+            val isDark = theme.isChecked
+
+            setTheme(if (isDark) R.style.Theme_DevgardenDark else R.style.Theme_Devgarden)
+            recreate()
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
